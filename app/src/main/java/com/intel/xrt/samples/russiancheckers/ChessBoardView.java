@@ -4,83 +4,80 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class ChessBoardView extends View {
+public class ChessBoardView extends View implements OnTouchListener {
     private final int cellsCount = 8;
+    private final float externalMargin = 5;
     private float screenW;
     private float screenH;
     private float cellSize;
     private float boardMargin;
-    private final float externalMargin = 5;
-    private int[][] piecesCells = new int[cellsCount][cellsCount/2];
+    private BoardCell[][] cells = new BoardCell[cellsCount][cellsCount];
+    private Canvas canvas = null;
+    private Paint paint = null;
 
     public ChessBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         for (int row = 0; row < cellsCount; ++row) {
-            for (int col = 0; col < cellsCount/2; ++col) {
-                if (row < 3)
-                    piecesCells[row][col] = 1;
-                else if (row > 4)
-                    piecesCells[row][col] = -1;
-                else
-                    piecesCells[row][col] = 0;
+            for (int col = 0; col < cellsCount; ++col) {
+                cells[row][col] = new BoardCell();
             }
         }
     }
 
     @Override
     protected void onDraw(Canvas c){
-        super.onDraw(c);
+        canvas = c;
+        super.onDraw(canvas);
 
-        Paint paint = new Paint();
-        drawBoard(c, paint);
-        drawPieces(c, paint);
-        c.restore();
+        paint = new Paint();
+        drawBoard();
+        drawCells();
+        drawPieces();
+
+        canvas.restore();
+        this.setOnTouchListener(this);
     }
 
-    private void drawBoard(Canvas c, Paint paint) {
+    private void drawBoard() {
         paint.setStyle(Paint.Style.FILL);
 
         paint.setColor(Color.WHITE);
-        c.drawPaint(paint);
+        canvas.drawPaint(paint);
 
         paint.setColor(Color.BLACK);
         float rectX = externalMargin;
         float rectY = externalMargin;
         float rectWidth = screenW - externalMargin;
         float rectHeight = screenH - externalMargin;
-        c.drawRect(rectX, rectY, rectWidth, rectHeight, paint);
+        canvas.drawRect(rectX, rectY, rectWidth, rectHeight, paint);
         paint.setColor(Color.WHITE);
         rectX = externalMargin + 1;
         rectY = externalMargin + 1;
         rectWidth = screenW - (externalMargin + 1);
         rectHeight = screenH - (externalMargin + 1);
-        c.drawRect(rectX, rectY, rectWidth, rectHeight, paint);
+        canvas.drawRect(rectX, rectY, rectWidth, rectHeight, paint);
         paint.setColor(Color.BLACK);
         boardMargin = screenW / 12;
         rectX = boardMargin - 1;
         rectY = boardMargin - 1;
         rectWidth = screenW - (boardMargin - 1);
         rectHeight = screenH - (boardMargin - 1);
-        c.drawRect(rectX, rectY, rectWidth, rectHeight, paint);
+        canvas.drawRect(rectX, rectY, rectWidth, rectHeight, paint);
         float boardSize = screenW - 2*boardMargin;
         cellSize = boardSize / cellsCount;
 
-        for (int row = 0; row < cellsCount; ++row) {
-            for (int col = 0; col < cellsCount; ++col) {
-                if ((row+col) % 2 == 0)
-                    paint.setColor(Color.WHITE);
-                else
-                    paint.setColor(Color.BLACK);
-                c.drawRect(boardMargin + cellSize*row, boardMargin + cellSize*col, boardMargin + cellSize*(row+1), boardMargin + cellSize*(col+1), paint);
-            }
-        }
-        drawCellsNames(c, paint);
+        drawCellsNames();
     }
 
-    private void drawCellsNames(Canvas c, Paint paint) {
+    private void drawCellsNames() {
         String[] xTitle = {"a", "b", "c", "d", "e", "f", "g", "h"};
         String[] yTitle = {"1", "2", "3", "4", "5", "6", "7", "8"};
 
@@ -89,43 +86,86 @@ public class ChessBoardView extends View {
         paint.setAntiAlias(true);
         paint.setTextSize(cellSize / 2);
         for (int i = 0; i < xTitle.length; ++i) {
-            c.drawText(xTitle[i], cellSize/3 + boardMargin + i*cellSize, screenH - (externalMargin + boardMargin/3), paint);
+            canvas.drawText(xTitle[i], cellSize/3 + boardMargin + i*cellSize, screenH - (externalMargin + boardMargin/3), paint);
         }
 
         for (int i = 0; i < yTitle.length; ++i) {
-            c.drawText(yTitle[yTitle.length - i - 1], externalMargin + boardMargin/3, cellSize/2 + 5*externalMargin/2 + boardMargin + i*cellSize, paint);
+            canvas.drawText(yTitle[yTitle.length - i - 1], externalMargin + boardMargin/3, cellSize/2 + 5*externalMargin/2 + boardMargin + i*cellSize, paint);
         }
-        c.rotate(180, (screenW - (cellSize / 3 + boardMargin)), (externalMargin + boardMargin / 3));
+        canvas.rotate(180, (screenW - (cellSize / 3 + boardMargin)), (externalMargin + boardMargin / 3));
         for (int i = 0; i < xTitle.length; ++i) {
-            c.drawText(xTitle[xTitle.length - i - 1], (screenW - (cellSize / 3 + boardMargin)) + i*cellSize, (externalMargin + boardMargin/3), paint);
+            canvas.drawText(xTitle[xTitle.length - i - 1], (screenW - (cellSize / 3 + boardMargin)) + i*cellSize, (externalMargin + boardMargin/3), paint);
         }
-        c.rotate(180, (screenW - (cellSize / 3 + boardMargin)), (externalMargin + boardMargin/3));
-        c.rotate(180,  screenW - (externalMargin + boardMargin/3), screenH);
+        canvas.rotate(180, (screenW - (cellSize / 3 + boardMargin)), (externalMargin + boardMargin/3));
+        canvas.rotate(180,  screenW - (externalMargin + boardMargin/3), screenH);
         for (int i = 0; i < yTitle.length; ++i) {
-            c.drawText(yTitle[i], screenW - (externalMargin + boardMargin/3), (screenH + cellSize/2 + 5*externalMargin/2 + boardMargin) + i*cellSize, paint);
+            canvas.drawText(yTitle[i], screenW - (externalMargin + boardMargin/3), (screenH + cellSize/2 + 5*externalMargin/2 + boardMargin) + i*cellSize, paint);
         }
-        c.rotate(180,  screenW - (externalMargin + boardMargin/3), screenH);
+        canvas.rotate(180,  screenW - (externalMargin + boardMargin/3), screenH);
     }
 
-    private void drawPieces(Canvas c, Paint paint) {
-        paint.setAntiAlias(true);
-        float bottomBorder = screenH - (externalMargin + boardMargin);
-        float leftBorder = externalMargin + boardMargin;
-        float radius = cellSize/3;
+    private void drawCells() {
         for (int row = 0; row < cellsCount; ++row) {
-            for (int col = 0; col < cellsCount/2; ++col) {
-                if (piecesCells[row][col] == 0)
-                    continue;
-                else if (piecesCells[row][col] > 0)
-                    paint.setColor(Color.RED);
-                else
-                    paint.setColor(Color.BLUE);
-                if (row % 2 == 0)
-                    c.drawCircle(leftBorder + 2*col*cellSize + cellSize/(float)2.4, bottomBorder - row*cellSize - cellSize/(float)2.4, radius, paint);
-                else
-                    c.drawCircle(leftBorder + 2*col*cellSize + cellSize/(float)2.4 + cellSize, bottomBorder - row*cellSize - cellSize/(float)2.4, radius, paint);
+            for (int col = 0; col < cellsCount; ++col) {
+                RectF rect = new RectF(boardMargin + cellSize*col, boardMargin + cellSize*row, boardMargin + cellSize*(col+1), boardMargin + cellSize*(row+1));
+                cells[row][col].setRect(rect);
+                if ((row+col) % 2 == 0) {
+                    paint.setColor(Color.WHITE);
+                    cells[row][col].setCondition(BoardCell.EMPTY_CELL);
+                }
+                else {
+                    paint.setColor(Color.BLACK);
+                    if (cells[row][col].isHighlight())
+                        paint.setColor(Color.GREEN);
+                    if (row < 3)
+                        cells[row][col].setCondition(BoardCell.BLACK_CELL);
+                    else if (row > 4)
+                        cells[row][col].setCondition(BoardCell.WHITE_CELL);
+                }
+                canvas.drawRect(rect, paint);
             }
         }
+    }
+
+    private void drawPieces() {
+        paint.setAntiAlias(true);
+        float radius = cellSize/3;
+        for (int row = 0; row < cellsCount; ++row) {
+            for (int col = 0; col < cellsCount; ++col) {
+                if (cells[row][col].getCondition() == BoardCell.WHITE_CELL)
+                    paint.setColor(Color.RED);
+                else if (cells[row][col].getCondition() == BoardCell.WHITE_KING_CELL)
+                    paint.setColor(Color.RED);
+                else if (cells[row][col].getCondition() == BoardCell.BLACK_CELL)
+                    paint.setColor(Color.BLUE);
+                else if (cells[row][col].getCondition() == BoardCell.BLACK_KING_CELL)
+                    paint.setColor(Color.BLUE);
+                else
+                    continue;
+                float circleCenterX = cells[row][col].getRect().left + cellSize/2;
+                float circleCenterY = cells[row][col].getRect().top + cellSize/2;
+                canvas.drawCircle(circleCenterX, circleCenterY, radius, paint);
+                if (cells[row][col].getCondition() == BoardCell.WHITE_KING_CELL ||
+                        cells[row][col].getCondition() == BoardCell.BLACK_KING_CELL)
+                    drawCrown(circleCenterX, circleCenterY, radius);
+            }
+        }
+    }
+
+    private void drawCrown(float cx, float cy, float radius) {
+        Path path = new Path();
+        float crownWidth = ((cx + radius/2) - (cx - radius/2));
+        path.moveTo(cx + radius/3, cy + radius / 3);
+        path.lineTo(cx - radius/3, cy + radius / 3);
+        path.lineTo(cx - radius/2, cy - radius / 3);
+        path.lineTo(cx - radius/2 + crownWidth/4, cy);
+        path.lineTo(cx - radius/2 + crownWidth/2, cy - radius / 3);
+        path.lineTo(cx - radius/2 + 3*crownWidth/4, cy);
+        path.lineTo(cx - radius/2 + crownWidth, cy - radius / 3);
+        path.moveTo(cx + radius/3, cy + radius / 3);
+        path.close();
+        paint.setColor(Color.YELLOW);
+        canvas.drawPath(path, paint);
     }
 
     @Override
@@ -145,5 +185,28 @@ public class ChessBoardView extends View {
         else {
             setMeasuredDimension(height, height);
         }
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        float x = event.getX();
+        float y = event.getY();
+        switch(event.getAction())
+        {
+            case MotionEvent.ACTION_DOWN:
+                for (int row = 0; row < cellsCount; ++ row) {
+                    for (int col = 0; col < cellsCount; ++col) {
+                        if (cells[row][col].getCondition() == BoardCell.EMPTY_CELL)
+                            continue;
+                        cells[row][col].setHighlight(false);
+                        if (cells[row][col].getRect().contains(x, y)) {
+                            cells[row][col].setHighlight(true);
+                            invalidate();
+                        }
+                    }
+                }
+                return true;
+        }
+        return false;
     }
 }
