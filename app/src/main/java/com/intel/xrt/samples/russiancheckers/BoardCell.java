@@ -7,22 +7,22 @@ import android.graphics.RectF;
 public class BoardCell {
     public static final int EMPTY_CELL = 0;
     public static final int WHITE_CELL = 1;
-    public static final int WHITE_KING_CELL = 2;
     public static final int BLACK_CELL = -1;
-    public static final int BLACK_KING_CELL = -2;
 
     public static final int WHITE_PIECE_COLOR = Color.RED;
     public static final int BLACK_PIECE_COLOR = Color.BLUE;
+    public static final int CROWN_COLOR = Color.YELLOW;
+    public static final int HIGHLIGHT_COLOR = Color.GREEN;
+
     private int cellCondition;
-    private boolean highlighted = false;
+    private boolean highlighted;
+    private boolean kingPiece;
     private RectF rect;
 
     public BoardCell() {
-
-    }
-
-    public BoardCell(RectF rect) {
-        this.rect = rect;
+        highlighted = false;
+        kingPiece = false;
+        cellCondition = EMPTY_CELL;
     }
 
     public void setRect(RectF rect) {
@@ -47,5 +47,13 @@ public class BoardCell {
 
     public boolean isHighlight() {
         return highlighted;
+    }
+
+    public void setKingPiece(boolean kingPiece) {
+        this.kingPiece = kingPiece;
+    }
+
+    public boolean isKingPiece() {
+        return kingPiece;
     }
 }

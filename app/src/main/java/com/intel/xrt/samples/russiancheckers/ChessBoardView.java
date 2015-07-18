@@ -7,7 +7,6 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -116,7 +115,7 @@ public class ChessBoardView extends View implements OnTouchListener {
                 else {
                     paint.setColor(Color.BLACK);
                     if (cells[row][col].isHighlight())
-                        paint.setColor(Color.GREEN);
+                        paint.setColor(BoardCell.HIGHLIGHT_COLOR);
                     if (row < 3)
                         cells[row][col].setCondition(BoardCell.BLACK_CELL);
                     else if (row > 4)
@@ -133,20 +132,15 @@ public class ChessBoardView extends View implements OnTouchListener {
         for (int row = 0; row < cellsCount; ++row) {
             for (int col = 0; col < cellsCount; ++col) {
                 if (cells[row][col].getCondition() == BoardCell.WHITE_CELL)
-                    paint.setColor(Color.RED);
-                else if (cells[row][col].getCondition() == BoardCell.WHITE_KING_CELL)
-                    paint.setColor(Color.RED);
+                    paint.setColor(BoardCell.WHITE_PIECE_COLOR);
                 else if (cells[row][col].getCondition() == BoardCell.BLACK_CELL)
-                    paint.setColor(Color.BLUE);
-                else if (cells[row][col].getCondition() == BoardCell.BLACK_KING_CELL)
-                    paint.setColor(Color.BLUE);
+                    paint.setColor(BoardCell.BLACK_PIECE_COLOR);
                 else
                     continue;
                 float circleCenterX = cells[row][col].getRect().left + cellSize/2;
                 float circleCenterY = cells[row][col].getRect().top + cellSize/2;
                 canvas.drawCircle(circleCenterX, circleCenterY, radius, paint);
-                if (cells[row][col].getCondition() == BoardCell.WHITE_KING_CELL ||
-                        cells[row][col].getCondition() == BoardCell.BLACK_KING_CELL)
+                if (cells[row][col].isKingPiece())
                     drawCrown(circleCenterX, circleCenterY, radius);
             }
         }
@@ -164,7 +158,7 @@ public class ChessBoardView extends View implements OnTouchListener {
         path.lineTo(cx - radius/2 + crownWidth, cy - radius / 3);
         path.moveTo(cx + radius/3, cy + radius / 3);
         path.close();
-        paint.setColor(Color.YELLOW);
+        paint.setColor(BoardCell.CROWN_COLOR);
         canvas.drawPath(path, paint);
     }
 
@@ -196,15 +190,16 @@ public class ChessBoardView extends View implements OnTouchListener {
             case MotionEvent.ACTION_DOWN:
                 for (int row = 0; row < cellsCount; ++ row) {
                     for (int col = 0; col < cellsCount; ++col) {
-                        if (cells[row][col].getCondition() == BoardCell.EMPTY_CELL)
-                            continue;
                         cells[row][col].setHighlight(false);
+                        if (cells[row][col].getCondition() == BoardCell.EMPTY_CELL ||
+                                cells[row][col].getCondition() == BoardCell.BLACK_CELL)
+                            continue;
                         if (cells[row][col].getRect().contains(x, y)) {
                             cells[row][col].setHighlight(true);
-                            invalidate();
                         }
                     }
                 }
+                invalidate();
                 return true;
         }
         return false;
