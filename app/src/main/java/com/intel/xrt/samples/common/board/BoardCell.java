@@ -1,23 +1,13 @@
-package com.intel.xrt.samples.russiancheckers;
-
-import android.graphics.Color;
-import android.graphics.RectF;
-
+package com.intel.xrt.samples.common.board;
 
 public class BoardCell {
     public static final int EMPTY_CELL = 0;
-    public static final int WHITE_CELL = 1;
-    public static final int BLACK_CELL = -1;
-
-    public static final int WHITE_PIECE_COLOR = Color.RED;
-    public static final int BLACK_PIECE_COLOR = Color.BLUE;
-    public static final int CROWN_COLOR = Color.YELLOW;
-    public static final int HIGHLIGHT_COLOR = Color.GREEN;
-
+    public static final int WHITE_PIECE = 1;
+    public static final int BLACK_PIECE = -1;
     private int cellCondition;
     private boolean highlighted;
     private boolean kingPiece;
-    private RectF rect;
+    private CellRect rect;
 
     public BoardCell() {
         highlighted = false;
@@ -25,11 +15,11 @@ public class BoardCell {
         cellCondition = EMPTY_CELL;
     }
 
-    public void setRect(RectF rect) {
+    public void setRect(CellRect rect) {
         this.rect = rect;
     }
 
-    public RectF getRect() {
+    public CellRect getRect() {
         return rect;
     }
 
