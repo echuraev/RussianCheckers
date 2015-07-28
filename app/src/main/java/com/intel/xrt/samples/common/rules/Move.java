@@ -1,12 +1,31 @@
 package com.intel.xrt.samples.common.rules;
 
+import com.intel.xrt.samples.common.board.BoardCell;
+
 public class Move {
-    private int fromRow;
-    private int fromCol;
-    private int toRow;
-    private int toCol;
+    private BoardCell from;
+    private BoardCell to;
+    private BoardCell eat;
 
-    Move() {
+    public Move(BoardCell from, BoardCell to) {
+        this.from = from;
+        this.to = to;
+        this.eat = null;
+    }
 
+    public void setEatMove(BoardCell eatMove) {
+        this.eat = eatMove;
+    }
+
+    public BoardCell getFromCell() {
+        return from;
+    }
+
+    public BoardCell getToCell() {
+        return to;
+    }
+
+    public BoardCell getEatCell() {
+        return eat;
     }
 }
