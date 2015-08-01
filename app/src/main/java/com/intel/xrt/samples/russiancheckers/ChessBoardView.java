@@ -221,11 +221,11 @@ public class ChessBoardView extends View implements OnTouchListener {
 
     private void highlightMoves(int row, int col) {
         if (previousCell != null) {
-            List<Move> eatMoves = gameBoard.getEatMoves(previousCell.getRow(), previousCell.getCol());
+            List<Move> eatMoves = gameBoard.getEatMoves(previousCell, previousCell, null);
             for (Move m : eatMoves) {
                 m.getToCell().setHighlight(false);
             }
-            List<Move> normalMoves = gameBoard.getNormalMoves(previousCell.getRow(), previousCell.getCol());
+            List<Move> normalMoves = gameBoard.getNormalMoves(previousCell);
             for (Move m : normalMoves) {
                 m.getToCell().setHighlight(false);
             }
@@ -234,14 +234,14 @@ public class ChessBoardView extends View implements OnTouchListener {
 
         previousCell = gameBoard.getCell(row, col);
         gameBoard.getCell(row, col).setHighlight(true);
-        List<Move> eatMoves = gameBoard.getEatMoves(row, col);
+        List<Move> eatMoves = gameBoard.getEatMoves(gameBoard.getCell(row, col), gameBoard.getCell(row, col), null);
         for (Move m : eatMoves) {
             m.getToCell().setHighlight(true);
         }
         if (eatMoves != null && eatMoves.size() > 0) {
             return;
         }
-        List<Move> normalMoves = gameBoard.getNormalMoves(row, col);
+        List<Move> normalMoves = gameBoard.getNormalMoves(gameBoard.getCell(row, col));
         for (Move m : normalMoves) {
             m.getToCell().setHighlight(true);
         }
@@ -252,14 +252,14 @@ public class ChessBoardView extends View implements OnTouchListener {
             return;
 
         previousCell.setHighlight(false);
-        List<Move> eatMoves = gameBoard.getEatMoves(previousCell.getRow(), previousCell.getCol());
+        List<Move> eatMoves = gameBoard.getEatMoves(previousCell, previousCell, null);
         for (Move m : eatMoves) {
             m.getToCell().setHighlight(false);
             if (m.getToCell().getRow() == row && m.getToCell().getCol() == col) {
                 gameBoard.doMove(m);
             }
         }
-        List<Move> normalMoves = gameBoard.getNormalMoves(previousCell.getRow(), previousCell.getCol());
+        List<Move> normalMoves = gameBoard.getNormalMoves(previousCell);
         for (Move m : normalMoves) {
             m.getToCell().setHighlight(false);
             if (m.getToCell().getRow() == row && m.getToCell().getCol() == col) {
