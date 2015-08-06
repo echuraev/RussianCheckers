@@ -17,17 +17,17 @@ public class GameBoard {
 
                 if (row == 3 && col == 4)
                     cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                /*if (row == 5 && col == 2)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                if (row == 6 && col == 1)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);*/
+//                if (row == 5 && col == 2)
+//                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
+//                if (row == 6 && col == 1)
+//                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
 
                 if (row == 0 && col == 7) {
                     cells[row][col].setCondition(BoardCell.WHITE_PIECE);
                     cells[row][col].setKingPiece(true);
                 }
 
-                /*if (row == 7 && col == 2) {
+                if (row == 7 && col == 2) {
                     cells[row][col].setCondition(BoardCell.WHITE_PIECE);
                 }
                 if (row == 6 && col == 3)
@@ -76,80 +76,121 @@ public class GameBoard {
                 }
                 if (toRow < 0 || toCol < 0 || toRow >= CELL_COUNT || toCol >= CELL_COUNT)
                     break;
-                if (cells[toRow][toCol].getCondition() == BoardCell.EMPTY_CELL) {
-                    Move move = new Move(cell, cells[toRow][toCol]);
-                    normalMoves.add(move);
-                }
+                if (cells[toRow][toCol].getCondition() != BoardCell.EMPTY_CELL)
+                    break;
+                Move move = new Move(cell, cells[toRow][toCol]);
+                normalMoves.add(move);
             }
         }
 
         return normalMoves;
     }
 
-    public List<Move> getEatMoves(BoardCell cell, BoardCell firstPosition, List<Move> previousEatMoves) {
+    public List<Move> getEatMoves(BoardCell cell) {
         LinkedList<Move> eatMoves = new LinkedList<Move>();
         int toRow = 0;
         int toCol = 0;
         int eatRow = 0;
         int eatCol = 0;
-        int maxCountOfSteps = (firstPosition.isKingPiece()) ? (CELL_COUNT - 2) : 1;
+        int maxCountOfSteps = (cell.isKingPiece()) ? (CELL_COUNT - 1) : 1;
         for (Direction d : eatDirections) {
+            BoardCell eatCell = null;
+            LinkedList<Move> allHighlightedMoves = new LinkedList<Move>();
+            LinkedList<Move> nextEatMoves = new LinkedList<Move>();
             for (int step = 1; step <= maxCountOfSteps; ++step) {
+                int toStep = (eatCell == null) ? (step + 1) : step;
                 switch (d) {
                     case RIGHT_BUTTOM:
                         eatRow = cell.getRow() + step;
                         eatCol = cell.getCol() + step;
-                        toRow = cell.getRow() + (step + 1);
-                        toCol = cell.getCol() + (step + 1);
+                        toRow = cell.getRow() + toStep;
+                        toCol = cell.getCol() + toStep;
                         break;
                     case RIGHT_FORWARD:
                         eatRow = cell.getRow() - step;
                         eatCol = cell.getCol() + step;
-                        toRow = cell.getRow() - (step + 1);
-                        toCol = cell.getCol() + (step + 1);
+                        toRow = cell.getRow() - toStep;
+                        toCol = cell.getCol() + toStep;
                         break;
                     case LEFT_BUTTOM:
                         eatRow = cell.getRow() + step;
                         eatCol = cell.getCol() - step;
-                        toRow = cell.getRow() + (step + 1);
-                        toCol = cell.getCol() - (step + 1);
+                        toRow = cell.getRow() + toStep;
+                        toCol = cell.getCol() - toStep;
                         break;
                     case LEFT_FORWARD:
                         eatRow = cell.getRow() - step;
                         eatCol = cell.getCol() - step;
-                        toRow = cell.getRow() - (step + 1);
-                        toCol = cell.getCol() - (step + 1);
+                        toRow = cell.getRow() - toStep;
+                        toCol = cell.getCol() - toStep;
                         break;
                 }
                 if (toRow < 0 || toCol < 0 || toRow >= CELL_COUNT || toCol >= CELL_COUNT)
                     break;
-                boolean eatEatenPiece = false;
-                if (previousEatMoves != null && previousEatMoves.size() > 0) {
-                    for (Move m : previousEatMoves) {
-                        if (eatRow == m.getEatCell().getRow() && eatCol == m.getEatCell().getCol()) {
-                            eatEatenPiece = true;
-                            break;
-                        }
-                    }
+                if (cells[toRow][toCol].getCondition() == BoardCell.EMPTY_CELL
+                        && cells[eatRow][eatCol].getOppositeCondition() == cell.getCondition()
+                        && eatCell == null) {
+                    eatCell = cells[eatRow][eatCol];
+                    step++;
                 }
-                if (eatEatenPiece)
+                if ((cells[toRow][toCol].getCondition() == cells[eatRow][eatCol].getCondition()
+                        && cell.getOppositeCondition() == cells[eatRow][eatCol].getCondition())
+                        || cell.getCondition() == cells[toRow][toCol].getCondition())
                     break;
-                if (cells[toRow][toCol].getCondition() == BoardCell.EMPTY_CELL && cells[eatRow][eatCol].getOppositeCondition() == firstPosition.getCondition()) {
-                    Move move = new Move(cell, cells[toRow][toCol]);
-                    move.setEatMove(cells[eatRow][eatCol]);
-                    eatMoves.add(move);
-                    eatMoves.addAll(getEatMoves(cells[toRow][toCol], firstPosition, eatMoves));
-                }
-                if (firstPosition.isKingPiece() && eatMoves.size() > 0) {
-                    if (cells[eatRow][eatCol].getOppositeCondition() != firstPosition.getCondition())
-                        eatMoves.addAll(getEatMoves(cells[eatRow][eatCol], firstPosition, eatMoves));
-                    if (step == maxCountOfSteps && cells[toRow][toCol].getOppositeCondition() != firstPosition.getCondition())
-                        eatMoves.addAll(getEatMoves(cells[toRow][toCol], firstPosition, eatMoves));
+                if (eatCell == null)
+                    continue;
+                if (cells[toRow][toCol].getCondition() != BoardCell.EMPTY_CELL)
+                    break;
+                Move move = new Move(cell, cells[toRow][toCol]);
+                move.setEatMove(eatCell);
+                allHighlightedMoves.add(move);
+                if (isExistsNextEatMove(cell, cells[toRow][toCol], d)) {
+                    nextEatMoves.add(move);
                 }
             }
+            if (nextEatMoves.size() > 0)
+                eatMoves.addAll(nextEatMoves);
+            else
+                eatMoves.addAll(allHighlightedMoves);
         }
 
         return eatMoves;
+    }
+
+    private boolean isExistsNextEatMove(BoardCell piece, BoardCell fromCell, Direction from) {
+        int toRow = 0;
+        int toCol = 0;
+        int maxCountOfSteps = (piece.isKingPiece()) ? (CELL_COUNT - 1) : 1;
+        for (Direction d : getDirections(piece)) {
+            if (d == from || d == getOppositeDirection(from))
+                continue;
+            for (int step = 1; step <= maxCountOfSteps; ++step) {
+                switch (d) {
+                    case RIGHT_BUTTOM:
+                        toRow = fromCell.getRow() + step;
+                        toCol = fromCell.getCol() + step;
+                        break;
+                    case RIGHT_FORWARD:
+                        toRow = fromCell.getRow() - step;
+                        toCol = fromCell.getCol() + step;
+                        break;
+                    case LEFT_BUTTOM:
+                        toRow = fromCell.getRow() + step;
+                        toCol = fromCell.getCol() - step;
+                        break;
+                    case LEFT_FORWARD:
+                        toRow = fromCell.getRow() - step;
+                        toCol = fromCell.getCol() - step;
+                        break;
+                }
+                if (toRow < 0 || toCol < 0 || toRow >= CELL_COUNT || toCol >= CELL_COUNT)
+                    break;
+                if (cells[toRow][toCol].getCondition() == piece.getOppositeCondition()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     public void doMove(Move move) {
@@ -194,6 +235,19 @@ public class GameBoard {
     private final static Direction[] eatDirections = Direction.values();
     private final static Direction[] whiteDirections = new Direction[]{Direction.RIGHT_FORWARD, Direction.LEFT_FORWARD};
     private final static Direction[] blackDirections = new Direction[]{Direction.RIGHT_BUTTOM, Direction.LEFT_BUTTOM};
+    private Direction getOppositeDirection(Direction direction) {
+        switch (direction) {
+            case RIGHT_FORWARD:
+                return Direction.LEFT_BUTTOM;
+            case LEFT_FORWARD:
+                return Direction.RIGHT_BUTTOM;
+            case RIGHT_BUTTOM:
+                return Direction.LEFT_FORWARD;
+            case LEFT_BUTTOM:
+                return Direction.RIGHT_FORWARD;
+        }
+        return null;
+    }
 
     public void tryMove() {
 

@@ -221,7 +221,7 @@ public class ChessBoardView extends View implements OnTouchListener {
 
     private void highlightMoves(int row, int col) {
         if (previousCell != null) {
-            List<Move> eatMoves = gameBoard.getEatMoves(previousCell, previousCell, null);
+            List<Move> eatMoves = gameBoard.getEatMoves(previousCell);
             for (Move m : eatMoves) {
                 m.getToCell().setHighlight(false);
             }
@@ -234,7 +234,7 @@ public class ChessBoardView extends View implements OnTouchListener {
 
         previousCell = gameBoard.getCell(row, col);
         gameBoard.getCell(row, col).setHighlight(true);
-        List<Move> eatMoves = gameBoard.getEatMoves(gameBoard.getCell(row, col), gameBoard.getCell(row, col), null);
+        List<Move> eatMoves = gameBoard.getEatMoves(gameBoard.getCell(row, col));
         for (Move m : eatMoves) {
             m.getToCell().setHighlight(true);
         }
@@ -252,7 +252,7 @@ public class ChessBoardView extends View implements OnTouchListener {
             return;
 
         previousCell.setHighlight(false);
-        List<Move> eatMoves = gameBoard.getEatMoves(previousCell, previousCell, null);
+        List<Move> eatMoves = gameBoard.getEatMoves(previousCell);
         for (Move m : eatMoves) {
             m.getToCell().setHighlight(false);
             if (m.getToCell().getRow() == row && m.getToCell().getCol() == col) {
