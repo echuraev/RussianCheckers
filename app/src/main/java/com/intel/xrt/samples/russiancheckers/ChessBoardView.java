@@ -31,11 +31,13 @@ public class ChessBoardView extends View implements OnTouchListener {
     private Paint paint = null;
     private GameBoard gameBoard;
     private BoardCell previousCell;
+    private BoardCell requiredMoveCell;
 
     public ChessBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         gameBoard = new GameBoard();
         previousCell = null;
+        requiredMoveCell = null;
     }
 
     @Override
@@ -200,7 +202,17 @@ public class ChessBoardView extends View implements OnTouchListener {
                                 && !gameBoard.getCell(row, col).isHighlight())
                             continue;
                         if (gameBoard.getCell(row, col).getRect().contains(x, y)) {
-                            cellTouch(row, col);
+                            if (requiredMoveCell != null) {
+                                boolean requiredMove = false;
+                                for (Move eatMove : gameBoard.getEatMoves(requiredMoveCell)) {
+                                    if (gameBoard.getCell(row, col) == eatMove.getToCell()) {
+                                        requiredMove = true;
+                                    }
+                                }
+                                if (!requiredMove)
+                                    continue;
+                            }
+                            cellTouch(gameBoard.getCell(row, col));
                         }
                     }
                 }
@@ -210,16 +222,16 @@ public class ChessBoardView extends View implements OnTouchListener {
         return false;
     }
 
-    private void cellTouch(int row, int col) {
-        if (gameBoard.getCell(row, col).getCondition() == BoardCell.WHITE_PIECE) {
-            highlightMoves(row, col);
+    private void cellTouch(BoardCell cell) {
+        if (cell.getCondition() == BoardCell.WHITE_PIECE) {
+            highlightMoves(cell);
         }
         else {
-            doMove(row, col);
+            doMove(cell);
         }
     }
 
-    private void highlightMoves(int row, int col) {
+    private void highlightMoves(BoardCell cell) {
         if (previousCell != null) {
             List<Move> eatMoves = gameBoard.getEatMoves(previousCell);
             for (Move m : eatMoves) {
@@ -232,41 +244,53 @@ public class ChessBoardView extends View implements OnTouchListener {
             previousCell.setHighlight(false);
         }
 
-        previousCell = gameBoard.getCell(row, col);
-        gameBoard.getCell(row, col).setHighlight(true);
-        List<Move> eatMoves = gameBoard.getEatMoves(gameBoard.getCell(row, col));
+        previousCell = cell;
+        cell.setHighlight(true);
+        List<Move> eatMoves = gameBoard.getEatMoves(cell);
         for (Move m : eatMoves) {
             m.getToCell().setHighlight(true);
         }
         if (eatMoves != null && eatMoves.size() > 0) {
             return;
         }
-        List<Move> normalMoves = gameBoard.getNormalMoves(gameBoard.getCell(row, col));
+        List<Move> normalMoves = gameBoard.getNormalMoves(cell);
         for (Move m : normalMoves) {
             m.getToCell().setHighlight(true);
         }
     }
 
-    private void doMove(int row, int col) {
+    private void doMove(BoardCell cell) {
         if (previousCell == null)
             return;
 
+        requiredMoveCell = (requiredMoveCell == previousCell) ? null : requiredMoveCell;
+
         previousCell.setHighlight(false);
         List<Move> eatMoves = gameBoard.getEatMoves(previousCell);
+        List<Move> normalMoves = gameBoard.getNormalMoves(previousCell);
         for (Move m : eatMoves) {
             m.getToCell().setHighlight(false);
-            if (m.getToCell().getRow() == row && m.getToCell().getCol() == col) {
-                gameBoard.doMove(m);
-            }
         }
-        List<Move> normalMoves = gameBoard.getNormalMoves(previousCell);
         for (Move m : normalMoves) {
             m.getToCell().setHighlight(false);
-            if (m.getToCell().getRow() == row && m.getToCell().getCol() == col) {
+        }
+        for (Move m : eatMoves) {
+            if (m.getToCell().getRow() == cell.getRow() && m.getToCell().getCol() == cell.getCol()) {
                 gameBoard.doMove(m);
+                previousCell = null;
+                if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
+                    requiredMoveCell = m.getToCell();
+                    highlightMoves(requiredMoveCell);
+                }
+                return;
             }
         }
-
-        previousCell = null;
+        for (Move m : normalMoves) {
+            if (m.getToCell().getRow() == cell.getRow() && m.getToCell().getCol() == cell.getCol()) {
+                gameBoard.doMove(m);
+                previousCell = null;
+                return;
+            }
+        }
     }
 }

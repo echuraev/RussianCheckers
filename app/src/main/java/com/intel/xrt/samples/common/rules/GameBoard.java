@@ -17,10 +17,10 @@ public class GameBoard {
 
                 if (row == 3 && col == 4)
                     cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-//                if (row == 5 && col == 2)
-//                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-//                if (row == 6 && col == 1)
-//                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
+                if (row == 5 && col == 2)
+                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
+                if (row == 6 && col == 1)
+                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
 
                 if (row == 0 && col == 7) {
                     cells[row][col].setCondition(BoardCell.WHITE_PIECE);
@@ -34,10 +34,10 @@ public class GameBoard {
                     cells[row][col].setCondition(BoardCell.BLACK_PIECE);
                 if (row == 6 && col == 5)
                     cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                /*if (row < PIECE_ROWS_COUNT)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                else if (row > ((CELL_COUNT - 1) - PIECE_ROWS_COUNT))
-                    cells[row][col].setCondition(BoardCell.WHITE_PIECE);*/
+//                if (row < PIECE_ROWS_COUNT)
+//                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
+//                else if (row > ((CELL_COUNT - 1) - PIECE_ROWS_COUNT))
+//                    cells[row][col].setCondition(BoardCell.WHITE_PIECE);
             }
         }
     }
@@ -157,7 +157,7 @@ public class GameBoard {
         return eatMoves;
     }
 
-    private boolean isExistsNextEatMove(BoardCell piece, BoardCell fromCell, Direction from) {
+    public boolean isExistsNextEatMove(BoardCell piece, BoardCell fromCell, Direction from) {
         int toRow = 0;
         int toCol = 0;
         int maxCountOfSteps = (piece.isKingPiece()) ? (CELL_COUNT - 1) : 1;
@@ -236,6 +236,8 @@ public class GameBoard {
     private final static Direction[] whiteDirections = new Direction[]{Direction.RIGHT_FORWARD, Direction.LEFT_FORWARD};
     private final static Direction[] blackDirections = new Direction[]{Direction.RIGHT_BUTTOM, Direction.LEFT_BUTTOM};
     private Direction getOppositeDirection(Direction direction) {
+        if (direction == null)
+            return null;
         switch (direction) {
             case RIGHT_FORWARD:
                 return Direction.LEFT_BUTTOM;
@@ -247,9 +249,5 @@ public class GameBoard {
                 return Direction.RIGHT_FORWARD;
         }
         return null;
-    }
-
-    public void tryMove() {
-
     }
 }
