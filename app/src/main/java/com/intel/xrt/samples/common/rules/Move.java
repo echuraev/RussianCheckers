@@ -13,6 +13,12 @@ public class Move {
         this.eat = null;
     }
 
+    public Move(Move move) {
+        from = move.getFromCell();
+        to = move.getToCell();
+        eat = move.getEatCell();
+    }
+
     public void setEatMove(BoardCell eatMove) {
         this.eat = eatMove;
     }

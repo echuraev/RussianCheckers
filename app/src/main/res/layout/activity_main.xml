@@ -4,14 +4,6 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
-    <!--
-    <com.intel.xrt.samples.russiancheckers.ChessBoardView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:id="@+id/game_view"
-        android:background="#00FF00"/>
-    -->
-
 
     <LinearLayout
         android:orientation="vertical"

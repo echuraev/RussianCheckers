@@ -1,5 +1,6 @@
 package com.intel.xrt.samples.common.rules;
 
+import com.intel.xrt.samples.common.algorithm.AlphaBetaPruning;
 import com.intel.xrt.samples.common.board.BoardCell;
 
 import java.util.LinkedList;
@@ -15,29 +16,12 @@ public class GameBoard {
             for (int col = 0; col < CELL_COUNT; ++col) {
                 cells[row][col] = new BoardCell(row, col);
 
-                if (row == 3 && col == 4)
+                if (row < PIECE_ROWS_COUNT)
                     cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                if (row == 5 && col == 2)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                if (row == 6 && col == 1)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-
-                if (row == 0 && col == 7) {
+                else if (row > ((CELL_COUNT - 1) - PIECE_ROWS_COUNT))
                     cells[row][col].setCondition(BoardCell.WHITE_PIECE);
-                    cells[row][col].setKingPiece(true);
-                }
-
-                if (row == 7 && col == 2) {
-                    cells[row][col].setCondition(BoardCell.WHITE_PIECE);
-                }
-                if (row == 6 && col == 3)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-                if (row == 6 && col == 5)
-                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-//                if (row < PIECE_ROWS_COUNT)
-//                    cells[row][col].setCondition(BoardCell.BLACK_PIECE);
-//                else if (row > ((CELL_COUNT - 1) - PIECE_ROWS_COUNT))
-//                    cells[row][col].setCondition(BoardCell.WHITE_PIECE);
+                if ((row+col) % 2 == 0)
+                    cells[row][col].setCondition(BoardCell.EMPTY_CELL);
             }
         }
     }
@@ -46,8 +30,50 @@ public class GameBoard {
         return cells[row][col];
     }
 
-    public List<Move> getNormalMoves(BoardCell cell) {
-        LinkedList<Move> normalMoves = new LinkedList<Move>();
+    public void setCell(int row, int col, BoardCell cell) {
+        if (cell.getRect() == null)
+            return;
+        cells[row][col].copyCell(cell);
+    }
+
+    public boolean hasWon(Player player) {
+        if (getAllAvailiableMoves(player.getOpposite()).isEmpty())
+            return true;
+        return false;
+    }
+
+    public List<Move> getAllAvailiableMoves(Player player) {
+        LinkedList<BoardCell> pieceCells = new LinkedList<>();
+        for (int row = 0; row < CELL_COUNT; ++row) {
+            for (int col = 0; col < CELL_COUNT; ++col) {
+                if (cells[row][col].getCondition() == player.getPieceColor())
+                    pieceCells.add(cells[row][col]);
+            }
+        }
+
+        LinkedList<Move> availiableMoves = new LinkedList<>();
+        for (BoardCell cell : pieceCells) {
+            availiableMoves.addAll(getEatMoves(cell));
+        }
+        if (!availiableMoves.isEmpty())
+            return availiableMoves;
+        for (BoardCell cell : pieceCells) {
+            availiableMoves.addAll(getNormalMoves(cell));
+        }
+        return availiableMoves;
+    }
+
+    public List<Move> getAvailiableMoves(BoardCell cell) {
+        LinkedList<Move> availiableMoves = new LinkedList<>();
+        availiableMoves.addAll(getEatMoves(cell));
+        if (!availiableMoves.isEmpty())
+            return availiableMoves;
+        availiableMoves.addAll(getNormalMoves(cell));
+        return availiableMoves;
+    }
+
+    private List<Move> getNormalMoves(BoardCell cell) {
+        LinkedList<Move> normalMoves = new LinkedList<>();
         if (cell.getCondition() == BoardCell.EMPTY_CELL)
             return normalMoves;
 
@@ -86,8 +112,8 @@ public class GameBoard {
         return normalMoves;
     }
 
-    public List<Move> getEatMoves(BoardCell cell) {
-        LinkedList<Move> eatMoves = new LinkedList<Move>();
+    private List<Move> getEatMoves(BoardCell cell) {
+        LinkedList<Move> eatMoves = new LinkedList<>();
         int toRow = 0;
         int toCol = 0;
         int eatRow = 0;
@@ -95,8 +121,8 @@ public class GameBoard {
         int maxCountOfSteps = (cell.isKingPiece()) ? (CELL_COUNT - 1) : 1;
         for (Direction d : eatDirections) {
             BoardCell eatCell = null;
-            LinkedList<Move> allHighlightedMoves = new LinkedList<Move>();
-            LinkedList<Move> nextEatMoves = new LinkedList<Move>();
+            LinkedList<Move> allHighlightedMoves = new LinkedList<>();
+            LinkedList<Move> nextEatMoves = new LinkedList<>();
             for (int step = 1; step <= maxCountOfSteps; ++step) {
                 int toStep = (eatCell == null) ? (step + 1) : step;
                 switch (d) {
@@ -148,7 +174,7 @@ public class GameBoard {
                     nextEatMoves.add(move);
                 }
             }
-            if (nextEatMoves.size() > 0)
+            if (!nextEatMoves.isEmpty())
                 eatMoves.addAll(nextEatMoves);
             else
                 eatMoves.addAll(allHighlightedMoves);
@@ -160,6 +186,8 @@ public class GameBoard {
     public boolean isExistsNextEatMove(BoardCell piece, BoardCell fromCell, Direction from) {
         int toRow = 0;
         int toCol = 0;
+        int eatRow = 0;
+        int eatCol = 0;
         int maxCountOfSteps = (piece.isKingPiece()) ? (CELL_COUNT - 1) : 1;
         for (Direction d : getDirections(piece)) {
             if (d == from || d == getOppositeDirection(from))
@@ -167,25 +195,34 @@ public class GameBoard {
             for (int step = 1; step <= maxCountOfSteps; ++step) {
                 switch (d) {
                     case RIGHT_BUTTOM:
-                        toRow = fromCell.getRow() + step;
-                        toCol = fromCell.getCol() + step;
+                        eatRow = fromCell.getRow() + step;
+                        eatCol = fromCell.getCol() + step;
+                        toRow = fromCell.getRow() + (step + 1);
+                        toCol = fromCell.getCol() + (step + 1);
                         break;
                     case RIGHT_FORWARD:
-                        toRow = fromCell.getRow() - step;
-                        toCol = fromCell.getCol() + step;
+                        eatRow = fromCell.getRow() - step;
+                        eatCol = fromCell.getCol() + step;
+                        toRow = fromCell.getRow() - (step + 1);
+                        toCol = fromCell.getCol() + (step + 1);
                         break;
                     case LEFT_BUTTOM:
-                        toRow = fromCell.getRow() + step;
-                        toCol = fromCell.getCol() - step;
+                        eatRow = fromCell.getRow() + step;
+                        eatCol = fromCell.getCol() - step;
+                        toRow = fromCell.getRow() + (step + 1);
+                        toCol = fromCell.getCol() - (step + 1);
                         break;
                     case LEFT_FORWARD:
-                        toRow = fromCell.getRow() - step;
-                        toCol = fromCell.getCol() - step;
+                        eatRow = fromCell.getRow() - step;
+                        eatCol = fromCell.getCol() - step;
+                        toRow = fromCell.getRow() - (step + 1);
+                        toCol = fromCell.getCol() - (step + 1);
                         break;
                 }
                 if (toRow < 0 || toCol < 0 || toRow >= CELL_COUNT || toCol >= CELL_COUNT)
                     break;
-                if (cells[toRow][toCol].getCondition() == piece.getOppositeCondition()) {
+                if (cells[toRow][toCol].getCondition() == BoardCell.EMPTY_CELL
+                        && cells[eatRow][eatCol].getOppositeCondition() == piece.getCondition()) {
                     return true;
                 }
             }

@@ -5,15 +5,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.Toast;
 
+import com.intel.xrt.samples.common.algorithm.AlphaBetaPruning;
 import com.intel.xrt.samples.common.board.CellRect;
 import com.intel.xrt.samples.common.board.BoardCell;
 import com.intel.xrt.samples.common.rules.GameBoard;
 import com.intel.xrt.samples.common.rules.Move;
+import com.intel.xrt.samples.common.rules.Player;
 
 import java.util.List;
 
@@ -32,12 +36,16 @@ public class ChessBoardView extends View implements OnTouchListener {
     private GameBoard gameBoard;
     private BoardCell previousCell;
     private BoardCell requiredMoveCell;
+    private AlphaBetaPruning algorithm;
+    private Player player;
 
     public ChessBoardView(Context context, AttributeSet attrs) {
         super(context, attrs);
         gameBoard = new GameBoard();
         previousCell = null;
         requiredMoveCell = null;
+        player = Player.WHITE;
+        algorithm = new AlphaBetaPruning(gameBoard, AlphaBetaPruning.MIDDLE_DIFFICULTY);
     }
 
     @Override
@@ -119,7 +127,6 @@ public class ChessBoardView extends View implements OnTouchListener {
                 gameBoard.getCell(row, col).setRect(rect);
                 if ((row+col) % 2 == 0) {
                     paint.setColor(Color.WHITE);
-                    gameBoard.getCell(row, col).setCondition(BoardCell.EMPTY_CELL);
                 }
                 else {
                     paint.setColor(Color.BLACK);
@@ -204,7 +211,7 @@ public class ChessBoardView extends View implements OnTouchListener {
                         if (gameBoard.getCell(row, col).getRect().contains(x, y)) {
                             if (requiredMoveCell != null) {
                                 boolean requiredMove = false;
-                                for (Move eatMove : gameBoard.getEatMoves(requiredMoveCell)) {
+                                for (Move eatMove : gameBoard.getAvailiableMoves(requiredMoveCell)) {
                                     if (gameBoard.getCell(row, col) == eatMove.getToCell()) {
                                         requiredMove = true;
                                     }
@@ -233,28 +240,25 @@ public class ChessBoardView extends View implements OnTouchListener {
 
     private void highlightMoves(BoardCell cell) {
         if (previousCell != null) {
-            List<Move> eatMoves = gameBoard.getEatMoves(previousCell);
-            for (Move m : eatMoves) {
-                m.getToCell().setHighlight(false);
-            }
-            List<Move> normalMoves = gameBoard.getNormalMoves(previousCell);
-            for (Move m : normalMoves) {
+            List<Move> moves = gameBoard.getAvailiableMoves(previousCell);
+            for (Move m : moves) {
                 m.getToCell().setHighlight(false);
             }
             previousCell.setHighlight(false);
         }
 
+        boolean moveIsAvailiable = false;
+        for (Move m : gameBoard.getAllAvailiableMoves(player)) {
+            if (m.getFromCell() == cell)
+                moveIsAvailiable = true;
+        }
+        if (!moveIsAvailiable)
+            return;
+
         previousCell = cell;
         cell.setHighlight(true);
-        List<Move> eatMoves = gameBoard.getEatMoves(cell);
-        for (Move m : eatMoves) {
-            m.getToCell().setHighlight(true);
-        }
-        if (eatMoves != null && eatMoves.size() > 0) {
-            return;
-        }
-        List<Move> normalMoves = gameBoard.getNormalMoves(cell);
-        for (Move m : normalMoves) {
+        List<Move> moves = gameBoard.getAvailiableMoves(cell);
+        for (Move m : moves) {
             m.getToCell().setHighlight(true);
         }
     }
@@ -266,29 +270,28 @@ public class ChessBoardView extends View implements OnTouchListener {
         requiredMoveCell = (requiredMoveCell == previousCell) ? null : requiredMoveCell;
 
         previousCell.setHighlight(false);
-        List<Move> eatMoves = gameBoard.getEatMoves(previousCell);
-        List<Move> normalMoves = gameBoard.getNormalMoves(previousCell);
-        for (Move m : eatMoves) {
+        List<Move> moves = gameBoard.getAvailiableMoves(previousCell);
+        for (Move m : moves) {
             m.getToCell().setHighlight(false);
         }
-        for (Move m : normalMoves) {
-            m.getToCell().setHighlight(false);
-        }
-        for (Move m : eatMoves) {
+        previousCell = null;
+        for (Move m : moves) {
             if (m.getToCell().getRow() == cell.getRow() && m.getToCell().getCol() == cell.getCol()) {
                 gameBoard.doMove(m);
-                previousCell = null;
-                if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
+                if (m.getEatCell() != null &&
+                        gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
                     requiredMoveCell = m.getToCell();
                     highlightMoves(requiredMoveCell);
                 }
-                return;
-            }
-        }
-        for (Move m : normalMoves) {
-            if (m.getToCell().getRow() == cell.getRow() && m.getToCell().getCol() == cell.getCol()) {
-                gameBoard.doMove(m);
-                previousCell = null;
+                else {
+                    do {
+                        algorithm.alphaBetaPruning(player.getOpposite());
+                        if (gameBoard.getAllAvailiableMoves(player.getOpposite()).isEmpty())
+                            break;
+                        gameBoard.doMove(algorithm.getComputerMove());
+                        invalidate();
+                    } while (gameBoard.isExistsNextEatMove(algorithm.getComputerMove().getToCell(), algorithm.getComputerMove().getToCell(), null));
+                }
                 return;
             }
         }

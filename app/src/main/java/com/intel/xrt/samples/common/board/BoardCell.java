@@ -20,6 +20,25 @@ public class BoardCell {
         this.col = col;
     }
 
+    public BoardCell(BoardCell cell) {
+        if (cell == null) {
+            cellCondition = EMPTY_CELL;
+            highlighted = false;
+            kingPiece = false;
+            row = -1;
+            col = -1;
+            rect = null;
+        }
+        else {
+            cellCondition = cell.getCondition();
+            highlighted = cell.isHighlight();
+            kingPiece = cell.isKingPiece();
+            rect = cell.getRect();
+            row = cell.getRow();
+            col = cell.getCol();
+        }
+    }
+
     public void copyCell(BoardCell cell) {
         highlighted = cell.isHighlight();
         kingPiece = cell.isKingPiece();
