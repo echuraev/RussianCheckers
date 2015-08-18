@@ -277,21 +277,30 @@ public class ChessBoardView extends View implements OnTouchListener {
         previousCell = null;
         for (Move m : moves) {
             if (m.getToCell().getRow() == cell.getRow() && m.getToCell().getCol() == cell.getCol()) {
-                gameBoard.doMove(m);
-                if (m.getEatCell() != null &&
-                        gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
-                    requiredMoveCell = m.getToCell();
-                    highlightMoves(requiredMoveCell);
+                if (m.getEatCell() != null) {
+                    gameBoard.doMove(m);
+                    if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
+                        requiredMoveCell = m.getToCell();
+                        highlightMoves(requiredMoveCell);
+                        return;
+                    }
                 }
                 else {
-                    do {
-                        algorithm.alphaBetaPruning(player.getOpposite());
-                        if (gameBoard.getAllAvailiableMoves(player.getOpposite()).isEmpty())
-                            break;
-                        gameBoard.doMove(algorithm.getComputerMove());
-                        invalidate();
-                    } while (gameBoard.isExistsNextEatMove(algorithm.getComputerMove().getToCell(), algorithm.getComputerMove().getToCell(), null));
+                    gameBoard.doMove(m);
                 }
+                do {
+                    algorithm.alphaBetaPruning(player.getOpposite());
+                    if (gameBoard.getAllAvailiableMoves(player.getOpposite()).isEmpty())
+                        break;
+                    boolean eatMove = false;
+                    if (algorithm.getComputerMove().getEatCell() != null
+                            && algorithm.getComputerMove().getEatCell().getRect() != null)
+                        eatMove = true;
+                    gameBoard.doMove(algorithm.getComputerMove());
+                    if (!eatMove)
+                        break;
+                    invalidate();
+                } while (gameBoard.isExistsNextEatMove(algorithm.getComputerMove().getToCell(), algorithm.getComputerMove().getToCell(), null));
                 return;
             }
         }

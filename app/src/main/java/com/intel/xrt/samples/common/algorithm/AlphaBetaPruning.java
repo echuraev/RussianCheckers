@@ -7,14 +7,6 @@ import com.intel.xrt.samples.common.rules.Player;
 
 import java.util.List;
 
-/*
-Just move: 0
-Black piece: 1
-Black king: 2
-White piece: -1
-White king: -2
-*/
-
 public class AlphaBetaPruning {
     public static final int LOW_DIFFICULTY = 1;
     public static final int MIDDLE_DIFFICULTY = 3;

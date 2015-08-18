@@ -33,14 +33,14 @@ public class MainActivity extends Activity implements OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.newGameButton:
-                Intent gameIntent = new Intent(getApplicationContext(), ChessBoardView.class);
+                Intent gameIntent = new Intent(getApplicationContext(), ChessBoardActivity.class);
                 startActivity(gameIntent);
                 break;
             case R.id.continueButton:
                 //TODO: Impement here method for open activity with old game
                 break;
             case R.id.scoreButton:
-                Intent scoreIntent = new Intent(getApplicationContext(), ScoreActivity.class);
+                Intent scoreIntent = new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(scoreIntent);
                 break;
             case R.id.exitButton:

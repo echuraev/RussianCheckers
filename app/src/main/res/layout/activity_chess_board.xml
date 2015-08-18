@@ -7,8 +7,8 @@
     tools:context="com.intel.xrt.samples.russiancheckers.ChessBoardActivity">
 
     <com.intel.xrt.samples.russiancheckers.ChessBoardView
-        android:layout_width="300dp"
-        android:layout_height="300dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/game_view"/>
 
 </RelativeLayout>

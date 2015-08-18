@@ -1,14 +1,10 @@
 <resources>
-    <string name="app_name">Russian Checkers</string>
 
-    <string name="action_settings">Settings</string>
+    <string name="app_name">Russian Checkers</string>
     <string name="continue_button">Continue</string>
     <string name="new_game_button">New Game</string>
-    <string name="score_button">Score</string>
     <string name="exit_button">Exit</string>
-    <string name="title_activity_game">Game Board</string>
-    <string name="title_activity_score">Score</string>
-    <string name="title_activity_chess_board">ChessBoardActivity</string>
+    <string name="title_activity_chess_board">Game Board</string>
+    <string name="title_activity_settings">Settings</string>
 
-    <string name="hello_world">Hello world!</string>
 </resources>

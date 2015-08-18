@@ -161,7 +161,8 @@ public class GameBoard {
                 }
                 if ((cells[toRow][toCol].getCondition() == cells[eatRow][eatCol].getCondition()
                         && cell.getOppositeCondition() == cells[eatRow][eatCol].getCondition())
-                        || cell.getCondition() == cells[toRow][toCol].getCondition())
+                        || cell.getCondition() == cells[toRow][toCol].getCondition()
+                        || cell.getCondition() == cells[eatRow][eatCol].getCondition())
                     break;
                 if (eatCell == null)
                     continue;
