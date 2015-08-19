@@ -36,7 +36,7 @@ public class ChessBoardView extends View implements OnTouchListener {
     private float boardMargin;
     private Canvas canvas = null;
     private Paint paint = null;
-    private TextView statusTextView = null;
+    private TextView statusTextView;
     private GameBoard gameBoard;
     private BoardCell previousCell;
     private BoardCell requiredMoveCell;
