@@ -10,6 +10,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.intel.xrt.samples.common.algorithm.AlphaBetaPruning;
@@ -18,6 +19,8 @@ import com.intel.xrt.samples.common.board.BoardCell;
 import com.intel.xrt.samples.common.rules.GameBoard;
 import com.intel.xrt.samples.common.rules.Move;
 import com.intel.xrt.samples.common.rules.Player;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -33,14 +36,17 @@ public class ChessBoardView extends View implements OnTouchListener {
     private float boardMargin;
     private Canvas canvas = null;
     private Paint paint = null;
+    private TextView statusTextView = null;
     private GameBoard gameBoard;
     private BoardCell previousCell;
     private BoardCell requiredMoveCell;
     private AlphaBetaPruning algorithm;
     private Player player;
 
-    public ChessBoardView(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public ChessBoardView(Context context, TextView statusTextView) {
+        super(context);
+        this.statusTextView = statusTextView;
+        this.statusTextView.setText("Status:");
         gameBoard = new GameBoard();
         previousCell = null;
         requiredMoveCell = null;
@@ -195,6 +201,8 @@ public class ChessBoardView extends View implements OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        if (gameBoard.hasWon(player) || gameBoard.hasWon(player.getOpposite()))
+            return false;
         float x = event.getX();
         float y = event.getY();
 
@@ -235,6 +243,12 @@ public class ChessBoardView extends View implements OnTouchListener {
         }
         else {
             doMove(cell);
+        }
+        if (gameBoard.hasWon(player)) {
+            statusTextView.setText("Congratulation! You win!");
+        }
+        if (gameBoard.hasWon(player.getOpposite())) {
+            statusTextView.setText("Unfortunately, you lost!");
         }
     }
 
