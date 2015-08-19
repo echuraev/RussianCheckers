@@ -30,27 +30,28 @@
 
         <RadioGroup
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:id="@+id/difficultyGroup">
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/low_level"
-                android:id="@+id/radioButton"
+                android:id="@+id/lowDifficulty"
                 android:checked="false" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/medium_level"
-                android:id="@+id/radioButton2"
+                android:id="@+id/mediumDifficulty"
                 android:checked="false" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/hard_level"
-                android:id="@+id/radioButton3"
+                android:id="@+id/hardDifficulty"
                 android:checked="false" />
         </RadioGroup>
 
@@ -58,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/save_text"
-            android:id="@+id/button"
+            android:id="@+id/saveButton"
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
