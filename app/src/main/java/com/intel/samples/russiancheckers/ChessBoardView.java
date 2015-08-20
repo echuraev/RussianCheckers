@@ -206,7 +206,7 @@ public class ChessBoardView extends View implements OnTouchListener {
             case MotionEvent.ACTION_DOWN:
                 for (int row = 0; row < GameBoard.CELL_COUNT; ++ row) {
                     for (int col = 0; col < GameBoard.CELL_COUNT; ++col) {
-                        if (gameBoard.getCell(row, col).getCondition() == BoardCell.BLACK_PIECE)
+                        if (gameBoard.getCell(row, col).getCondition() == player.getOpposite().getPieceColor())
                             continue;
                         if (gameBoard.getCell(row, col).getCondition() == BoardCell.EMPTY_CELL
                                 && !gameBoard.getCell(row, col).isHighlight())
@@ -219,10 +219,8 @@ public class ChessBoardView extends View implements OnTouchListener {
                                         requiredMove = true;
                                     }
                                 }
-                                if (!requiredMove) {
-                                    statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
+                                if (!requiredMove)
                                     continue;
-                                }
                             }
                             cellTouch(gameBoard.getCell(row, col));
                         }
@@ -263,8 +261,10 @@ public class ChessBoardView extends View implements OnTouchListener {
             if (m.getFromCell() == cell)
                 moveIsAvailiable = true;
         }
-        if (!moveIsAvailiable)
+        if (!moveIsAvailiable) {
+            statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
             return;
+        }
 
         previousCell = cell;
         cell.setHighlight(true);
