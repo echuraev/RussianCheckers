@@ -38,7 +38,7 @@ public class ChessBoardView extends View implements OnTouchListener {
     private AlphaBetaPruning algorithm;
     private Player player;
 
-    public ChessBoardView(Context context, TextView statusTextView) {
+    public ChessBoardView(Context context, TextView statusTextView, int difficultys) {
         super(context);
         this.statusTextView = statusTextView;
         this.statusTextView.setText("Status:");
@@ -46,7 +46,7 @@ public class ChessBoardView extends View implements OnTouchListener {
         previousCell = null;
         requiredMoveCell = null;
         player = Player.WHITE;
-        algorithm = new AlphaBetaPruning(gameBoard, AlphaBetaPruning.MIDDLE_DIFFICULTY);
+        algorithm = new AlphaBetaPruning(gameBoard, difficultys);
     }
 
     @Override

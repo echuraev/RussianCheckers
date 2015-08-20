@@ -16,15 +16,11 @@ public class MainActivity extends Activity implements OnClickListener {
         setContentView(R.layout.activity_main);
 
         Button newGameButton = (Button) findViewById(R.id.newGameButton);
-        Button continueButton = (Button) findViewById(R.id.continueButton);
         Button scoreButton = (Button) findViewById(R.id.scoreButton);
         Button exitButton = (Button) findViewById(R.id.exitButton);
         newGameButton.setOnClickListener(this);
-        continueButton.setOnClickListener(this);
         scoreButton.setOnClickListener(this);
         exitButton.setOnClickListener(this);
-
-        continueButton.setVisibility(View.INVISIBLE);
     }
 
     @Override
@@ -33,9 +29,6 @@ public class MainActivity extends Activity implements OnClickListener {
             case R.id.newGameButton:
                 Intent gameIntent = new Intent(getApplicationContext(), ChessBoardActivity.class);
                 startActivity(gameIntent);
-                break;
-            case R.id.continueButton:
-                //TODO: Impement here method for open activity with old game
                 break;
             case R.id.scoreButton:
                 Intent scoreIntent = new Intent(getApplicationContext(), SettingsActivity.class);

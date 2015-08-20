@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.intel.xrt.samples.russiancheckers"
+        applicationId "com.intel.samples.russiancheckers"
         minSdkVersion 15
         targetSdkVersion 22
         versionCode 1

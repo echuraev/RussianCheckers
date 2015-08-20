@@ -1,10 +1,14 @@
 package com.intel.samples.russiancheckers;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.intel.core.algorithm.AlphaBetaPruning;
 
 public class ChessBoardActivity extends Activity {
 
@@ -19,9 +23,22 @@ public class ChessBoardActivity extends Activity {
         rootLayout = (LinearLayout) findViewById(R.id.root_layout);
         statusTextView = (TextView) findViewById(R.id.statusTextView);
         setLayoutOrientation();
+        final SharedPreferences settings = getSharedPreferences("RussianCheckersSettings", Context.MODE_PRIVATE);
+        int difficulty = 0;
+        switch (settings.getInt("Difficulty", R.id.mediumDifficulty)) {
+            case R.id.lowDifficulty:
+                difficulty = AlphaBetaPruning.LOW_DIFFICULTY;
+                break;
+            case R.id.mediumDifficulty:
+                difficulty = AlphaBetaPruning.MEDIUM_DIFFICULTY;
+                break;
+            case R.id.hardDifficulty:
+                difficulty = AlphaBetaPruning.HIGH_DIFFICULTY;
+                break;
+        }
         chessBoardView = (ChessBoardView) getLastNonConfigurationInstance();
         if (chessBoardView == null) {
-            chessBoardView = new ChessBoardView(this, statusTextView);
+            chessBoardView = new ChessBoardView(this, statusTextView, difficulty);
         }
         chessBoardView.invalidate();
         rootLayout.addView(chessBoardView, 0);

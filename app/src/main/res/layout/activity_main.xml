@@ -24,13 +24,6 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/continue_button"
-            android:id="@+id/continueButton"
-            android:layout_gravity="center_horizontal" />
-
-        <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
             android:text="@string/new_game_button"
             android:id="@+id/newGameButton"
             android:layout_gravity="center_horizontal" />

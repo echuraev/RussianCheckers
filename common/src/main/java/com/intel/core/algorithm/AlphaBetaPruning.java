@@ -8,9 +8,9 @@ import com.intel.core.rules.Player;
 import java.util.List;
 
 public class AlphaBetaPruning {
-    public static final int LOW_DIFFICULTY = 1;
-    public static final int MIDDLE_DIFFICULTY = 3;
-    public static final int HIGH_DIFFICULTY = 6;
+    public static final int LOW_DIFFICULTY = 3;
+    public static final int MEDIUM_DIFFICULTY = 5;
+    public static final int HIGH_DIFFICULTY = 7;
     private int maxDepth;
     GameBoard gameBoard;
     private Move computerMove;
