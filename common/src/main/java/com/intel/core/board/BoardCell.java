@@ -1,4 +1,4 @@
-package com.intel.xrt.samples.common.board;
+package com.intel.core.board;
 
 public class BoardCell {
     public static final int EMPTY_CELL = 0;

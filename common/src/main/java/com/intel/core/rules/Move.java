@@ -1,6 +1,6 @@
-package com.intel.xrt.samples.common.rules;
+package com.intel.core.rules;
 
-import com.intel.xrt.samples.common.board.BoardCell;
+import com.intel.core.board.BoardCell;
 
 public class Move {
     private BoardCell from;

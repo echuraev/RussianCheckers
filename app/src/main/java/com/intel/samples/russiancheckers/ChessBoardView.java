@@ -1,26 +1,21 @@
-package com.intel.xrt.samples.russiancheckers;
+package com.intel.samples.russiancheckers;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.os.Handler;
-import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.intel.xrt.samples.common.algorithm.AlphaBetaPruning;
-import com.intel.xrt.samples.common.board.CellRect;
-import com.intel.xrt.samples.common.board.BoardCell;
-import com.intel.xrt.samples.common.rules.GameBoard;
-import com.intel.xrt.samples.common.rules.Move;
-import com.intel.xrt.samples.common.rules.Player;
-
-import org.w3c.dom.Text;
+import com.intel.core.algorithm.AlphaBetaPruning;
+import com.intel.core.board.CellRect;
+import com.intel.core.board.BoardCell;
+import com.intel.core.rules.GameBoard;
+import com.intel.core.rules.Move;
+import com.intel.core.rules.Player;
 
 import java.util.List;
 

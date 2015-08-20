@@ -1,4 +1,4 @@
-package com.intel.xrt.samples.common.board;
+package com.intel.core.board;
 
 public class CellRect {
     private float left;

@@ -1,8 +1,6 @@
-package com.intel.xrt.samples.common.rules;
+package com.intel.core.rules;
 
-import com.intel.xrt.samples.common.algorithm.AlphaBetaPruning;
-import com.intel.xrt.samples.common.board.BoardCell;
-
+import com.intel.core.board.BoardCell;
 import java.util.LinkedList;
 import java.util.List;
 

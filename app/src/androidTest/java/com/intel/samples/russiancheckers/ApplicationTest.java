@@ -1,4 +1,4 @@
-package com.intel.xrt.samples.russiancheckers;
+package com.intel.samples.russiancheckers;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

@@ -1,9 +1,9 @@
-package com.intel.xrt.samples.common.algorithm;
+package com.intel.core.algorithm;
 
-import com.intel.xrt.samples.common.board.BoardCell;
-import com.intel.xrt.samples.common.rules.GameBoard;
-import com.intel.xrt.samples.common.rules.Move;
-import com.intel.xrt.samples.common.rules.Player;
+import com.intel.core.board.BoardCell;
+import com.intel.core.rules.GameBoard;
+import com.intel.core.rules.Move;
+import com.intel.core.rules.Player;
 
 import java.util.List;
 

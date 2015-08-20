@@ -1,4 +1,4 @@
-package com.intel.xrt.samples.russiancheckers;
+package com.intel.samples.russiancheckers;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
 
 public class SettingsActivity extends Activity {
 
