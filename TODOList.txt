@@ -1,4 +1,3 @@
-Bug: User doesn't have turn for do move when he have to eat back.
 TODO: Slow moving of computer pieces
-TODO: Status text update
 TODO: Try to change min and max players
+TODO: Implement interface for algorithms and make possible to play with human player

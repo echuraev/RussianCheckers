@@ -38,15 +38,15 @@ public class ChessBoardView extends View implements OnTouchListener {
     private AlphaBetaPruning algorithm;
     private Player player;
 
-    public ChessBoardView(Context context, TextView statusTextView, int difficultys) {
+    public ChessBoardView(Context context, TextView statusTextView, int difficulty) {
         super(context);
         this.statusTextView = statusTextView;
-        this.statusTextView.setText("Status:");
         gameBoard = new GameBoard();
         previousCell = null;
         requiredMoveCell = null;
         player = Player.WHITE;
-        algorithm = new AlphaBetaPruning(gameBoard, difficultys);
+        statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+        algorithm = new AlphaBetaPruning(gameBoard, difficulty);
     }
 
     @Override
@@ -219,8 +219,10 @@ public class ChessBoardView extends View implements OnTouchListener {
                                         requiredMove = true;
                                     }
                                 }
-                                if (!requiredMove)
+                                if (!requiredMove) {
+                                    statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
                                     continue;
+                                }
                             }
                             cellTouch(gameBoard.getCell(row, col));
                         }
@@ -240,10 +242,10 @@ public class ChessBoardView extends View implements OnTouchListener {
             doMove(cell);
         }
         if (gameBoard.hasWon(player)) {
-            statusTextView.setText(player.getPlayerName() + " player has won!");
+            statusTextView.setText("Status: " + player.getPlayerName() + " player has won!");
         }
         if (gameBoard.hasWon(player.getOpposite())) {
-            statusTextView.setText(player.getOpposite().getPlayerName() + " player has won!");
+            statusTextView.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
         }
     }
 
@@ -291,6 +293,7 @@ public class ChessBoardView extends View implements OnTouchListener {
                     if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
                         requiredMoveCell = m.getToCell();
                         highlightMoves(requiredMoveCell);
+                        statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
                         return;
                     }
                 }
@@ -298,6 +301,7 @@ public class ChessBoardView extends View implements OnTouchListener {
                     gameBoard.doMove(m);
                 }
                 do {
+                    statusTextView.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
                     algorithm.alphaBetaPruning(player.getOpposite());
                     if (gameBoard.getAllAvailiableMoves(player.getOpposite()).isEmpty())
                         break;
@@ -310,8 +314,10 @@ public class ChessBoardView extends View implements OnTouchListener {
                         break;
                     invalidate();
                 } while (gameBoard.isExistsNextEatMove(algorithm.getComputerMove().getToCell(), algorithm.getComputerMove().getToCell(), null));
-                return;
+                break;
             }
         }
+
+        statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
     }
 }
