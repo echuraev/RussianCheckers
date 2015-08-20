@@ -13,4 +13,8 @@ public enum Player {
     public int getPieceColor() {
         return (this == WHITE) ? BoardCell.WHITE_PIECE : BoardCell.BLACK_PIECE;
     }
+
+    public String getPlayerName() {
+        return (this == WHITE) ? "White" : "Black";
+    }
 }

@@ -188,7 +188,7 @@ public class GameBoard {
         int eatRow = 0;
         int eatCol = 0;
         int maxCountOfSteps = (piece.isKingPiece()) ? (CELL_COUNT - 1) : 1;
-        for (Direction d : getDirections(piece)) {
+        for (Direction d : eatDirections) {
             if (d == from || d == getOppositeDirection(from))
                 continue;
             for (int step = 1; step <= maxCountOfSteps; ++step) {

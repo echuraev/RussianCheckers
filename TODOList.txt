@@ -1,2 +1,4 @@
 Bug: User doesn't have turn for do move when he have to eat back.
-Nice to have: Slow moving of computer pieces
+TODO: Slow moving of computer pieces
+TODO: Status text update
+TODO: Try to change min and max players

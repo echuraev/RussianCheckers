@@ -240,10 +240,10 @@ public class ChessBoardView extends View implements OnTouchListener {
             doMove(cell);
         }
         if (gameBoard.hasWon(player)) {
-            statusTextView.setText("Congratulation! You win!");
+            statusTextView.setText(player.getPlayerName() + " player has won!");
         }
         if (gameBoard.hasWon(player.getOpposite())) {
-            statusTextView.setText("Unfortunately, you lost!");
+            statusTextView.setText(player.getOpposite().getPlayerName() + " player has won!");
         }
     }
 
