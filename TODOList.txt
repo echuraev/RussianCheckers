@@ -1,2 +1,1 @@
 TODO: Try to change min and max players
-TODO: Implement interface for algorithms and make possible to play with human player

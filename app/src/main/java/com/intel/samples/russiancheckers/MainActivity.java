@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import com.intel.core.algorithm.AlgorithmType;
+
 
 public class MainActivity extends Activity implements OnClickListener {
 
@@ -15,24 +17,33 @@ public class MainActivity extends Activity implements OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button newGameButton = (Button) findViewById(R.id.newGameButton);
+        Button newComputerGameButton = (Button) findViewById(R.id.newComputerGameButton);
+        Button newHumanGameButton = (Button) findViewById(R.id.newHumanGameButton);
         Button scoreButton = (Button) findViewById(R.id.scoreButton);
         Button exitButton = (Button) findViewById(R.id.exitButton);
-        newGameButton.setOnClickListener(this);
+        newComputerGameButton.setOnClickListener(this);
+        newHumanGameButton.setOnClickListener(this);
         scoreButton.setOnClickListener(this);
         exitButton.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+        Intent intent;
         switch (v.getId()) {
-            case R.id.newGameButton:
-                Intent gameIntent = new Intent(getApplicationContext(), ChessBoardActivity.class);
-                startActivity(gameIntent);
+            case R.id.newComputerGameButton:
+                intent = new Intent(getApplicationContext(), ChessBoardActivity.class);
+                intent.putExtra("algorithm_type", AlgorithmType.COMPUTER.toString());
+                startActivity(intent);
+                break;
+            case R.id.newHumanGameButton:
+                intent = new Intent(getApplicationContext(), ChessBoardActivity.class);
+                intent.putExtra("algorithm_type", AlgorithmType.HUMAN.toString());
+                startActivity(intent);
                 break;
             case R.id.scoreButton:
-                Intent scoreIntent = new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(scoreIntent);
+                intent = new Intent(getApplicationContext(), SettingsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.exitButton:
                 finish();

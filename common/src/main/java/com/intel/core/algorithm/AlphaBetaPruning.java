@@ -7,7 +7,7 @@ import com.intel.core.rules.Player;
 
 import java.util.List;
 
-public class AlphaBetaPruning {
+public class AlphaBetaPruning implements IAlgorithm {
     public static final int LOW_DIFFICULTY = 3;
     public static final int MEDIUM_DIFFICULTY = 5;
     public static final int HIGH_DIFFICULTY = 7;
@@ -21,7 +21,18 @@ public class AlphaBetaPruning {
         this.computerMove = null;
     }
 
-    public void alphaBetaPruning(Player player) {
+    @Override
+    public AlgorithmType getAlgorithmType() {
+        return AlgorithmType.COMPUTER;
+    }
+
+    @Override
+    public Move getOpponentMove() {
+        return computerMove;
+    }
+
+    @Override
+    public void getAlgorithm(Player player) {
         alphaBetaPruning(0, Double.MIN_VALUE, Double.MAX_VALUE, player);
     }
 
@@ -56,10 +67,6 @@ public class AlphaBetaPruning {
         return score;
     }
 
-    public Move getComputerMove() {
-        return computerMove;
-    }
-
     private double getHeuristicEvaluation() {
         int count = 0;
         double kingWeight = Math.abs(BoardCell.WHITE_PIECE) / 2.0;
@@ -85,5 +92,4 @@ public class AlphaBetaPruning {
         }
         return count;
     }
-
 }

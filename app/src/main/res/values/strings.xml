@@ -1,7 +1,8 @@
 <resources>
 
     <string name="app_name">Russian Checkers</string>
-    <string name="new_game_button">New Game</string>
+    <string name="new_computer_game">New Game vs Computer</string>
+    <string name="new_human_game">New Game vs Human</string>
     <string name="exit_button">Exit</string>
     <string name="title_activity_chess_board">Game Board</string>
     <string name="title_activity_settings">Settings</string>

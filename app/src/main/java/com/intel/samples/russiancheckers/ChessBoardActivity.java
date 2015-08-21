@@ -2,12 +2,14 @@ package com.intel.samples.russiancheckers;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.intel.core.algorithm.AlgorithmType;
 import com.intel.core.algorithm.AlphaBetaPruning;
 
 public class ChessBoardActivity extends Activity {
@@ -38,7 +40,9 @@ public class ChessBoardActivity extends Activity {
         }
         chessBoardView = (ChessBoardView) getLastNonConfigurationInstance();
         if (chessBoardView == null) {
-            chessBoardView = new ChessBoardView(this, statusTextView, difficulty);
+            Intent intent = getIntent();
+            AlgorithmType type = AlgorithmType.valueOf(intent.getStringExtra("algorithm_type"));
+            chessBoardView = new ChessBoardView(this, statusTextView, type, difficulty);
         }
         chessBoardView.invalidate();
         rootLayout.addView(chessBoardView, 0);

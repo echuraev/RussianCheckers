@@ -24,8 +24,15 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/new_game_button"
-            android:id="@+id/newGameButton"
+            android:text="@string/new_computer_game"
+            android:id="@+id/newComputerGameButton"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_human_game"
+            android:id="@+id/newHumanGameButton"
             android:layout_gravity="center_horizontal" />
 
         <Button
