@@ -29,6 +29,7 @@ public class ChessBoardView extends View implements OnTouchListener {
     private float screenH;
     private float cellSize;
     private float boardMargin;
+    private Thread clickThread;
     private Canvas canvas = null;
     private Paint paint = null;
     private TextView statusTextView;
@@ -41,6 +42,7 @@ public class ChessBoardView extends View implements OnTouchListener {
     public ChessBoardView(Context context, TextView statusTextView, int difficulty) {
         super(context);
         this.statusTextView = statusTextView;
+        clickThread = null;
         gameBoard = new GameBoard();
         previousCell = null;
         requiredMoveCell = null;
@@ -196,6 +198,8 @@ public class ChessBoardView extends View implements OnTouchListener {
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        if (clickThread != null && clickThread.isAlive())
+            return false;
         if (gameBoard.hasWon(player) || gameBoard.hasWon(player.getOpposite()))
             return false;
         float x = event.getX();
@@ -222,11 +226,18 @@ public class ChessBoardView extends View implements OnTouchListener {
                                 if (!requiredMove)
                                     continue;
                             }
-                            cellTouch(gameBoard.getCell(row, col));
+                            final int finalRow = row;
+                            final int finalCol = col;
+                            clickThread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    cellTouch(gameBoard.getCell(finalRow, finalCol));
+                                }
+                            });
+                            clickThread.start();
                         }
                     }
                 }
-                invalidate();
                 return true;
         }
         return false;
@@ -234,20 +245,25 @@ public class ChessBoardView extends View implements OnTouchListener {
 
     private void cellTouch(BoardCell cell) {
         if (cell.getCondition() == BoardCell.WHITE_PIECE) {
-            highlightMoves(cell);
+            highlightMoves(cell, player);
         }
         else {
             doMove(cell);
         }
-        if (gameBoard.hasWon(player)) {
-            statusTextView.setText("Status: " + player.getPlayerName() + " player has won!");
-        }
-        if (gameBoard.hasWon(player.getOpposite())) {
-            statusTextView.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
-        }
+        this.post(new Runnable() {
+            public void run() {
+                if (gameBoard.hasWon(player)) {
+                    statusTextView.setText("Status: " + player.getPlayerName() + " player has won!");
+                }
+                if (gameBoard.hasWon(player.getOpposite())) {
+                    statusTextView.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
+                }
+                invalidate();
+            }
+        });
     }
 
-    private void highlightMoves(BoardCell cell) {
+    private void highlightMoves(BoardCell cell, final Player player) {
         if (previousCell != null) {
             List<Move> moves = gameBoard.getAvailiableMoves(previousCell);
             for (Move m : moves) {
@@ -262,7 +278,11 @@ public class ChessBoardView extends View implements OnTouchListener {
                 moveIsAvailiable = true;
         }
         if (!moveIsAvailiable) {
-            statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
+            statusTextView.post(new Runnable() {
+                public void run() {
+                    statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
+                }
+            });
             return;
         }
 
@@ -292,8 +312,12 @@ public class ChessBoardView extends View implements OnTouchListener {
                     gameBoard.doMove(m);
                     if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
                         requiredMoveCell = m.getToCell();
-                        highlightMoves(requiredMoveCell);
-                        statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+                        highlightMoves(requiredMoveCell, player);
+                        statusTextView.post(new Runnable() {
+                            public void run() {
+                                statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+                            }
+                        });
                         return;
                     }
                 }
@@ -301,7 +325,6 @@ public class ChessBoardView extends View implements OnTouchListener {
                     gameBoard.doMove(m);
                 }
                 do {
-                    statusTextView.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
                     algorithm.alphaBetaPruning(player.getOpposite());
                     if (gameBoard.getAllAvailiableMoves(player.getOpposite()).isEmpty())
                         break;
@@ -309,15 +332,40 @@ public class ChessBoardView extends View implements OnTouchListener {
                     if (algorithm.getComputerMove().getEatCell() != null
                             && algorithm.getComputerMove().getEatCell().getRect() != null)
                         eatMove = true;
+                    this.post(new Runnable() {
+                        public void run() {
+                            statusTextView.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
+                            highlightMoves(algorithm.getComputerMove().getFromCell(), player.getOpposite());
+                            invalidate();
+                        }
+                    });
+                    try {
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        e.getLocalizedMessage();
+                    }
+                    algorithm.getComputerMove().getFromCell().setHighlight(false);
+                    List<Move> compMoves = gameBoard.getAvailiableMoves(algorithm.getComputerMove().getFromCell());
+                    for (Move cm : compMoves) {
+                        cm.getToCell().setHighlight(false);
+                    }
                     gameBoard.doMove(algorithm.getComputerMove());
                     if (!eatMove)
                         break;
-                    invalidate();
+                    this.post(new Runnable() {
+                        public void run() {
+                            invalidate();
+                        }
+                    });
                 } while (gameBoard.isExistsNextEatMove(algorithm.getComputerMove().getToCell(), algorithm.getComputerMove().getToCell(), null));
                 break;
             }
         }
 
-        statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+        statusTextView.post(new Runnable() {
+            public void run() {
+                statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+            }
+        });
     }
 }
