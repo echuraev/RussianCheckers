@@ -76,15 +76,17 @@ public class AlphaBetaPruning implements IAlgorithm {
                 switch (gameBoard.getCell(row, col).getCondition()) {
                     case BoardCell.BLACK_PIECE:
                         if (gameBoard.getCell(row, col).isKingPiece())
-                            count += kingWeight;
-                        else
-                            count += pieceWeight;
-                        break;
-                    case BoardCell.WHITE_PIECE:
-                        if (gameBoard.getCell(row, col).isKingPiece())
                             count -= kingWeight;
                         else
                             count -= pieceWeight;
+                        count -= row;
+                        break;
+                    case BoardCell.WHITE_PIECE:
+                        if (gameBoard.getCell(row, col).isKingPiece())
+                            count += kingWeight;
+                        else
+                            count += pieceWeight;
+                        count += (GameBoard.CELL_COUNT - row);
                     default:
                         break;
                 }
