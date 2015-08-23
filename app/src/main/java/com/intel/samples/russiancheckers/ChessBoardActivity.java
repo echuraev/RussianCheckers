@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -53,12 +54,12 @@ public class ChessBoardActivity extends Activity {
         return chessBoardView;
     }
 
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putCharSequence("statusText", statusTextView.getText());
     }
 
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         statusTextView.setText(savedInstanceState.getCharSequence("statusText"));
     }

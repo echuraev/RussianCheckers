@@ -35,9 +35,7 @@ public class GameBoard {
     }
 
     public boolean hasWon(Player player) {
-        if (getAllAvailiableMoves(player.getOpposite()).isEmpty())
-            return true;
-        return false;
+        return getAllAvailiableMoves(player.getOpposite()).isEmpty();
     }
 
     public List<Move> getAllAvailiableMoves(Player player) {
@@ -251,13 +249,12 @@ public class GameBoard {
         if(cell.isKingPiece()){
             return kingDirections;
         }
-        if(cell.getCondition() == BoardCell.WHITE_PIECE){
+        else if(cell.getCondition() == BoardCell.WHITE_PIECE) {
             return whiteDirections;
         }
-        if(cell.getCondition() == BoardCell.BLACK_PIECE){
+        else {
             return blackDirections;
         }
-        return null;
     }
 
     enum Direction{
