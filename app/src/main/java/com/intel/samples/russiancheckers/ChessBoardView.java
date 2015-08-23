@@ -343,7 +343,7 @@ public class ChessBoardView extends View implements OnTouchListener {
                         break;
                     if (i > 0) {
                         try {
-                            Thread.sleep(1000);
+                            Thread.sleep(100);
                         } catch (Exception e) {
                             e.getLocalizedMessage();
                         }

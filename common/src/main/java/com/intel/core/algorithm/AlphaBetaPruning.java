@@ -15,8 +15,26 @@ public class AlphaBetaPruning implements IAlgorithm {
     public static final int HIGH_DIFFICULTY = 7;
     private int maxDepth;
     private GameBoard gameBoard;
-    private LinkedList<Move> computerMoves;
+    private LinkedList<MoveWithScore> computerMoves;
     private Move computerMove;
+
+    private class MoveWithScore {
+        private Move move;
+        double score;
+
+        public MoveWithScore(Move move, double score) {
+            this.move = move;
+            this.score = score;
+        }
+
+        public Move getMove() {
+            return move;
+        }
+
+        public double getScore() {
+            return score;
+        }
+    }
 
     public AlphaBetaPruning(GameBoard gameBoard, int difficutly) {
         this.maxDepth = difficutly;
@@ -34,7 +52,7 @@ public class AlphaBetaPruning implements IAlgorithm {
     public Move getOpponentMove() {
         if (computerMove == null) {
             Random random = new Random(System.currentTimeMillis());
-            computerMove = computerMoves.get(random.nextInt(computerMoves.size()));
+            computerMove = computerMoves.get(random.nextInt(computerMoves.size())).getMove();
         }
         return computerMove;
     }
@@ -50,7 +68,7 @@ public class AlphaBetaPruning implements IAlgorithm {
         if (gameBoard.hasWon(player))
             return player.getPieceColor();
 
-        List<Move> availiableMoves = null;
+        List<Move> availiableMoves;
         if (requiredMoveCell == null)
             availiableMoves = gameBoard.getAllAvailiableMoves(player);
         else
@@ -69,9 +87,11 @@ public class AlphaBetaPruning implements IAlgorithm {
 
                 double step_score;
                 if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
-                    step_score = alphaBetaPruning(depth, alpha, beta, player, m.getToCell());
-                }
-                else {
+                    int eatDepth = (depth == 0) ? (depth + 1) : depth;
+                    if (m.getToCell().isKingPiece())
+                        eatDepth++;
+                    step_score = alphaBetaPruning(eatDepth, alpha, beta, player, m.getToCell());
+                } else {
                     step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite(), null);
                 }
                 gameBoard.setCell(fromCell.getRow(), fromCell.getCol(), fromCell);
@@ -99,9 +119,11 @@ public class AlphaBetaPruning implements IAlgorithm {
 
                 double step_score;
                 if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
-                    step_score = alphaBetaPruning(depth, alpha, beta, player, m.getToCell());
-                }
-                else {
+                    int eatDepth = (depth == 0) ? (depth + 1) : depth;
+                    if (m.getToCell().isKingPiece())
+                        eatDepth++;
+                    step_score = alphaBetaPruning(eatDepth, alpha, beta, player, m.getToCell());
+                } else {
                     step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite(), null);
                 }
                 gameBoard.setCell(fromCell.getRow(), fromCell.getCol(), fromCell);
@@ -110,8 +132,13 @@ public class AlphaBetaPruning implements IAlgorithm {
 
                 if (score >= step_score) {
                     score = step_score;
-                    if (depth == 0)
-                        computerMoves.add(new Move(m));
+                    if (depth == 0) {
+                        for (MoveWithScore mws : new LinkedList<>(computerMoves)) {
+                            if (mws.getScore() > score)
+                                computerMoves.remove(mws);
+                        }
+                        computerMoves.add(new MoveWithScore(new Move(m), score));
+                    }
                 }
                 if (beta > score)
                     beta = score;
