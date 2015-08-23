@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Random;
 
 public class AlphaBetaPruning implements IAlgorithm {
-    public static final int LOW_DIFFICULTY = 3;
-    public static final int MEDIUM_DIFFICULTY = 5;
-    public static final int HIGH_DIFFICULTY = 7;
+    public static final int LOW_DIFFICULTY = 1;
+    public static final int MEDIUM_DIFFICULTY = 3;
+    public static final int HIGH_DIFFICULTY = 5;
     private int maxDepth;
     private GameBoard gameBoard;
     private LinkedList<MoveWithScore> computerMoves;
