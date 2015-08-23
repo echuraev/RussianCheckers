@@ -234,8 +234,11 @@ public class ChessBoardView extends View implements OnTouchListener {
                             }
                             final int finalRow = row;
                             final int finalCol = col;
-                            clickThread = new Thread(() -> {
-                                cellTouch(gameBoard.getCell(finalRow, finalCol));
+                            clickThread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    cellTouch(gameBoard.getCell(finalRow, finalCol));
+                                }
                             });
                             clickThread.start();
                         }
@@ -253,7 +256,11 @@ public class ChessBoardView extends View implements OnTouchListener {
         else {
             doMove(cell);
         }
-        this.post(this::invalidate);
+        this.post(new Runnable() {
+            public void run() {
+                invalidate();
+            }
+        });
     }
 
     private void highlightMoves(BoardCell cell, final Player player) {
@@ -271,7 +278,11 @@ public class ChessBoardView extends View implements OnTouchListener {
                 moveIsAvailiable = true;
         }
         if (!moveIsAvailiable) {
-            statusTextView.post(() -> statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat..."));
+            this.post(new Runnable() {
+                public void run() {
+                    statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
+                }
+            });
             return;
         }
 
@@ -302,7 +313,11 @@ public class ChessBoardView extends View implements OnTouchListener {
                     if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
                         requiredMoveCell = m.getToCell();
                         highlightMoves(requiredMoveCell, player);
-                        statusTextView.post(() -> statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player..."));
+                        this.post(new Runnable() {
+                            public void run() {
+                                statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+                            }
+                        });
                         return;
                     }
                 }
@@ -310,9 +325,11 @@ public class ChessBoardView extends View implements OnTouchListener {
                     gameBoard.doMove(m);
                 }
                 if (gameBoard.hasWon(player)) {
-                    this.post(() -> {
-                        statusTextView.setText("Status: " + player.getPlayerName() + " player has won!");
-                        invalidate();
+                    this.post(new Runnable() {
+                        public void run() {
+                            statusTextView.setText("Status: " + player.getPlayerName() + " player has won!");
+                            invalidate();
+                        }
                     });
                     return;
                 }
@@ -328,10 +345,12 @@ public class ChessBoardView extends View implements OnTouchListener {
                     if (algorithm.getOpponentMove().getEatCell() != null
                             && algorithm.getOpponentMove().getEatCell().getRect() != null)
                         eatMove = true;
-                    this.post(() -> {
-                        statusTextView.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
-                        highlightMoves(algorithm.getOpponentMove().getFromCell(), player.getOpposite());
-                        invalidate();
+                    this.post(new Runnable() {
+                        public void run() {
+                            statusTextView.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
+                            highlightMoves(algorithm.getOpponentMove().getFromCell(), player.getOpposite());
+                            invalidate();
+                        }
                     });
                     try {
                         Thread.sleep(1000);
@@ -347,18 +366,28 @@ public class ChessBoardView extends View implements OnTouchListener {
                     if (!eatMove)
                         break;
                     if (gameBoard.hasWon(player.getOpposite())) {
-                        this.post(() -> {
-                            invalidate();
-                            statusTextView.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
+                        this.post(new Runnable() {
+                            public void run() {
+                                invalidate();
+                                statusTextView.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
+                            }
                         });
                         return;
                     }
-                    this.post(this::invalidate);
+                    this.post(new Runnable() {
+                        public void run() {
+                            invalidate();
+                        }
+                    });
                 } while (gameBoard.isExistsNextEatMove(algorithm.getOpponentMove().getToCell(), algorithm.getOpponentMove().getToCell(), null));
                 break;
             }
         }
 
-        statusTextView.post(() -> statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player..."));
+        this.post(new Runnable() {
+            public void run() {
+                statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
+            }
+        });
     }
 }

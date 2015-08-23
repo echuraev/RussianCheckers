@@ -6,6 +6,7 @@ import com.intel.core.rules.Move;
 import com.intel.core.rules.Player;
 
 import java.util.List;
+import java.util.Random;
 
 public class AlphaBetaPruning implements IAlgorithm {
     public static final int LOW_DIFFICULTY = 3;
@@ -28,7 +29,12 @@ public class AlphaBetaPruning implements IAlgorithm {
 
     @Override
     public Move getOpponentMove() {
-        return computerMove; //(computerMove != null) ? computerMove : gameBoard.getAllAvailiableMoves(Player.BLACK).get(0);
+        if (computerMove == null) {
+            Random random = new Random();
+            List<Move> availiableMoves = gameBoard.getAllAvailiableMoves(Player.BLACK);
+            computerMove = availiableMoves.get(random.nextInt(availiableMoves.size()));
+        }
+        return computerMove;
     }
 
     @Override
@@ -92,7 +98,8 @@ public class AlphaBetaPruning implements IAlgorithm {
                 if (beta > score)
                     beta = score;
                 if (beta <= alpha) {
-                    computerMove = new Move(m);
+                    if (depth == 0)
+                        computerMove = new Move(m);
                     break;
                 }
             }
