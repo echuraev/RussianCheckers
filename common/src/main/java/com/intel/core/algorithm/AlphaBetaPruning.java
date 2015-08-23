@@ -69,7 +69,7 @@ public class AlphaBetaPruning implements IAlgorithm {
 
                 double step_score;
                 if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
-                    step_score = alphaBetaPruning(depth + 1, alpha, beta, player, m.getToCell());
+                    step_score = alphaBetaPruning(depth, alpha, beta, player, m.getToCell());
                 }
                 else {
                     step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite(), null);
@@ -99,7 +99,7 @@ public class AlphaBetaPruning implements IAlgorithm {
 
                 double step_score;
                 if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
-                    step_score = alphaBetaPruning(depth + 1, alpha, beta, player, m.getToCell());
+                    step_score = alphaBetaPruning(depth, alpha, beta, player, m.getToCell());
                 }
                 else {
                     step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite(), null);
@@ -158,14 +158,14 @@ public class AlphaBetaPruning implements IAlgorithm {
                             count -= kingWeight;
                         else
                             count -= pieceWeight;
-                        count -= (row/100.0);
+                        //count -= (row/100.0);
                         break;
                     case BoardCell.WHITE_PIECE:
                         if (gameBoard.getCell(row, col).isKingPiece())
                             count += kingWeight;
                         else
                             count += pieceWeight;
-                        count += (((GameBoard.CELL_COUNT-1) - row)/100.0);
+                        //count += (((GameBoard.CELL_COUNT-1) - row)/100.0);
                     default:
                         break;
                 }
