@@ -337,9 +337,18 @@ public class ChessBoardView extends View implements OnTouchListener {
                     player = player.getOpposite();
                     break;
                 }
+                int i = 0;
                 do {
                     if (gameBoard.getAllAvailiableMoves(player.getOpposite()).isEmpty())
                         break;
+                    if (i > 0) {
+                        try {
+                            Thread.sleep(1000);
+                        } catch (Exception e) {
+                            e.getLocalizedMessage();
+                        }
+                    }
+                    i++;
                     algorithm.getAlgorithm(player.getOpposite());
                     boolean eatMove = false;
                     if (algorithm.getOpponentMove().getEatCell() != null

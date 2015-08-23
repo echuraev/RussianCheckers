@@ -5,6 +5,7 @@ import com.intel.core.rules.GameBoard;
 import com.intel.core.rules.Move;
 import com.intel.core.rules.Player;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -13,13 +14,15 @@ public class AlphaBetaPruning implements IAlgorithm {
     public static final int MEDIUM_DIFFICULTY = 5;
     public static final int HIGH_DIFFICULTY = 7;
     private int maxDepth;
-    GameBoard gameBoard;
+    private GameBoard gameBoard;
+    private LinkedList<Move> computerMoves;
     private Move computerMove;
 
     public AlphaBetaPruning(GameBoard gameBoard, int difficutly) {
         this.maxDepth = difficutly;
         this.gameBoard = gameBoard;
         this.computerMove = null;
+        computerMoves = new LinkedList<>();
     }
 
     @Override
@@ -30,9 +33,8 @@ public class AlphaBetaPruning implements IAlgorithm {
     @Override
     public Move getOpponentMove() {
         if (computerMove == null) {
-            Random random = new Random();
-            List<Move> availiableMoves = gameBoard.getAllAvailiableMoves(Player.BLACK);
-            computerMove = availiableMoves.get(random.nextInt(availiableMoves.size()));
+            Random random = new Random(System.currentTimeMillis());
+            computerMove = computerMoves.get(random.nextInt(computerMoves.size()));
         }
         return computerMove;
     }
@@ -40,14 +42,19 @@ public class AlphaBetaPruning implements IAlgorithm {
     @Override
     public void getAlgorithm(Player player) {
         computerMove = null;
-        alphaBetaPruning(0, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, player);
+        computerMoves.clear();
+        alphaBetaPruning(0, Double.NEGATIVE_INFINITY, Double.POSITIVE_INFINITY, player, null);
     }
 
-    private double alphaBetaPruning(int depth, double alpha, double beta, Player player) {
+    private double alphaBetaPruning(int depth, double alpha, double beta, Player player, BoardCell requiredMoveCell) {
         if (gameBoard.hasWon(player))
             return player.getPieceColor();
 
-        List<Move> availiableMoves = gameBoard.getAllAvailiableMoves(player);
+        List<Move> availiableMoves = null;
+        if (requiredMoveCell == null)
+            availiableMoves = gameBoard.getAllAvailiableMoves(player);
+        else
+            availiableMoves = gameBoard.getAvailiableMoves(requiredMoveCell);
         if (availiableMoves.isEmpty() || depth == maxDepth)
             return getHeuristicEvaluation();
 
@@ -60,7 +67,13 @@ public class AlphaBetaPruning implements IAlgorithm {
                 BoardCell eatCell = new BoardCell(m.getEatCell());
                 gameBoard.doMove(m);
 
-                double step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite());
+                double step_score;
+                if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
+                    step_score = alphaBetaPruning(depth + 1, alpha, beta, player, m.getToCell());
+                }
+                else {
+                    step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite(), null);
+                }
                 gameBoard.setCell(fromCell.getRow(), fromCell.getCol(), fromCell);
                 gameBoard.setCell(toCell.getRow(), toCell.getCol(), toCell);
                 gameBoard.setCell(eatCell.getRow(), eatCell.getCol(), eatCell);
@@ -70,7 +83,6 @@ public class AlphaBetaPruning implements IAlgorithm {
                 if (alpha < score)
                     alpha = score;
                 if (beta <= alpha) {
-                    //computerMove = new Move(m);
                     break;
                 }
             }
@@ -80,26 +92,30 @@ public class AlphaBetaPruning implements IAlgorithm {
         else {
             double score = Double.POSITIVE_INFINITY;
             for (Move m : availiableMoves) {
-                if (depth == 0) {
-                    gameBoard.hasWon(player);
-                }
                 BoardCell fromCell = new BoardCell(m.getFromCell());
                 BoardCell toCell = new BoardCell(m.getToCell());
                 BoardCell eatCell = new BoardCell(m.getEatCell());
                 gameBoard.doMove(m);
 
-                double step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite());
+                double step_score;
+                if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
+                    step_score = alphaBetaPruning(depth + 1, alpha, beta, player, m.getToCell());
+                }
+                else {
+                    step_score = alphaBetaPruning(depth + 1, alpha, beta, player.getOpposite(), null);
+                }
                 gameBoard.setCell(fromCell.getRow(), fromCell.getCol(), fromCell);
                 gameBoard.setCell(toCell.getRow(), toCell.getCol(), toCell);
                 gameBoard.setCell(eatCell.getRow(), eatCell.getCol(), eatCell);
 
-                if (score > step_score)
+                if (score >= step_score) {
                     score = step_score;
+                    if (depth == 0)
+                        computerMoves.add(new Move(m));
+                }
                 if (beta > score)
                     beta = score;
-                if (beta <= alpha) {
-                    if (depth == 0)
-                        computerMove = new Move(m);
+                if (beta <= alpha && depth > 0) {
                     break;
                 }
             }
@@ -142,14 +158,14 @@ public class AlphaBetaPruning implements IAlgorithm {
                             count -= kingWeight;
                         else
                             count -= pieceWeight;
-                        //count -= (row/100.0);
+                        count -= (row/100.0);
                         break;
                     case BoardCell.WHITE_PIECE:
                         if (gameBoard.getCell(row, col).isKingPiece())
                             count += kingWeight;
                         else
                             count += pieceWeight;
-                        //count += (((GameBoard.CELL_COUNT-1) - row)/100.0);
+                        count += (((GameBoard.CELL_COUNT-1) - row)/100.0);
                     default:
                         break;
                 }
