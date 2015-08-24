@@ -1,2 +1,0 @@
-com/intel/russiancheckers/Main
-com/intel/russiancheckers/ui/AppViewController
