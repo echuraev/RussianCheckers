@@ -1,0 +1,122 @@
+
+09:11:28.004 INFO ParseArchs(): Active architecture: i386
+
+09:11:28.004 WARNING ExecuteTask(): org.intel.xrt_builder.Algorithms.BuildAppAlgorithm
+
+09:11:28.006 INFO start(): Running command line: "[xcodebuild ARCHS=i386  -configuration Debug -sdk iphonesimulator8.4 -target Russian Checkers -project /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode/Russian Checkers.xcodeproj]"
+
+09:11:28.469 INFO run(): module "runXCodeBuild": out_stream: "Build settings from command line:"
+
+09:11:28.469 INFO run(): module "runXCodeBuild": out_stream: "    ARCHS = i386 "
+
+09:11:28.469 INFO run(): module "runXCodeBuild": out_stream: "    SDKROOT = iphonesimulator8.4"
+
+09:11:28.469 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:28.576 INFO run(): module "runXCodeBuild": out_stream: "=== BUILD TARGET Russian Checkers OF PROJECT Russian Checkers WITH CONFIGURATION Debug ==="
+
+09:11:28.577 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:28.577 INFO run(): module "runXCodeBuild": out_stream: "Check dependencies"
+
+09:11:28.881 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:28.887 INFO run(): module "runXCodeBuild": out_stream: "PhaseScriptExecution Compile\ Java\ Sources /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Russian\ Checkers.build/Debug-iphonesimulator/Russian\ Checkers.build/Script-84DE782A397F3FE7046E28CA.sh"
+
+09:11:28.887 INFO run(): module "runXCodeBuild": out_stream: "    cd /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode"
+
+09:11:28.887 INFO run(): module "runXCodeBuild": out_stream: "    /bin/sh -c \"/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Russian\ Checkers.build/Debug-iphonesimulator/Russian\ Checkers.build/Script-84DE782A397F3FE7046E28CA.sh\""
+
+09:11:29.003 INFO run(): module "runXCodeBuild": out_stream: "java version "1.8.0_51""
+
+09:11:29.004 INFO run(): module "runXCodeBuild": out_stream: "Java(TM) SE Runtime Environment (build 1.8.0_51-b16)"
+
+09:11:29.004 INFO run(): module "runXCodeBuild": out_stream: "Java HotSpot(TM) 64-Bit Server VM (build 25.51-b03, mixed mode)"
+
+09:11:31.353 INFO run(): module "runXCodeBuild": out_stream: ":ios:compileJava UP-TO-DATE"
+
+09:11:31.400 INFO run(): module "runXCodeBuild": out_stream: ":ios:proguard"
+
+09:11:31.400 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:31.401 INFO run(): module "runXCodeBuild": out_stream: "Log file: "/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/logs/2015.08.24_09.11.31+0300_BUILD_PROGUARD_LOG.txt"."
+
+09:11:32.941 INFO run(): module "runXCodeBuild": out_stream: ":ios:buildRetro"
+
+09:11:32.942 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:33.645 INFO run(): module "runXCodeBuild": out_stream: "Log file: "/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/logs/2015.08.24_09.11.32+0300_BUILD_RETRO_LOG.txt"."
+
+09:11:33.646 INFO run(): module "runXCodeBuild": out_stream: ":ios:buildDex"
+
+09:11:33.646 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:33.647 INFO run(): module "runXCodeBuild": out_stream: "Log file: "/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/logs/2015.08.24_09.11.33+0300_BUILD_DEX_LOG.txt"."
+
+09:11:33.885 INFO run(): module "runXCodeBuild": out_stream: ":ios:buildArtOat"
+
+09:11:33.885 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:33.885 INFO run(): module "runXCodeBuild": out_stream: "Log file: "/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/logs/2015.08.24_09.11.33+0300_BUILD_ART_OAT_LOG.txt"."
+
+09:11:42.435 INFO run(): module "runXCodeBuild": out_stream: ":ios:buildPreregister"
+
+09:11:42.435 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:42.435 INFO run(): module "runXCodeBuild": out_stream: "Log file: "/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/logs/2015.08.24_09.11.42+0300_BUILD_PREREGISTER_LOG.txt"."
+
+09:11:42.450 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:42.450 INFO run(): module "runXCodeBuild": out_stream: "BUILD SUCCESSFUL"
+
+09:11:42.450 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:42.450 INFO run(): module "runXCodeBuild": out_stream: "Total time: 13.369 secs"
+
+09:11:43.922 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:43.924 INFO run(): module "runXCodeBuild": out_stream: "CpResource Russian\ Checkers/preregister.txt /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app/preregister.txt"
+
+09:11:43.924 INFO run(): module "runXCodeBuild": out_stream: "    cd /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode"
+
+09:11:43.924 INFO run(): module "runXCodeBuild": out_stream: "    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin""
+
+09:11:43.924 INFO run(): module "runXCodeBuild": out_stream: "    builtin-copy -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -exclude .hg -resolve-src-symlinks /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode/Russian\ Checkers/preregister.txt /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app"
+
+09:11:43.924 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:43.926 INFO run(): module "runXCodeBuild": out_stream: "Ld /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app/Russian\ Checkers normal i386"
+
+09:11:43.926 INFO run(): module "runXCodeBuild": out_stream: "    cd /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode"
+
+09:11:43.926 INFO run(): module "runXCodeBuild": out_stream: "    export IPHONEOS_DEPLOYMENT_TARGET=8.0"
+
+09:11:43.926 INFO run(): module "runXCodeBuild": out_stream: "    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin""
+
+09:11:43.926 INFO run(): module "runXCodeBuild": out_stream: "    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -arch i386 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.4.sdk -L/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator -F/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator -F/Applications/Intel/INDE/multi_os_engine/sdk/iphonesimulator -filelist /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Russian\ Checkers.build/Debug-iphonesimulator/Russian\ Checkers.build/Objects-normal/i386/Russian\ Checkers.LinkFileList -Xlinker -rpath -Xlinker /Applications/Intel/INDE/multi_os_engine/sdk/iphonesimulator -Xlinker -rpath -Xlinker @executable_path/Frameworks -Xlinker -objc_abi_version -Xlinker 2 -sectcreate __OATDATA __oatdata /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode/../build/art/i386/application.oat -sectcreate __ARTDATA __artdata /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode/../build/art/i386/image.art -segprot __OATDATA rwx rx -segprot __ARTDATA rwx rw -pagezero_size 1000 -lstdc++ -stdlib=libc++ -Xlinker -no_implicit_dylibs -mios-simulator-version-min=8.0 -framework MOE -Xlinker -dependency_info -Xlinker /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Russian\ Checkers.build/Debug-iphonesimulator/Russian\ Checkers.build/Objects-normal/i386/Russian\ Checkers_dependency_info.dat -o /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app/Russian\ Checkers"
+
+09:11:44.109 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:44.112 INFO run(): module "runXCodeBuild": out_stream: "GenerateDSYMFile /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app.dSYM /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app/Russian\ Checkers"
+
+09:11:44.112 INFO run(): module "runXCodeBuild": out_stream: "    cd /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode"
+
+09:11:44.112 INFO run(): module "runXCodeBuild": out_stream: "    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin""
+
+09:11:44.112 INFO run(): module "runXCodeBuild": out_stream: "    /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/dsymutil /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app/Russian\ Checkers -o /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app.dSYM"
+
+09:11:44.143 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:44.145 INFO run(): module "runXCodeBuild": out_stream: "Touch /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app"
+
+09:11:44.145 INFO run(): module "runXCodeBuild": out_stream: "    cd /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode"
+
+09:11:44.145 INFO run(): module "runXCodeBuild": out_stream: "    export PATH="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin""
+
+09:11:44.145 INFO run(): module "runXCodeBuild": out_stream: "    /usr/bin/touch -c /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/xcode/Debug-iphonesimulator/Russian\ Checkers.app"
+
+09:11:44.151 INFO run(): module "runXCodeBuild": out_stream: ""
+
+09:11:44.153 INFO run(): module "runXCodeBuild": out_stream: "** BUILD SUCCEEDED **"
+
+09:11:44.154 INFO run(): module "runXCodeBuild": out_stream: ""

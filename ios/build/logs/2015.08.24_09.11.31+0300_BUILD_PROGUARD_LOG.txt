@@ -1,0 +1,116 @@
+
+09:11:31.402 INFO ParseArchs(): Active architecture: i386
+
+09:11:31.403 WARNING ExecuteTask(): org.intel.xrt_builder.Algorithms.ProGuardAlgorithm
+
+09:11:31.405 INFO doConfigAction(): Config file: /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/proguard/proguard.cfg
+
+09:11:31.405 INFO start(): Running command line: "[java -jar /Applications/Intel/INDE/multi_os_engine/tools/proguard.jar @/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/proguard/proguard.cfg]"
+
+09:11:31.561 INFO run(): module "proGuard": out_stream: "ProGuard, version 5.2.1"
+
+09:11:31.580 INFO run(): module "proGuard": out_stream: "Reading input..."
+
+09:11:31.651 INFO run(): module "proGuard": out_stream: "Reading program directory [/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/classes/main]"
+
+09:11:31.672 INFO run(): module "proGuard": out_stream: "Reading library jar [/Applications/Intel/INDE/multi_os_engine/sdk/intel-moe-ios.jar]"
+
+09:11:32.041 INFO run(): module "proGuard": out_stream: "Reading library jar [/Applications/Intel/INDE/multi_os_engine/sdk/intel-moe-core.jar]"
+
+09:11:32.403 INFO run(): module "proGuard": out_stream: "Initializing..."
+
+09:11:32.410 INFO run(): module "proGuard": out_stream: "Note: the configuration refers to the unknown class 'junit.framework.TestCase'"
+
+09:11:32.459 INFO run(): module "proGuard": out_stream: "Note: the configuration refers to the unknown class 'junit.framework.TestCase'"
+
+09:11:32.508 INFO run(): module "proGuard": out_stream: "Note: the configuration refers to the unknown class 'android.app.backup.BackupAgent'"
+
+09:11:32.523 INFO run(): module "proGuard": out_stream: "Note: the configuration refers to the unknown class 'android.appwidget.AppWidgetProvider'"
+
+09:11:32.534 INFO run(): module "proGuard": out_stream: "Note: the configuration refers to the unknown class 'scala.collection.SeqLike'"
+
+09:11:32.567 INFO run(): module "proGuard": out_stream: "Note: the configuration refers to the unknown class 'scala.reflect.ScalaSignature'"
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "Note: there were 6 references to unknown classes."
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "      You should check your configuration for typos."
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "      (http://proguard.sourceforge.net/manual/troubleshooting.html#unknownclass)"
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "Note: you're ignoring all warnings!"
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "Ignoring unused library classes..."
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "  Original number of library classes: 7883"
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "  Final number of library classes:    208"
+
+09:11:32.695 INFO run(): module "proGuard": out_stream: "Printing kept classes, fields, and methods..."
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: ios.uikit.UIWindow window"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: void main(java.lang.String[])"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: com.intel.russiancheckers.Main alloc()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: Main(com.intel.inde.moe.natj.general.Pointer)"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: boolean applicationDidFinishLaunchingWithOptions(ios.uikit.UIApplication,ios.foundation.NSDictionary)"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: void setWindow(ios.uikit.UIWindow)"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: ios.uikit.UIWindow window()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.Main: void <clinit>()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.uikit.UILabel statusText"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.uikit.UIButton helloButton"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: com.intel.russiancheckers.ui.AppViewController alloc()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: com.intel.russiancheckers.ui.AppViewController init()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: AppViewController(com.intel.inde.moe.natj.general.Pointer)"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: void viewDidLoad()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.uikit.UILabel getLabel()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.uikit.UIButton getHelloButton()"
+
+09:11:32.705 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: void BtnPressedCancel_button(ios.NSObject)"
+
+09:11:32.706 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.uikit.UIViewController init()"
+
+09:11:32.706 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.uikit.UIResponder init()"
+
+09:11:32.706 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: ios.NSObject init()"
+
+09:11:32.706 INFO run(): module "proGuard": out_stream: "com.intel.russiancheckers.ui.AppViewController: void <clinit>()"
+
+09:11:32.706 INFO run(): module "proGuard": out_stream: "Shrinking..."
+
+09:11:32.706 INFO run(): module "proGuard": out_stream: "Printing usage to [standard output]..."
+
+09:11:32.765 INFO run(): module "proGuard": out_stream: "Removing unused program classes and class elements..."
+
+09:11:32.765 INFO run(): module "proGuard": out_stream: "  Original number of program classes: 2"
+
+09:11:32.765 INFO run(): module "proGuard": out_stream: "  Final number of program classes:    2"
+
+09:11:32.765 INFO run(): module "proGuard": out_stream: "Inlining subroutines..."
+
+09:11:32.776 INFO run(): module "proGuard": out_stream: "Preverifying..."
+
+09:11:32.847 INFO run(): module "proGuard": out_stream: "Writing output..."
+
+09:11:32.850 INFO run(): module "proGuard": out_stream: "Preparing output jar [/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/proguard/proguarded.jar]"
+
+09:11:32.853 INFO run(): module "proGuard": out_stream: "  Copying resources from program directory [/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/classes/main]"
+
+09:11:32.940 INFO createBuildDirectories(): Build directory: /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build

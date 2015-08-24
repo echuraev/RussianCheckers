@@ -1,0 +1,12 @@
+
+09:10:07.928 INFO ParseArchs(): Active architecture: i386
+
+09:10:07.928 WARNING ExecuteTask(): org.intel.xrt_builder.Algorithms.BuildPreregisterAlgorithm
+
+09:10:07.929 INFO start(): Location of preregister file: /Users/echuraev/Workspace/Projects/RussianCheckers/ios/xcode/Russian Checkers/preregister.txt
+
+09:10:07.929 INFO start(): Checking /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/proguard/proguarded.jar
+
+09:10:07.937 INFO start(): Found annotation for: com/intel/russiancheckers/Main
+
+09:10:07.938 INFO start(): Found annotation for: com/intel/russiancheckers/ui/AppViewController

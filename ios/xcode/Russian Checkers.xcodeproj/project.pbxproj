@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		581DEFA667E83B32AB6C9E1B /* MOE.framework */ = {isa = PBXBuildFile; fileRef = 31445EA6EAC46ACBD07C3895 /* MOE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4B84B5EBC3C55C97D4CDF787 /* MOE.framework */ = {isa = PBXBuildFile; fileRef = 31445EA6EAC46ACBD07C3895 /* MOE.framework */; };
+		70E9EC33F3C6708033691A54 /* preregister.txt */ = {isa = PBXBuildFile; fileRef = 5728B3E3037F33B1485538EF /* preregister.txt */; };
+		61D8542354D203D405F7033D /* main.cpp */ = {isa = PBXBuildFile; fileRef = 7A79FA6D46D5D5082F0AC1E2 /* main.cpp */; };
+		7158D046FC7CA0D091496E27 /* MainUI.storyboard */ = {isa = PBXBuildFile; fileRef = B1A26CDF709680441872B4E8 /* MainUI.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		9C3C4D49C91138ED9135404A = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				581DEFA667E83B32AB6C9E1B,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		58D460B3A2CC02DA27C0965E /* Russian Checkers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "Russian Checkers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = build.xcconfig; sourceTree = "<group>"; };
+		60F9E1AC6F8456BBFBF35F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A79FA6D46D5D5082F0AC1E2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5728B3E3037F33B1485538EF /* preregister.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = preregister.txt; sourceTree = "<group>"; };
+		31445EA6EAC46ACBD07C3895 /* MOE.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOE.framework; sourceTree = XRT_FRAMEWORK_PATH; };
+		B1A26CDF709680441872B4E8 /* MainUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MainUI.storyboard; path = ../src/main/resources/MainUI.storyboard; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4364DA187FBC39200EF49B61 = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4B84B5EBC3C55C97D4CDF787,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DF8A93B5F29D1761D4ABFAF7 = {
+			isa = PBXGroup;
+			children = (
+				E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */,
+				7A79FA6D46D5D5082F0AC1E2 /* main.cpp */,
+				60F9E1AC6F8456BBFBF35F8E /* Info.plist */,
+				5728B3E3037F33B1485538EF /* preregister.txt */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DAB9A80C8FE9F16619FADD08 = {
+			isa = PBXGroup;
+			children = (
+				58D460B3A2CC02DA27C0965E /* Russian Checkers.app */,
+				B1A26CDF709680441872B4E8 /* MainUI.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		2870AB375E2D6263BC0681B7 = {
+			isa = PBXGroup;
+			children = (
+			);
+			sourceTree = "<group>";
+		};
+		67BD7FBA943A1854F013429D = {
+			isa = PBXGroup;
+			children = (
+				31445EA6EAC46ACBD07C3895 /* MOE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		45BDD354E6F368B859026584 = {
+			isa = PBXGroup;
+			children = (
+				DF8A93B5F29D1761D4ABFAF7 /* "Supporting Files" */,
+			);
+			path = "Russian Checkers";
+			sourceTree = "<group>";
+		};
+		8BBF3849129010BBA8F8CBB3 = {
+			isa = PBXGroup;
+			children = (
+				45BDD354E6F368B859026584 /* "Russian Checkers" */,
+				67BD7FBA943A1854F013429D /* Frameworks */,
+				DAB9A80C8FE9F16619FADD08 /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		496C2BBA78D56451513140A7 = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 02CFA934C1D2BBE8B3AA82FC;
+			buildPhases = (
+				84DE782A397F3FE7046E28CA,
+				4364DA187FBC39200EF49B61,
+				17E596BF0DBE405058AC0EB9,
+				DDFA21AF7C5AE56B9B2E9B14,
+				9C3C4D49C91138ED9135404A,
+			);
+			buildRules = (
+			);
+			name = "Russian Checkers";
+			productName = "Russian Checkers";
+			productReference = 58D460B3A2CC02DA27C0965E;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6B2266F41B62B3F3DE8EE184 = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = intel;
+			};
+			buildConfigurationList = C5124BD2FC05084BB72B50EA;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8BBF3849129010BBA8F8CBB3;
+			productRefGroup = DAB9A80C8FE9F16619FADD08;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				496C2BBA78D56451513140A7,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		17E596BF0DBE405058AC0EB9 = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				70E9EC33F3C6708033691A54,
+				5AFFCA45E8CF5E2101BF6440,
+				AD30425A1A7DC77B40696DCD,
+				7158D046FC7CA0D091496E27,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		84DE782A397F3FE7046E28CA = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Compile Java Sources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cd ../\n\nexport JAVA_HOME=$(/usr/libexec/java_home -v 1.8)\njava -version\n\nfunction gradlePath {\n\tCD=\"$PWD\"\n\twhile [ \"$CD\" != \"\" ]; do\n\t\tif [ -x \"$CD/gradlew\" ]; then\n\t\t\tGRADLE_PATH=$CD/gradlew\n\t\t\treturn 0\n\t\tfi\n\t\tCD=\"${CD%/*}\"\n\tdone\n\n\tGRADLE_PATH=$(which 'gradle')\n\n\tif [ \"$GRADLE_PATH\" = \"\" ]; then\n\t\tGRADLE_PATH=/usr/local/bin/gradle\n\tfi\n}\ngradlePath\n\nif [ \"$XRT_SKIP_DEX\" == \"Yes\" ]; then\n\techo \"Compiling ART only...\"\n\t\"$GRADLE_PATH\" --daemon buildArtOat -Pxrt.archs=${arch}\n\texit\nfi\n\n\"$GRADLE_PATH\" --daemon compileJava proguard buildRetro buildDex buildArtOat buildPreregister -Pxrt.archs=\"${ARCHS}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DDFA21AF7C5AE56B9B2E9B14 = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61D8542354D203D405F7033D,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		279053CA38DDB325CA3F86FA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)",);
+				INFOPLIST_FILE = "Russian Checkers/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "${XRT_OTHER_LDFLAGS}";
+				PRODUCT_NAME = "Russian Checkers";
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "armv7 arm64 i386 x86_64";
+			};
+			name = Debug;
+		};
+		58B7358C40E1611C78E12798 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEAD_CODE_STRIPPING = NO;
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)",);
+				INFOPLIST_FILE = "Russian Checkers/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "${XRT_OTHER_LDFLAGS}";
+				PRODUCT_NAME = "Russian Checkers";
+				STRIP_STYLE = "non-global";
+				VALID_ARCHS = "armv7 arm64 i386 x86_64";
+			};
+			name = Release;
+		};
+		E920B5472B5F1995426D9FAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk = iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)","${XRT_FRAMEWORK_PATH}",);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1","$(inherited)",);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) ${XRT_FRAMEWORK_PATH}";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SYMROOT = "../build/xcode";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F7B2256E59F566E7AC380ADF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk = iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = ("$(inherited)","${XRT_FRAMEWORK_PATH}",);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1","$(inherited)",);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) ${XRT_FRAMEWORK_PATH}";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = iphoneos;
+				SYMROOT = "../build/xcode";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		02CFA934C1D2BBE8B3AA82FC = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				279053CA38DDB325CA3F86FA,
+				58B7358C40E1611C78E12798,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C5124BD2FC05084BB72B50EA = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E920B5472B5F1995426D9FAF,
+				F7B2256E59F566E7AC380ADF,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6B2266F41B62B3F3DE8EE184;
+}

@@ -1,0 +1,22 @@
+
+09:11:32.942 INFO ParseArchs(): Active architecture: i386
+
+09:11:32.942 WARNING ExecuteTask(): org.intel.xrt_builder.Algorithms.BuildRetroAlgorithm
+
+09:11:32.944 INFO start(): Running command line: "[java -Dretrolambda.inputDir=/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/retro/input -Dretrolambda.classpath=/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/retro/input:/Applications/Intel/INDE/multi_os_engine/sdk/intel-moe-ios.jar:/Applications/Intel/INDE/multi_os_engine/sdk/intel-moe-core.jar -Dretrolambda.outputDir=/Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/retro/output -Dretrolambda.natjSupport=true -Dretrolambda.defaultMethods=true -jar /Applications/Intel/INDE/multi_os_engine/tools/retrolambda.jar]"
+
+09:11:33.069 INFO run(): module "run retrolambda": out_stream: "Retrolambda 2.0.2-SNAPSHOT"
+
+09:11:33.079 INFO run(): module "run retrolambda": out_stream: "Bytecode version: 51 (Java 7)"
+
+09:11:33.079 INFO run(): module "run retrolambda": out_stream: "Default methods:  true"
+
+09:11:33.079 INFO run(): module "run retrolambda": out_stream: "NatJ support:     true"
+
+09:11:33.080 INFO run(): module "run retrolambda": out_stream: "Input directory:  /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/retro/input"
+
+09:11:33.080 INFO run(): module "run retrolambda": out_stream: "Output directory: /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/retro/output"
+
+09:11:33.080 INFO run(): module "run retrolambda": out_stream: "Classpath:        /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build/retro/input:/Applications/Intel/INDE/multi_os_engine/sdk/intel-moe-ios.jar:/Applications/Intel/INDE/multi_os_engine/sdk/intel-moe-core.jar"
+
+09:11:33.334 INFO createBuildDirectories(): Build directory: /Users/echuraev/Workspace/Projects/RussianCheckers/ios/build
