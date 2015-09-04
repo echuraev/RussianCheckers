@@ -37,6 +37,8 @@ public class ChessBoardViewController extends UIViewController {
     @Override
     @Selector("viewDidLoad")
     public void viewDidLoad() {
+        ChessBoardView chessBoardView = (ChessBoardView) ChessBoardView.alloc().initWithFrame(this.view().bounds());
+        view().addSubview(chessBoardView);
+        view().setNeedsDisplay();
     }
-
 }

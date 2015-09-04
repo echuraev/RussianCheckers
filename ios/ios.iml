@@ -30,6 +30,7 @@
     </content>
     <orderEntry type="jdk" jdkName="XRT SDK &quot;1.0.0&quot;" jdkType="XRT SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="common" exported="" />
     <orderEntry type="library" exported="" name="intel-moe-ios" level="project" />
     <orderEntry type="library" exported="" name="intel-moe-core" level="project" />
   </component>
