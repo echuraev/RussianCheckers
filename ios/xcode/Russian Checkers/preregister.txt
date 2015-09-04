@@ -1,2 +1,4 @@
 com/intel/russiancheckers/Main
 com/intel/russiancheckers/ui/AppViewController
+com/intel/russiancheckers/ui/ChessBoardViewController
+com/intel/russiancheckers/ui/SettingsViewController

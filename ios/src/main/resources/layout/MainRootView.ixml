@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.android.sdklib.widgets.iOSViewController xmlns:android="http://schemas.android.com/apk/res/android"
              android:layout_width="match_parent"
-             android:layout_height="match_parent" xmlns:xrt="http://schemas.android.com/apk/res/android" android:orientation="vertical"><com.android.sdklib.widgets.base_elements.iOSNavigationBarContainer xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="MOE_navigationControllerBar"><com.android.sdklib.widgets.iOSUnEditableNavigationBar android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/XOSNavigationBar" android:layout_weight="1"/></com.android.sdklib.widgets.base_elements.iOSNavigationBarContainer><com.android.sdklib.widgets.iOSTextView
+             android:layout_height="match_parent" xmlns:xrt="http://schemas.android.com/apk/res/android" android:orientation="vertical" xrt:viewController="com.intel.russiancheckers.ui.AppViewController"><com.android.sdklib.widgets.base_elements.iOSNavigationBarContainer xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical" android:id="MOE_navigationControllerBar"><com.android.sdklib.widgets.iOSUnEditableNavigationBar android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/XOSNavigationBar" android:layout_weight="1"/></com.android.sdklib.widgets.base_elements.iOSNavigationBarContainer><com.android.sdklib.widgets.iOSTextView
                 style="@style/XOSLabel"
                 android:textSize="20dp"
                 android:text="Russian Checkers"
-                android:layout_width="wrap_content"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" android:id="@+id/com.android.sdklib.widgets.iOSTextView" /><com.android.sdklib.widgets.iOSButton
                 android:layout_width="fill_parent"
@@ -35,6 +35,6 @@
                 android:text="Exit"
                 android:layout_gravity="left"
                 style="@style/XOSButton"
-              android:id="@+id/com.android.sdklib.widgets.iOSButton"/>
+              android:id="@+id/com.android.sdklib.widgets.iOSButton" xrt:iboutlet="exitButton" xrt:ibaction="touchCancel-BtnPressedCancel_exitButton:"/>
 
 </com.android.sdklib.widgets.iOSViewController>

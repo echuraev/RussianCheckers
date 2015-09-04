@@ -7,18 +7,14 @@ import com.intel.inde.moe.natj.general.ann.Owned;
 import com.intel.inde.moe.natj.general.ann.RegisterOnStartup;
 import com.intel.inde.moe.natj.objc.ObjCRuntime;
 import com.intel.inde.moe.natj.objc.ann.ObjCClassName;
-import com.intel.inde.moe.natj.objc.ann.Property;
 import com.intel.inde.moe.natj.objc.ann.Selector;
 
-import ios.NSObject;
-import ios.uikit.UIButton;
-import ios.uikit.UILabel;
 import ios.uikit.UIViewController;
 
 @com.intel.inde.moe.natj.general.ann.Runtime(ObjCRuntime.class)
-@ObjCClassName("AppViewController")
+@ObjCClassName("SettingsViewController")
 @RegisterOnStartup
-public class AppViewController extends UIViewController {
+public class SettingsViewController extends UIViewController {
 
     static {
         NatJ.register();
@@ -27,30 +23,20 @@ public class AppViewController extends UIViewController {
     @Generated("NatJ")
     @Owned
     @Selector("alloc")
-    public static native AppViewController alloc();
+    public static native SettingsViewController alloc();
 
     @Generated("NatJ")
     @Selector("init")
-    public native AppViewController init();
+    public native SettingsViewController init();
 
     @Generated
-    protected AppViewController(Pointer peer) {
+    protected SettingsViewController(Pointer peer) {
         super(peer);
     }
-
-    public UIButton exitButton = null;
 
     @Override
     @Selector("viewDidLoad")
     public void viewDidLoad() {
-        exitButton = getExitButton();
-    }
 
-    @Property
-    @Selector("exitButton")
-    public native UIButton getExitButton();
-
-    @Selector("BtnPressedCancel_exitButton:")
-    public void BtnPressedCancel_exitButton(NSObject sender) {
     }
 }
