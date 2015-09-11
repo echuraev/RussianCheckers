@@ -11,9 +11,17 @@ import com.intel.inde.moe.natj.objc.ObjCRuntime;
 import com.intel.inde.moe.natj.objc.ann.ObjCClassName;
 import com.intel.inde.moe.natj.objc.ann.Selector;
 
+import ios.c.Globals;
 import ios.coregraphics.c.CoreGraphics;
+import ios.coregraphics.enums.CGTextDrawingMode;
+import ios.coregraphics.enums.CGTextEncoding;
 import ios.coregraphics.opaque.CGContextRef;
 import ios.coregraphics.struct.CGRect;
+import ios.coretext.c.CoreText;
+import ios.foundation.NSAttributedString;
+import ios.foundation.NSDictionary;
+import ios.foundation.NSString;
+import ios.uikit.UIFont;
 import ios.uikit.UIView;
 import ios.uikit.c.UIKit;
 import com.intel.core.rules.GameBoard;
@@ -91,10 +99,29 @@ public class ChessBoardView extends UIView {
         CoreGraphics.CGContextFillRect(context, CoreGraphics.CGRectMake(rectX, rectY, rectWidth, rectHeight));
         double boardSize = boardW - 2*boardMargin;
         cellSize = boardSize / GameBoard.CELL_COUNT;
+        drawCellsNames();
     }
 
     private void drawCellsNames() {
+        String[] xTitle = {"a", "b", "c", "d", "e", "f", "g", "h"};
+        String[] yTitle = {"1", "2", "3", "4", "5", "6", "7", "8"};
 
+
+        CoreGraphics.CGContextSelectFont(context, "Helvetica", cellSize / 2, CGTextEncoding.kCGEncodingMacRoman);
+        CoreGraphics.CGContextSetTextDrawingMode(context, CGTextDrawingMode.Fill);
+        UIFont font = UIFont.fontWithNameSize("Arial", cellSize / 2);
+        NSDictionary stringAttrs = NSDictionary.dictionaryWithObjectsAndKeys(UIKit.UITextAttributeFont(), font);
+//                .init();//initWithObjectsAndKeys(UIKit.UITextAttributeFont(), font);
+//        stringAttrs.setValueForKey(font, UIKit.UITextAttributeFont());
+
+        for (int i = 0; i < xTitle.length; ++i) {
+            NSAttributedString attrStr = NSAttributedString.alloc().initWithStringAttributes(xTitle[i], stringAttrs);
+            attrStr.drawAtPoint(CoreGraphics.CGPointMake(cellSize / 3 + boardMargin + i * cellSize, screenH - (externalMargin + boardMargin / 3)));
+        }
+
+        for (int i = 0; i < yTitle.length; ++i) {
+            //canvas.drawText(yTitle[yTitle.length - i - 1], externalMargin + boardMargin/3, cellSize/2 + 5*externalMargin/2 + boardMargin + i*cellSize, paint);
+        }
     }
 
     private void drawCells() {
