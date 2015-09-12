@@ -13,6 +13,13 @@ public class CellRect {
         this.bottom = bottom;
     }
 
+    public CellRect(double left, double top, double right, double bottom) {
+        this.left = (float) left;
+        this.top = (float) top;
+        this.right = (float) right;
+        this.bottom = (float) bottom;
+    }
+
     public float getLeft() {
         return left;
     }
@@ -27,6 +34,14 @@ public class CellRect {
 
     public float getBottom() {
         return bottom;
+    }
+
+    public float getWidth() {
+        return Math.abs(this.right - this.left);
+    }
+
+    public float getHeight() {
+        return Math.abs(this.bottom - this.top);
     }
 
     public boolean contains(float x, float y) {
