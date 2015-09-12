@@ -9,13 +9,11 @@ import com.intel.inde.moe.natj.general.ann.ByValue;
 import com.intel.inde.moe.natj.general.ann.Generated;
 import com.intel.inde.moe.natj.general.ann.Owned;
 import com.intel.inde.moe.natj.general.ann.RegisterOnStartup;
-import com.intel.inde.moe.natj.general.ptr.ConstNFloatPtr;
 import com.intel.inde.moe.natj.objc.ObjCRuntime;
 import com.intel.inde.moe.natj.objc.ann.ObjCClassName;
 import com.intel.inde.moe.natj.objc.ann.Selector;
 
 import ios.coregraphics.c.CoreGraphics;
-import ios.coregraphics.enums.CGColorRenderingIntent;
 import ios.coregraphics.enums.CGTextDrawingMode;
 import ios.coregraphics.enums.CGTextEncoding;
 import ios.coregraphics.opaque.CGColorRef;
@@ -147,7 +145,6 @@ public class ChessBoardView extends UIView {
                     CoreGraphics.CGContextSetRGBFillColor(context, 0, 0, 0, 1);
                     if (gameBoard.getCell(row, col).isHighlight())
                         CoreGraphics.CGContextSetFillColor(context, CoreGraphics.CGColorGetComponents(HIGHLIGHT_COLOR));
-                        //CoreGraphics.CGContextSetRGBFillColor(context, 0, 255, 0, 1); // TODO: Make it like variable
                 }
                 CoreGraphics.CGContextFillRect(context, CoreGraphics.CGRectMake(rect.getLeft(), rect.getTop(),
                         rect.getWidth(), rect.getHeight()));
@@ -177,18 +174,16 @@ public class ChessBoardView extends UIView {
     }
 
     private void drawCrown(double cx, double cy, double radius) {
-//        Path path = new Path();
-//        float crownWidth = ((cx + radius/2) - (cx - radius/2));
-//        path.moveTo(cx + radius/3, cy + radius / 3);
-//        path.lineTo(cx - radius/3, cy + radius / 3);
-//        path.lineTo(cx - radius/2, cy - radius / 3);
-//        path.lineTo(cx - radius/2 + crownWidth/4, cy);
-//        path.lineTo(cx - radius/2 + crownWidth/2, cy - radius / 3);
-//        path.lineTo(cx - radius/2 + 3*crownWidth/4, cy);
-//        path.lineTo(cx - radius/2 + crownWidth, cy - radius / 3);
-//        path.moveTo(cx + radius/3, cy + radius / 3);
-//        path.close();
-//        paint.setColor(CROWN_COLOR);
-//        canvas.drawPath(path, paint);
+        double crownWidth = ((cx + radius/2) - (cx - radius/2));
+        CoreGraphics.CGContextMoveToPoint(context, cx + radius/3, cy + radius/3);
+        CoreGraphics.CGContextAddLineToPoint(context, cx - radius / 3, cy + radius / 3);
+        CoreGraphics.CGContextAddLineToPoint(context, cx - radius/2, cy - radius/3);
+        CoreGraphics.CGContextAddLineToPoint(context, cx - radius/2 + crownWidth/4, cy);
+        CoreGraphics.CGContextAddLineToPoint(context, cx - radius/2 + crownWidth/2, cy - radius/3);
+        CoreGraphics.CGContextAddLineToPoint(context, cx - radius/2 + 3*crownWidth/4, cy);
+        CoreGraphics.CGContextAddLineToPoint(context, cx - radius/2 + crownWidth, cy - radius/3);
+        CoreGraphics.CGContextAddLineToPoint(context, cx + radius/3, cy + radius/3);
+        CoreGraphics.CGContextSetFillColor(context, CoreGraphics.CGColorGetComponents(CROWN_COLOR));
+        CoreGraphics.CGContextFillPath(context);
     }
 }
