@@ -9,6 +9,7 @@ import com.intel.inde.moe.natj.objc.ObjCRuntime;
 import com.intel.inde.moe.natj.objc.ann.ObjCClassName;
 import com.intel.inde.moe.natj.objc.ann.Selector;
 
+import ios.uikit.UILabel;
 import ios.uikit.UIViewController;
 
 @com.intel.inde.moe.natj.general.ann.Runtime(ObjCRuntime.class)
@@ -39,6 +40,7 @@ public class ChessBoardViewController extends UIViewController {
     public void viewDidLoad() {
         ChessBoardView chessBoardView = (ChessBoardView) ChessBoardView.alloc().initWithFrame(this.view().bounds());
         view().addSubview(chessBoardView);
+        //UILabel statusText =
         view().setNeedsDisplay();
     }
 }

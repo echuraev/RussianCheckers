@@ -19,7 +19,11 @@ import ios.coregraphics.enums.CGTextEncoding;
 import ios.coregraphics.opaque.CGColorRef;
 import ios.coregraphics.opaque.CGContextRef;
 import ios.coregraphics.struct.CGRect;
+import ios.foundation.NSArray;
+import ios.foundation.NSDictionary;
+import ios.foundation.NSString;
 import ios.uikit.UIColor;
+import ios.uikit.UIFont;
 import ios.uikit.UIView;
 import ios.uikit.c.UIKit;
 import com.intel.core.rules.GameBoard;
@@ -74,13 +78,21 @@ public class ChessBoardView extends UIView {
 
     private void drawBoard() {
         CoreGraphics.CGContextSetRGBFillColor(context, 0, 0, 0, 1);
+//        double boardW = screenW;
+//        double boardH = screenW;
+//        if (screenH < screenW) {
+//            boardW = screenH;
+//            boardH = screenH;
+//        }
+//        TODO: Replace everywhere screen on board
+        if (screenH < screenW) {
+            screenW = screenH;
+        }
+        else {
+            screenH = screenW;
+        }
         double boardW = screenW;
         double boardH = screenW;
-        if (screenH < screenW)
-        {
-            boardW = screenH;
-            boardH = screenH;
-        }
         System.out.println("BoardW: " + String.valueOf(boardW));
         System.out.println("BoardH: " + String.valueOf(boardH));
         double rectX = externalMargin;
@@ -111,22 +123,19 @@ public class ChessBoardView extends UIView {
     private void drawCellsNames() {
         String[] xTitle = {"a", "b", "c", "d", "e", "f", "g", "h"};
         String[] yTitle = {"1", "2", "3", "4", "5", "6", "7", "8"};
-
-
-        CoreGraphics.CGContextSelectFont(context, "Helvetica", cellSize / 2, CGTextEncoding.kCGEncodingMacRoman);
-        CoreGraphics.CGContextSetTextDrawingMode(context, CGTextDrawingMode.Fill);
-//        UIFont font = UIFont.fontWithNameSize("Arial", cellSize / 2);
-//        NSDictionary stringAttrs = NSDictionary.dictionaryWithObjectsAndKeys(UIKit.UITextAttributeFont(), font);
-//                .init();//initWithObjectsAndKeys(UIKit.UITextAttributeFont(), font);
-//        stringAttrs.setValueForKey(font, UIKit.UITextAttributeFont());
+        UIFont font = UIFont.fontWithNameSize("Arial", cellSize / 2);
+        NSDictionary dict = NSDictionary.alloc().initWithObjectsAndKeys(font, "NSFontAttributeName", null);
 
         for (int i = 0; i < xTitle.length; ++i) {
-//            NSAttributedString attrStr = NSAttributedString.alloc().initWithStringAttributes(xTitle[i], stringAttrs);
-//            attrStr.drawAtPoint(CoreGraphics.CGPointMake(cellSize / 3 + boardMargin + i * cellSize, screenH - (externalMargin + boardMargin / 3)));
+            NSString text = NSString.alloc().initWithString(xTitle[i]);
+            text.drawAtPointWithAttributes(CoreGraphics.CGPointMake(cellSize / 3 + boardMargin + i * cellSize, (screenH + navBarHeight) - (externalMargin + 2*boardMargin/3)),
+                    dict);
         }
 
         for (int i = 0; i < yTitle.length; ++i) {
-            //canvas.drawText(yTitle[yTitle.length - i - 1], externalMargin + boardMargin/3, cellSize/2 + 5*externalMargin/2 + boardMargin + i*cellSize, paint);
+            NSString text = NSString.alloc().initWithString(yTitle[yTitle.length - i - 1]);
+            text.drawAtPointWithAttributes(CoreGraphics.CGPointMake(externalMargin + boardMargin/3, navBarHeight + cellSize/3 + boardMargin + i*cellSize),
+                    dict);
         }
     }
 
