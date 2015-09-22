@@ -14,12 +14,9 @@ import com.intel.inde.moe.natj.objc.ann.ObjCClassName;
 import com.intel.inde.moe.natj.objc.ann.Selector;
 
 import ios.coregraphics.c.CoreGraphics;
-import ios.coregraphics.enums.CGTextDrawingMode;
-import ios.coregraphics.enums.CGTextEncoding;
 import ios.coregraphics.opaque.CGColorRef;
 import ios.coregraphics.opaque.CGContextRef;
 import ios.coregraphics.struct.CGRect;
-import ios.foundation.NSArray;
 import ios.foundation.NSDictionary;
 import ios.foundation.NSString;
 import ios.uikit.UIColor;
@@ -137,6 +134,20 @@ public class ChessBoardView extends UIView {
             text.drawAtPointWithAttributes(CoreGraphics.CGPointMake(externalMargin + boardMargin/3, navBarHeight + cellSize/3 + boardMargin + i*cellSize),
                     dict);
         }
+
+        CoreGraphics.CGContextRotateCTM(context, Math.toRadians(180));
+        for (int i = 0; i < xTitle.length; ++i) {
+            NSString text = NSString.alloc().initWithString(xTitle[i]);
+            text.drawAtPointWithAttributes(CoreGraphics.CGPointMake(-(cellSize / 2 + externalMargin + boardMargin + i * cellSize), -(navBarHeight + externalMargin + 2*boardMargin/3)),
+                    dict);
+        }
+
+        for (int i = 0; i < yTitle.length; ++i) {
+            NSString text = NSString.alloc().initWithString(yTitle[yTitle.length - i - 1]);
+            text.drawAtPointWithAttributes(CoreGraphics.CGPointMake(-(screenW - (externalMargin + boardMargin/3)), -(navBarHeight + cellSize/2 + 3*externalMargin/2 + boardMargin + i*cellSize)),
+                    dict);
+        }
+        CoreGraphics.CGContextRotateCTM(context, Math.toRadians(180));
     }
 
     private void drawCells() {
