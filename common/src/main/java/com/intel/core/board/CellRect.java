@@ -48,4 +48,9 @@ public class CellRect {
         return left < right && top < bottom  // check for empty first
                 && x >= left && x < right && y >= top && y < bottom;
     }
+
+    public boolean contains(double x, double y) {
+        return left < right && top < bottom  // check for empty first
+                && x >= left && x < right && y >= top && y < bottom;
+    }
 }
