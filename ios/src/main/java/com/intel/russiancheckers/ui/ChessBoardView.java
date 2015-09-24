@@ -3,6 +3,7 @@ package com.intel.russiancheckers.ui;
 
 import com.intel.core.algorithm.AlgorithmType;
 import com.intel.core.algorithm.AlphaBetaPruning;
+import com.intel.core.algorithm.HumanPlayer;
 import com.intel.core.algorithm.IAlgorithm;
 import com.intel.core.board.BoardCell;
 import com.intel.core.board.CellRect;
@@ -69,17 +70,20 @@ public class ChessBoardView extends UIView {
 
     protected ChessBoardView(Pointer peer) {
         super(peer);
-        //this.setContentMode(UIViewContentMode.Redraw);
-//        clickThread = null;
         gameBoard = new GameBoard();
         previousCell = null;
         requiredMoveCell = null;
         player = Player.WHITE;
-//        if (type == AlgorithmType.COMPUTER)
-//            algorithm = new AlphaBetaPruning(gameBoard, difficulty);
-//        else
-//            algorithm = new HumanPlayer();
-        algorithm = new AlphaBetaPruning(gameBoard, AlphaBetaPruning.MEDIUM_DIFFICULTY);//TODO: difficulty);
+    }
+
+    public UIView initWithFrameAndParams(@ByValue CGRect cgRect, AlgorithmType type, int difficulty) {
+        if (type == AlgorithmType.COMPUTER) {
+            algorithm = new AlphaBetaPruning(gameBoard, difficulty);
+        }
+        else {
+            algorithm = new HumanPlayer();
+        }
+        return super.initWithFrame(cgRect);
     }
 
     @Override

@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="366267de-f78f-4ee1-8482-40a2e658785f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="40be5f2b-089e-4ffc-83d1-3eda9ddcafa9">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
         <!--Chess Board View Controller-->
-        <scene sceneID="f5f62c1e-ce94-479f-b8b2-8c41e964cfdc">
+        <scene sceneID="6fb41c60-fdb4-4b5c-a534-5a760dc705c8">
             <objects>
-                <viewController id="079dafc4-738f-4346-aaf5-6ff5e6a137ae" customClass="ChessBoardViewController" sceneMemberID="viewController">
+                <viewController id="6e42d3bf-d2bd-4e1d-b447-02334761a9dd" customClass="ChessBoardViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="e733ad8e-e8a3-4619-aa7d-689801d91669"/>
-                        <viewControllerLayoutGuide type="bottom" id="60d02a6f-3750-4cc3-b788-c3558e0834d6"/>
+                        <viewControllerLayoutGuide type="top" id="b0b7b93b-426c-4f1e-b2bf-951247680521"/>
+                        <viewControllerLayoutGuide type="bottom" id="117d8e57-71ca-4462-a975-c7b9c563e091"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="008f5250-fede-43c9-b425-addb1c059fa2">
+                    <view key="view" contentMode="scaleToFill" id="70785e0c-caaa-4d9e-aef7-1c403871b1fc">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="023c5fd4-d2d3-453e-bfbd-2cd7d306b229">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54ae3cac-9d0b-4b40-b991-a7f2676b575a">
                                 <rect key="frame" x="0.0" y="65" width="600" height="535"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="023c5fd4-d2d3-453e-bfbd-2cd7d306b229" secondAttribute="trailing" priority="900" id="30e786d9-9100-4e32-8b4b-2b346f14f0ae"/>
-                            <constraint firstItem="023c5fd4-d2d3-453e-bfbd-2cd7d306b229" firstAttribute="top" secondItem="008f5250-fede-43c9-b425-addb1c059fa2" secondAttribute="top" priority="950" constant="65" id="5df86b36-4ffa-4e82-8259-e047f4859822"/>
-                            <constraint firstItem="023c5fd4-d2d3-453e-bfbd-2cd7d306b229" firstAttribute="leading" secondItem="008f5250-fede-43c9-b425-addb1c059fa2" secondAttribute="leading" priority="950" id="876e60fd-ad7d-4f17-896f-6ac0099054f5"/>
-                            <constraint firstAttribute="bottom" secondItem="023c5fd4-d2d3-453e-bfbd-2cd7d306b229" secondAttribute="bottom" priority="900" id="a359fdd8-c475-49ef-920f-ad1202f7c97c"/>
+                            <constraint firstItem="54ae3cac-9d0b-4b40-b991-a7f2676b575a" firstAttribute="leading" secondItem="70785e0c-caaa-4d9e-aef7-1c403871b1fc" secondAttribute="leading" priority="950" id="181fb1bb-4949-497b-b0fb-ca8fce6d7780"/>
+                            <constraint firstAttribute="trailing" secondItem="54ae3cac-9d0b-4b40-b991-a7f2676b575a" secondAttribute="trailing" priority="900" id="54927885-b22e-443e-8514-e28396783e7a"/>
+                            <constraint firstItem="54ae3cac-9d0b-4b40-b991-a7f2676b575a" firstAttribute="top" secondItem="70785e0c-caaa-4d9e-aef7-1c403871b1fc" secondAttribute="top" priority="950" constant="65" id="8e0dc8c1-c81e-4b1d-9d66-56658975b500"/>
+                            <constraint firstAttribute="bottom" secondItem="54ae3cac-9d0b-4b40-b991-a7f2676b575a" secondAttribute="bottom" priority="900" id="c964d6fb-0abc-43ec-9f19-e9517534b233"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="e0e13ecd-c528-4816-bd73-fa1781e532c9"/>
+                    <navigationItem key="navigationItem" id="e3e89ea0-de4f-45a1-bd3a-24a0914e7810"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="c8a7c47e-c400-437f-bd60-62d0fdcb7b05" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="c4cbcb2c-d0ae-42e6-a53f-620f597b2574" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="181.33333333333334" y="395.70666666666665"/>
         </scene>
         <!--App View Controller-->
-        <scene sceneID="44963e06-1143-44d5-a81d-03bb5ae03264">
+        <scene sceneID="8f41d139-0b40-4030-b7eb-4fd16a5d513e">
             <objects>
-                <viewController id="839adae0-8c40-45a6-b713-afb4af936c54" customClass="AppViewController" sceneMemberID="viewController">
+                <viewController id="2dd7ad6f-ec69-44d4-a778-1c0e0e3082ba" customClass="AppViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="d158e11c-3a29-4baf-94e6-0bb06b51f6d6"/>
-                        <viewControllerLayoutGuide type="bottom" id="b1142dd2-a445-4cfb-bd28-5b40623589f4"/>
+                        <viewControllerLayoutGuide type="top" id="e0243d03-5581-4ca4-a403-6b65034b98f4"/>
+                        <viewControllerLayoutGuide type="bottom" id="021232f9-9410-481a-b5f4-7eb9252ff4ff"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f">
+                    <view key="view" contentMode="scaleToFill" id="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" contentMode="scaleToFill" text="Russian Checkers" lineBreakMode="tailTruncation" id="05a9c6cf-2fe7-4f08-9354-ab9eedaa56f7">
+                            <label opaque="NO" contentMode="scaleToFill" text="Russian Checkers" lineBreakMode="tailTruncation" id="60eb1051-7ef7-4257-bf67-3eddbfc9bc90">
                                 <rect key="frame" x="220" y="65" width="160" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="1bad704c-5016-41fb-b602-2aeb302aac55"/>
-                                    <constraint firstAttribute="width" constant="160" id="4b20010b-f238-4f59-99b3-3fb4a3acde06"/>
+                                    <constraint firstAttribute="height" constant="30" id="a621860f-e2dc-401e-a418-7eb96d18fa8c"/>
+                                    <constraint firstAttribute="width" constant="160" id="bb0a011b-a729-42f9-a578-ec244a28b149"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="761461a7-839a-457f-a57c-cebc5cce3c06">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e947d0df-95c4-4fda-a384-c6c3c01c8944">
                                 <rect key="frame" x="0.0" y="95" width="600" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="d80f4a2c-cd0e-4c63-98e8-74546e3c4fa8"/>
+                                    <constraint firstAttribute="height" constant="25" id="0f122265-3b5c-4fb2-a5d2-54d1a7adb72a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="New Game vs Computer">
@@ -69,14 +69,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="079dafc4-738f-4346-aaf5-6ff5e6a137ae" kind="show" identifier="newGameVSComputer" id="c204ec18-5c22-4c23-9251-be13ed0e87bb"/>
+                                    <segue destination="6e42d3bf-d2bd-4e1d-b447-02334761a9dd" kind="show" identifier="newGameVSComputer" id="89bf356e-061e-4625-95f0-574b990cea3f"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8168899e-6d41-4083-bc74-8980525bbffb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a38d84f9-f102-487d-93eb-bae2431ee76b">
                                 <rect key="frame" x="0.0" y="120" width="600" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="5116eb95-573a-41cc-ac1b-8002d006ee0b"/>
+                                    <constraint firstAttribute="height" constant="25" id="cd6eec67-72c8-40f6-bf3c-665b21ed1252"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="New Game vs Human">
@@ -84,14 +84,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="079dafc4-738f-4346-aaf5-6ff5e6a137ae" kind="show" identifier="newGameVSHuman" id="9d26480b-ee8a-4a96-80b1-5ff860855b27"/>
+                                    <segue destination="6e42d3bf-d2bd-4e1d-b447-02334761a9dd" kind="show" identifier="newGameVSHuman" id="d69e9262-6a5c-4f25-9964-ef732fae602a"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bd86aa0-97dc-4085-8974-e40dfe0ae324">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8be20d12-45e6-4c88-bb05-8840a1978c23">
                                 <rect key="frame" x="0.0" y="145" width="600" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="4273ab1a-4528-4a81-be41-95901d27aa4e"/>
+                                    <constraint firstAttribute="height" constant="25" id="33cc8e24-bdc4-4c92-9b29-c079498fa17c"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Settings">
@@ -99,14 +99,14 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="6d31645f-540c-4e15-989d-cdd4fe9ca229" kind="show" identifier="settings" id="dacd0ffe-156d-4cf4-ab5f-80f88a83de27"/>
+                                    <segue destination="51efb306-4466-4bd6-b742-812345733a58" kind="show" identifier="settings" id="6e0f6b59-9972-4a8c-a88a-900d56737c62"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d96f0add-c8eb-4f3f-9870-b7c106209791">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a9b3187e-2fc6-4510-ac4d-064b494aedf9">
                                 <rect key="frame" x="0.0" y="170" width="600" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="f2908a89-fe1a-4866-80a2-271da643b748"/>
+                                    <constraint firstAttribute="height" constant="25" id="bda69dc3-5cda-4dbb-bde6-60849e94a415"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Exit">
@@ -114,100 +114,100 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="BtnPressedCancel_exitButton:" destination="839adae0-8c40-45a6-b713-afb4af936c54" eventType="touchCancel" id="80eb806e-11c7-4fb9-8ec1-6f6493e637e8"/>
+                                    <action selector="BtnPressedCancel_exitButton:" destination="2dd7ad6f-ec69-44d4-a778-1c0e0e3082ba" eventType="touchCancel" id="da37bb63-b5f0-4ba3-9e85-8ad62e08713f"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="761461a7-839a-457f-a57c-cebc5cce3c06" firstAttribute="bottom" secondItem="8168899e-6d41-4083-bc74-8980525bbffb" secondAttribute="top" priority="950" id="18f16b67-8495-40c3-93eb-2a401d08a662"/>
-                            <constraint firstAttribute="trailing" secondItem="8168899e-6d41-4083-bc74-8980525bbffb" secondAttribute="trailing" priority="900" id="2ed8d720-a1b6-439d-9be2-fa7e05707dea"/>
-                            <constraint firstAttribute="trailing" secondItem="d96f0add-c8eb-4f3f-9870-b7c106209791" secondAttribute="trailing" priority="900" id="399956b0-4a5a-4d93-844b-93e192a29b0f"/>
-                            <constraint firstItem="0bd86aa0-97dc-4085-8974-e40dfe0ae324" firstAttribute="width" secondItem="d96f0add-c8eb-4f3f-9870-b7c106209791" secondAttribute="width" priority="500" id="399af5fb-9ffe-465b-9096-eb6cb745ae41"/>
-                            <constraint firstItem="8168899e-6d41-4083-bc74-8980525bbffb" firstAttribute="leading" secondItem="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f" secondAttribute="leading" priority="950" id="41cca9a7-58b2-4d3c-b01b-6c30729ea523"/>
-                            <constraint firstItem="05a9c6cf-2fe7-4f08-9354-ab9eedaa56f7" firstAttribute="centerX" secondItem="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f" secondAttribute="centerX" id="51f714e8-cb2d-4ff5-a16f-bfa88c7ff43d"/>
-                            <constraint firstItem="05a9c6cf-2fe7-4f08-9354-ab9eedaa56f7" firstAttribute="bottom" secondItem="761461a7-839a-457f-a57c-cebc5cce3c06" secondAttribute="top" priority="950" id="5c3f9783-6f5d-477e-8a63-a1b2e9ed1843"/>
-                            <constraint firstAttribute="bottom" secondItem="d96f0add-c8eb-4f3f-9870-b7c106209791" secondAttribute="bottom" priority="900" id="5ef45dec-ac83-4f04-aa5a-be9a0867775a"/>
-                            <constraint firstItem="d96f0add-c8eb-4f3f-9870-b7c106209791" firstAttribute="leading" secondItem="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f" secondAttribute="leading" priority="950" id="718e3bfe-23b1-44cc-9414-1171f292ed0b"/>
-                            <constraint firstItem="0bd86aa0-97dc-4085-8974-e40dfe0ae324" firstAttribute="bottom" secondItem="d96f0add-c8eb-4f3f-9870-b7c106209791" secondAttribute="top" priority="950" id="77e7c09b-6cd5-49ca-a0cd-f69201f909f4"/>
-                            <constraint firstItem="05a9c6cf-2fe7-4f08-9354-ab9eedaa56f7" firstAttribute="top" secondItem="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f" secondAttribute="top" priority="950" constant="65" id="7acdde6e-5bb8-41a9-b48d-9f9ed7a866c4"/>
-                            <constraint firstItem="8168899e-6d41-4083-bc74-8980525bbffb" firstAttribute="bottom" secondItem="0bd86aa0-97dc-4085-8974-e40dfe0ae324" secondAttribute="top" priority="950" id="7b32e103-f13c-41a3-8537-b68a5e5c0065"/>
-                            <constraint firstItem="0bd86aa0-97dc-4085-8974-e40dfe0ae324" firstAttribute="leading" secondItem="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f" secondAttribute="leading" priority="950" id="921275fe-e052-4cbb-8903-e7cd8bd34cba"/>
-                            <constraint firstItem="761461a7-839a-457f-a57c-cebc5cce3c06" firstAttribute="leading" secondItem="fc11efa8-41b8-4a1b-a917-c4e4b7f7574f" secondAttribute="leading" priority="950" id="931cb4a2-babc-449c-b977-4cdc1d5dd9eb"/>
-                            <constraint firstAttribute="trailing" secondItem="761461a7-839a-457f-a57c-cebc5cce3c06" secondAttribute="trailing" priority="900" id="b54e68a4-c0eb-4af7-b375-38ec62489263"/>
-                            <constraint firstItem="761461a7-839a-457f-a57c-cebc5cce3c06" firstAttribute="width" secondItem="8168899e-6d41-4083-bc74-8980525bbffb" secondAttribute="width" priority="500" id="d6f2fe30-10a9-49d9-9161-78c54b18e914"/>
-                            <constraint firstAttribute="trailing" secondItem="0bd86aa0-97dc-4085-8974-e40dfe0ae324" secondAttribute="trailing" priority="900" id="f0ccb20e-75a2-43be-a951-0ae2b8834124"/>
-                            <constraint firstItem="8168899e-6d41-4083-bc74-8980525bbffb" firstAttribute="width" secondItem="0bd86aa0-97dc-4085-8974-e40dfe0ae324" secondAttribute="width" priority="500" id="ff85d6a8-41cc-4ef3-b749-e2ec2dc64863"/>
+                            <constraint firstItem="a9b3187e-2fc6-4510-ac4d-064b494aedf9" firstAttribute="leading" secondItem="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f" secondAttribute="leading" priority="950" id="0182022d-9b28-4fa5-b280-8f88c176b010"/>
+                            <constraint firstItem="e947d0df-95c4-4fda-a384-c6c3c01c8944" firstAttribute="bottom" secondItem="a38d84f9-f102-487d-93eb-bae2431ee76b" secondAttribute="top" priority="950" id="0d0c527a-460a-4b17-b6d4-0b1b49022d6e"/>
+                            <constraint firstItem="60eb1051-7ef7-4257-bf67-3eddbfc9bc90" firstAttribute="bottom" secondItem="e947d0df-95c4-4fda-a384-c6c3c01c8944" secondAttribute="top" priority="950" id="101252f9-f36e-46d8-87a3-e9c87c58d87e"/>
+                            <constraint firstItem="a38d84f9-f102-487d-93eb-bae2431ee76b" firstAttribute="bottom" secondItem="8be20d12-45e6-4c88-bb05-8840a1978c23" secondAttribute="top" priority="950" id="12940547-2771-48ed-b7a3-ede1825ea76b"/>
+                            <constraint firstAttribute="trailing" secondItem="a9b3187e-2fc6-4510-ac4d-064b494aedf9" secondAttribute="trailing" priority="900" id="3ae8eb30-7562-434d-8c25-93fbbd209809"/>
+                            <constraint firstAttribute="bottom" secondItem="a9b3187e-2fc6-4510-ac4d-064b494aedf9" secondAttribute="bottom" priority="900" id="490f5643-e077-4f2f-af94-ce80a9deb3cd"/>
+                            <constraint firstAttribute="trailing" secondItem="e947d0df-95c4-4fda-a384-c6c3c01c8944" secondAttribute="trailing" priority="900" id="50cd6704-d149-4934-89f0-9609fd6b62b5"/>
+                            <constraint firstItem="60eb1051-7ef7-4257-bf67-3eddbfc9bc90" firstAttribute="centerX" secondItem="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f" secondAttribute="centerX" id="510f5609-a3e8-417b-ad8f-b375baf5bfcd"/>
+                            <constraint firstItem="8be20d12-45e6-4c88-bb05-8840a1978c23" firstAttribute="bottom" secondItem="a9b3187e-2fc6-4510-ac4d-064b494aedf9" secondAttribute="top" priority="950" id="6cae7a77-a91f-416c-a58c-35ba7184fe3c"/>
+                            <constraint firstItem="a38d84f9-f102-487d-93eb-bae2431ee76b" firstAttribute="leading" secondItem="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f" secondAttribute="leading" priority="950" id="748f2dc1-d161-45d4-a0a0-c754e63e7781"/>
+                            <constraint firstAttribute="trailing" secondItem="a38d84f9-f102-487d-93eb-bae2431ee76b" secondAttribute="trailing" priority="900" id="818874e5-d7aa-4096-b935-7b8fd83e5785"/>
+                            <constraint firstItem="e947d0df-95c4-4fda-a384-c6c3c01c8944" firstAttribute="leading" secondItem="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f" secondAttribute="leading" priority="950" id="937b474e-1041-43cc-b840-2f6a77df35a3"/>
+                            <constraint firstItem="e947d0df-95c4-4fda-a384-c6c3c01c8944" firstAttribute="width" secondItem="a38d84f9-f102-487d-93eb-bae2431ee76b" secondAttribute="width" priority="500" id="b1eeefbd-74c0-4e98-9419-a003471091ac"/>
+                            <constraint firstItem="8be20d12-45e6-4c88-bb05-8840a1978c23" firstAttribute="leading" secondItem="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f" secondAttribute="leading" priority="950" id="c04d555d-3256-4555-9510-109e2247019e"/>
+                            <constraint firstItem="8be20d12-45e6-4c88-bb05-8840a1978c23" firstAttribute="width" secondItem="a9b3187e-2fc6-4510-ac4d-064b494aedf9" secondAttribute="width" priority="500" id="c94aa069-964c-424e-a972-f3ae2343fc73"/>
+                            <constraint firstAttribute="trailing" secondItem="8be20d12-45e6-4c88-bb05-8840a1978c23" secondAttribute="trailing" priority="900" id="cd9fc24b-9c7c-40b3-8f71-b00d60e8a9d1"/>
+                            <constraint firstItem="a38d84f9-f102-487d-93eb-bae2431ee76b" firstAttribute="width" secondItem="8be20d12-45e6-4c88-bb05-8840a1978c23" secondAttribute="width" priority="500" id="d0b57768-2468-4fcc-bab8-8d3975f89833"/>
+                            <constraint firstItem="60eb1051-7ef7-4257-bf67-3eddbfc9bc90" firstAttribute="top" secondItem="bd1b9c78-99d2-48de-b3ce-64a4d52c2c6f" secondAttribute="top" priority="950" constant="65" id="f47db355-6539-4067-831f-14119039eb46"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="7bf99efa-b6ad-4104-97a4-b4984bd24510"/>
+                    <navigationItem key="navigationItem" id="84f3673b-d4a6-421f-b37c-24197ff952f1"/>
                     <connections>
-                        <outlet property="exitButton" destination="d96f0add-c8eb-4f3f-9870-b7c106209791" id="d328ec33-3d1a-48d1-b9b8-6b95693ba344"/>
+                        <outlet property="exitButton" destination="a9b3187e-2fc6-4510-ac4d-064b494aedf9" id="628a6aaf-ee55-4bc3-9944-7a6ae85dd93c"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0892f500-e740-4305-bd9d-3ffb232d2fa5" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d19132d1-822b-42ee-ae5b-411746be10e0" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="181.33333333333334" y="395.70666666666665"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="6f7962da-c76b-42cc-9a46-db4a728e6456">
+        <scene sceneID="aa3bb02f-97b6-4532-96c2-77483ab6d26d">
             <objects>
-                <navigationController id="366267de-f78f-4ee1-8482-40a2e658785f" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1171f956-c91a-4a46-ad16-d5acced2425a">
+                <navigationController id="40be5f2b-089e-4ffc-83d1-3eda9ddcafa9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="83c4c47d-c504-4f99-b07e-08b5b948992f">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="839adae0-8c40-45a6-b713-afb4af936c54" kind="relationship" relationship="rootViewController" id="ae8a929a-caaf-43b7-bcbc-8cc874779b32"/>
+                        <segue destination="2dd7ad6f-ec69-44d4-a778-1c0e0e3082ba" kind="relationship" relationship="rootViewController" id="7a7dd45c-84f1-4222-81bd-752f34509a31"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7069e60c-2600-4ecd-a41d-6e65b85e73a8" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="27bfd819-58c9-40dc-b1ea-5024e01c6734" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="181.33333333333334" y="395.70666666666665"/>
         </scene>
         <!--View Controller-->
-        <scene sceneID="4b8efd67-d716-452b-b1d3-d745aa9d7918">
+        <scene sceneID="05f7326c-bfa5-433d-8f54-b5df1031da12">
             <objects>
-                <viewController id="6d31645f-540c-4e15-989d-cdd4fe9ca229" customClass="ViewController" sceneMemberID="viewController">
+                <viewController id="51efb306-4466-4bd6-b742-812345733a58" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="8da2b6d4-ad52-477d-b8e9-3400219d28e2"/>
-                        <viewControllerLayoutGuide type="bottom" id="277b50cb-0155-4681-83dd-9b86ede1bfee"/>
+                        <viewControllerLayoutGuide type="top" id="8bd1213f-72b4-479a-ae5a-9b0ac9372dd1"/>
+                        <viewControllerLayoutGuide type="bottom" id="0792ef1f-e62e-4853-87fb-2fc4759ebe6b"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5f87b1d9-20b5-40c5-bd60-dfd5bcebb548">
+                    <view key="view" contentMode="scaleToFill" id="4897c62c-3783-4d57-9797-f403e9557dde">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" contentMode="scaleToFill" text="Settings" lineBreakMode="tailTruncation" id="a2f5e2d1-420b-48bf-ab94-c32cc3c3e825">
+                            <label opaque="NO" contentMode="scaleToFill" text="Settings" lineBreakMode="tailTruncation" id="a91d68f0-b5e5-4105-9e40-d75550df7371">
                                 <rect key="frame" x="255" y="65" width="90" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="8c29d090-7917-4075-8a82-9a5f434a8087"/>
-                                    <constraint firstAttribute="height" constant="30" id="9f6db134-d6b4-47fb-8869-646c52ca2ca9"/>
+                                    <constraint firstAttribute="width" constant="90" id="125404aa-9f98-4158-bcb9-9304dd702d38"/>
+                                    <constraint firstAttribute="height" constant="30" id="2de786d2-7395-424f-8e52-b970349af02d"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" contentMode="scaleToFill" text="Difficulty:" lineBreakMode="tailTruncation" id="e4b4f20d-0e39-4780-830d-b4dade1f4ead">
+                            <label opaque="NO" contentMode="scaleToFill" text="Difficulty:" lineBreakMode="tailTruncation" id="8400bccd-d062-48f0-9458-0a36c62710bf">
                                 <rect key="frame" x="0.0" y="95" width="87" height="25"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="abf1c979-d339-46f1-952c-5080e60bc294"/>
-                                    <constraint firstAttribute="width" constant="87" id="eb6cf061-a9b5-403f-8552-1cb88fda7f0f"/>
+                                    <constraint firstAttribute="width" constant="87" id="038f3bc5-5f30-4878-8d46-073a1c8df93a"/>
+                                    <constraint firstAttribute="height" constant="25" id="9a9878c5-5f85-4625-b577-44a84edcaf2b"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d62448e1-767f-465e-a7f2-14b9e541d2bf">
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebc8b562-c08c-4a40-99cb-4430ef0faa6f">
                                 <rect key="frame" x="0.0" y="120" width="414" height="162"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="315218b1-d013-43de-921e-26cc7b477417"/>
-                                    <constraint firstAttribute="width" constant="414" id="ba0bc245-5312-46a4-a222-d8493d656d7e"/>
+                                    <constraint firstAttribute="height" constant="162" id="32b4b409-9c3b-49d5-9bc1-b664cf3f841e"/>
+                                    <constraint firstAttribute="width" constant="414" id="b5e1d041-7689-4dcf-a46f-68590eca0d77"/>
                                 </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="53aff875-4a84-4008-b790-7aef862a3146">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="703b7b52-7daa-4ad9-8f5c-9330f13436c5">
                                 <rect key="frame" x="0.0" y="282" width="600" height="25"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="9a94d7a9-1715-491d-9ef5-326b29e2ee59"/>
+                                    <constraint firstAttribute="height" constant="25" id="bd78be85-bcf9-4c0f-b95f-b5e45301e35a"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <state key="normal" title="Save">
@@ -218,21 +218,21 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="a2f5e2d1-420b-48bf-ab94-c32cc3c3e825" firstAttribute="top" secondItem="5f87b1d9-20b5-40c5-bd60-dfd5bcebb548" secondAttribute="top" priority="950" constant="65" id="0d4a26a6-1dc7-4bbe-bf62-fdec9368fde6"/>
-                            <constraint firstItem="a2f5e2d1-420b-48bf-ab94-c32cc3c3e825" firstAttribute="centerX" secondItem="5f87b1d9-20b5-40c5-bd60-dfd5bcebb548" secondAttribute="centerX" id="21825f8a-ebc0-4ba5-9619-be139d4c7ebe"/>
-                            <constraint firstItem="e4b4f20d-0e39-4780-830d-b4dade1f4ead" firstAttribute="bottom" secondItem="d62448e1-767f-465e-a7f2-14b9e541d2bf" secondAttribute="top" priority="950" id="336d1414-a743-4d53-8e2f-0a3e01abc6fa"/>
-                            <constraint firstAttribute="bottom" secondItem="53aff875-4a84-4008-b790-7aef862a3146" secondAttribute="bottom" priority="900" id="4b40366b-5203-445d-bdc7-bc25fabb492f"/>
-                            <constraint firstItem="53aff875-4a84-4008-b790-7aef862a3146" firstAttribute="leading" secondItem="5f87b1d9-20b5-40c5-bd60-dfd5bcebb548" secondAttribute="leading" priority="950" id="4df70bc6-a112-4e55-b95b-525635b0e168"/>
-                            <constraint firstAttribute="trailing" secondItem="53aff875-4a84-4008-b790-7aef862a3146" secondAttribute="trailing" priority="900" id="5020d40b-4e10-42c3-a1de-b1a4decaa6a7"/>
-                            <constraint firstItem="d62448e1-767f-465e-a7f2-14b9e541d2bf" firstAttribute="bottom" secondItem="53aff875-4a84-4008-b790-7aef862a3146" secondAttribute="top" priority="950" id="5685394d-b17c-41a1-8510-e268bfc1cec6"/>
-                            <constraint firstItem="a2f5e2d1-420b-48bf-ab94-c32cc3c3e825" firstAttribute="bottom" secondItem="e4b4f20d-0e39-4780-830d-b4dade1f4ead" secondAttribute="top" priority="950" id="5c856ef1-7c69-4856-8bd8-6c1dfe41561b"/>
-                            <constraint firstItem="e4b4f20d-0e39-4780-830d-b4dade1f4ead" firstAttribute="leading" secondItem="5f87b1d9-20b5-40c5-bd60-dfd5bcebb548" secondAttribute="leading" id="87ce4777-6d17-4443-9ddd-17c48020a19e"/>
-                            <constraint firstItem="d62448e1-767f-465e-a7f2-14b9e541d2bf" firstAttribute="leading" secondItem="5f87b1d9-20b5-40c5-bd60-dfd5bcebb548" secondAttribute="leading" id="a34e95e7-0efe-4429-b100-2adb014fd8e1"/>
+                            <constraint firstItem="a91d68f0-b5e5-4105-9e40-d75550df7371" firstAttribute="top" secondItem="4897c62c-3783-4d57-9797-f403e9557dde" secondAttribute="top" priority="950" constant="65" id="1b86a634-60b0-46dd-b759-8f914bf2b7d6"/>
+                            <constraint firstItem="ebc8b562-c08c-4a40-99cb-4430ef0faa6f" firstAttribute="bottom" secondItem="703b7b52-7daa-4ad9-8f5c-9330f13436c5" secondAttribute="top" priority="950" id="1f579068-a6f6-4eb4-930c-9b47c182333a"/>
+                            <constraint firstItem="ebc8b562-c08c-4a40-99cb-4430ef0faa6f" firstAttribute="leading" secondItem="4897c62c-3783-4d57-9797-f403e9557dde" secondAttribute="leading" id="21c00206-6326-4be8-af55-b810413b6979"/>
+                            <constraint firstItem="8400bccd-d062-48f0-9458-0a36c62710bf" firstAttribute="leading" secondItem="4897c62c-3783-4d57-9797-f403e9557dde" secondAttribute="leading" id="3ab6fb75-a302-465d-919d-174709d8da57"/>
+                            <constraint firstAttribute="bottom" secondItem="703b7b52-7daa-4ad9-8f5c-9330f13436c5" secondAttribute="bottom" priority="900" id="43063888-0929-4af2-94bb-cc08d89b00cf"/>
+                            <constraint firstItem="a91d68f0-b5e5-4105-9e40-d75550df7371" firstAttribute="centerX" secondItem="4897c62c-3783-4d57-9797-f403e9557dde" secondAttribute="centerX" id="6bd01985-d939-4443-ac5d-d4d40b88fb27"/>
+                            <constraint firstItem="a91d68f0-b5e5-4105-9e40-d75550df7371" firstAttribute="bottom" secondItem="8400bccd-d062-48f0-9458-0a36c62710bf" secondAttribute="top" priority="950" id="72072834-6e77-420b-9080-60f19e7af123"/>
+                            <constraint firstItem="703b7b52-7daa-4ad9-8f5c-9330f13436c5" firstAttribute="leading" secondItem="4897c62c-3783-4d57-9797-f403e9557dde" secondAttribute="leading" priority="950" id="9b3b5d03-63dc-4c54-9001-9450240195c8"/>
+                            <constraint firstAttribute="trailing" secondItem="703b7b52-7daa-4ad9-8f5c-9330f13436c5" secondAttribute="trailing" priority="900" id="c60f07a9-2c86-42bb-a66f-725cd16cb1ef"/>
+                            <constraint firstItem="8400bccd-d062-48f0-9458-0a36c62710bf" firstAttribute="bottom" secondItem="ebc8b562-c08c-4a40-99cb-4430ef0faa6f" secondAttribute="top" priority="950" id="e8896f59-cf93-42c6-8d20-ca39c970a20c"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="0d3d427c-f53c-4a75-9b79-aa20717a388c"/>
+                    <navigationItem key="navigationItem" id="9e9baae2-b105-45c7-9203-12a355faee9a"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="93500427-d146-4908-ab8e-4b1f19756f9f" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cc5f93c5-a431-4730-a0cb-3cba2f615fdb" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="181.33333333333334" y="395.70666666666665"/>
         </scene>

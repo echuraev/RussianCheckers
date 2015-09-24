@@ -1,5 +1,7 @@
 package com.intel.russiancheckers.ui;
 
+import com.intel.core.algorithm.AlgorithmType;
+import com.intel.core.algorithm.IAlgorithm;
 import com.intel.inde.moe.natj.general.NatJ;
 import com.intel.inde.moe.natj.general.Pointer;
 import com.intel.inde.moe.natj.general.ann.Generated;
@@ -13,6 +15,7 @@ import com.intel.inde.moe.natj.objc.ann.Selector;
 import ios.NSObject;
 import ios.uikit.UIButton;
 import ios.uikit.UILabel;
+import ios.uikit.UIStoryboardSegue;
 import ios.uikit.UIViewController;
 
 @com.intel.inde.moe.natj.general.ann.Runtime(ObjCRuntime.class)
@@ -52,5 +55,19 @@ public class AppViewController extends UIViewController {
 
     @Selector("BtnPressedCancel_exitButton:")
     public void BtnPressedCancel_exitButton(NSObject sender) {
+    }
+
+    @Override
+    public void prepareForSegueSender(UIStoryboardSegue uiStoryboardSegue, Object o) {
+        super.prepareForSegueSender(uiStoryboardSegue, o);
+        if (uiStoryboardSegue.identifier().equals("newGameVSComputer")) {
+            ChessBoardViewController vc = (ChessBoardViewController) uiStoryboardSegue.destinationViewController();
+            vc.setAlgorithmType(AlgorithmType.COMPUTER);
+        }
+        else if (uiStoryboardSegue.identifier().equals("newGameVSHuman")) {
+            ChessBoardViewController vc = (ChessBoardViewController) uiStoryboardSegue.destinationViewController();
+            vc.setAlgorithmType(AlgorithmType.HUMAN);
+        }
+        System.out.println("Identifier: " + uiStoryboardSegue.identifier());
     }
 }

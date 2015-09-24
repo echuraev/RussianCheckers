@@ -1,5 +1,8 @@
 package com.intel.russiancheckers.ui;
 
+import com.intel.core.algorithm.AlgorithmType;
+import com.intel.core.algorithm.AlphaBetaPruning;
+import com.intel.core.algorithm.IAlgorithm;
 import com.intel.inde.moe.natj.general.NatJ;
 import com.intel.inde.moe.natj.general.Pointer;
 import com.intel.inde.moe.natj.general.ann.Generated;
@@ -12,6 +15,7 @@ import com.intel.inde.moe.natj.objc.ann.Selector;
 import ios.coregraphics.c.CoreGraphics;
 import ios.coregraphics.struct.CGRect;
 import ios.uikit.UILabel;
+import ios.uikit.UIStoryboardSegue;
 import ios.uikit.UIViewController;
 
 @com.intel.inde.moe.natj.general.ann.Runtime(ObjCRuntime.class)
@@ -21,6 +25,7 @@ public class ChessBoardViewController extends UIViewController {
 
     private ChessBoardView chessBoardView;
     private final int navBarHeight = 64;
+    private AlgorithmType algorithmType;
 
     static {
         NatJ.register();
@@ -40,13 +45,20 @@ public class ChessBoardViewController extends UIViewController {
         super(peer);
     }
 
+    public void setAlgorithmType(AlgorithmType algorithmType) {
+        this.algorithmType = algorithmType;
+    }
+
     @Override
     @Selector("viewDidLoad")
     public void viewDidLoad() {
         double size = this.view().bounds().size().width();
         if (this.view().bounds().size().width() > this.view().bounds().size().height())
             size = this.view().bounds().size().height();
-        chessBoardView = (ChessBoardView) ChessBoardView.alloc().initWithFrame(CoreGraphics.CGRectMake(0, navBarHeight, size, size));
+        chessBoardView = (ChessBoardView) ChessBoardView.alloc().initWithFrameAndParams(
+                CoreGraphics.CGRectMake(0, navBarHeight, size, size),
+                algorithmType, AlphaBetaPruning.MEDIUM_DIFFICULTY);
+        // TODO: Set difficulty
         view().addSubview(chessBoardView);
         //UILabel statusText =
         view().setNeedsDisplay();
