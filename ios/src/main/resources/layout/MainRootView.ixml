@@ -35,6 +35,6 @@
                 android:text="Exit"
                 android:layout_gravity="left"
                 style="@style/XOSButton"
-              android:id="@+id/com.android.sdklib.widgets.iOSButton" xrt:iboutlet="exitButton" xrt:ibaction="touchCancel-BtnPressedCancel_exitButton:"/>
+              android:id="@+id/com.android.sdklib.widgets.iOSButton"  xrt:ibaction="touchUpInside-BtnPressedCancel_exitButton:"/>
 
 </com.android.sdklib.widgets.iOSViewController>

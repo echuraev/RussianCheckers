@@ -33,5 +33,6 @@
     <orderEntry type="module" module-name="common" exported="" />
     <orderEntry type="library" exported="" name="intel-moe-ios" level="project" />
     <orderEntry type="library" exported="" name="intel-moe-core" level="project" />
+    <orderEntry type="library" exported="" name="ios.ios" level="project" />
   </component>
 </module>

@@ -30,6 +30,7 @@ import ios.foundation.NSString;
 import ios.uikit.UIColor;
 import ios.uikit.UIEvent;
 import ios.uikit.UIFont;
+import ios.uikit.UILabel;
 import ios.uikit.UITouch;
 import ios.uikit.UIView;
 import ios.uikit.c.UIKit;
@@ -52,12 +53,13 @@ public class ChessBoardView extends UIView {
     private double cellSize;
     private double boardMargin;
     private CGContextRef context;
-//    private Thread clickThread;
+    private Thread clickThread;
     private GameBoard gameBoard;
     private BoardCell previousCell;
     private BoardCell requiredMoveCell;
     private IAlgorithm algorithm;
     private Player player;
+    private UILabel statusText;
 
     static {
         NatJ.register();
@@ -70,19 +72,23 @@ public class ChessBoardView extends UIView {
 
     protected ChessBoardView(Pointer peer) {
         super(peer);
+        clickThread = null;
         gameBoard = new GameBoard();
         previousCell = null;
         requiredMoveCell = null;
         player = Player.WHITE;
+        statusText = null;
     }
 
-    public UIView initWithFrameAndParams(@ByValue CGRect cgRect, AlgorithmType type, int difficulty) {
+    public UIView initWithFrameAndParams(@ByValue CGRect cgRect, AlgorithmType type, int difficulty, UILabel statusText) {
         if (type == AlgorithmType.COMPUTER) {
             algorithm = new AlphaBetaPruning(gameBoard, difficulty);
         }
         else {
             algorithm = new HumanPlayer();
         }
+        this.statusText = statusText;
+        statusText.setText("Status: Turn of " + player.getPlayerName() + " player...");
         return super.initWithFrame(cgRect);
     }
 
@@ -93,8 +99,6 @@ public class ChessBoardView extends UIView {
         CoreGraphics.CGContextClearRect(context, rect);
         screenH = this.bounds().size().height();
         screenW = this.bounds().size().width();
-        System.out.println("ScreenH: " + String.valueOf(screenH));
-        System.out.println("ScreenW: " + String.valueOf(screenW));
         CoreGraphics.CGContextSetRGBFillColor(context, 255, 255, 255, 1);
         CoreGraphics.CGContextFillRect(context, CoreGraphics.CGRectMake(0, 0, screenW, screenH));
 
@@ -229,7 +233,8 @@ public class ChessBoardView extends UIView {
     @Override
     public void touchesEndedWithEvent(NSSet nsSet, UIEvent uiEvent) {
         super.touchesEndedWithEvent(nsSet, uiEvent);
-        System.out.println("I'm in touchesEnded!");
+        if (clickThread != null && clickThread.isAlive())
+            return;
         if (gameBoard.hasWon(player) || gameBoard.hasWon(player.getOpposite()))
             return;
 
@@ -258,13 +263,13 @@ public class ChessBoardView extends UIView {
                     }
                     final int finalRow = row;
                     final int finalCol = col;
-//                    clickThread = new Thread(new Runnable() {
-//                        @Override
-//                        public void run() {
+                    clickThread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
                             cellTouch(gameBoard.getCell(finalRow, finalCol));
-//                        }
-//                    });
-//                    clickThread.start();
+                        }
+                    });
+                    clickThread.start();
                 }
             }
         }
@@ -278,11 +283,6 @@ public class ChessBoardView extends UIView {
             doMove(cell);
         }
         setNeedsDisplay();
-//        this.post(new Runnable() {
-//            public void run() {
-//                invalidate();
-//            }
-//        });
     }
 
     private void highlightMoves(BoardCell cell, final Player player) {
@@ -300,11 +300,7 @@ public class ChessBoardView extends UIView {
                 moveIsAvailiable = true;
         }
         if (!moveIsAvailiable) {
-//            this.post(new Runnable() {
-//                public void run() {
-//                    statusTextView.setText("Status: " + player.getPlayerName() + " player have to eat...");
-//                }
-//            });
+            statusText.setText("Status: " + player.getPlayerName() + " player have to eat...");
             return;
         }
 
@@ -335,11 +331,7 @@ public class ChessBoardView extends UIView {
                     if (gameBoard.isExistsNextEatMove(m.getToCell(), m.getToCell(), null)) {
                         requiredMoveCell = m.getToCell();
                         highlightMoves(requiredMoveCell, player);
-//                        this.post(new Runnable() {
-//                            public void run() {
-//                                statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
-//                            }
-//                        });
+                        statusText.setText("Status: Turn of " + player.getPlayerName() + " player...");
                         return;
                     }
                 }
@@ -347,12 +339,8 @@ public class ChessBoardView extends UIView {
                     gameBoard.doMove(m);
                 }
                 if (gameBoard.hasWon(player)) {
-//                    this.post(new Runnable() {
-//                        public void run() {
-//                            statusTextView.setText("Status: " + player.getPlayerName() + " player has won!");
-//                            invalidate();
-//                        }
-//                    });
+                    statusText.setText("Status: " + player.getPlayerName() + " player has won!");
+                    setNeedsDisplay();
                     return;
                 }
                 if (algorithm.getAlgorithmType() == AlgorithmType.HUMAN) {
@@ -376,13 +364,14 @@ public class ChessBoardView extends UIView {
                     if (algorithm.getOpponentMove().getEatCell() != null
                             && algorithm.getOpponentMove().getEatCell().getRect() != null)
                         eatMove = true;
-//                    this.post(new Runnable() {
-//                        public void run() {
-//                            statusTextView.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
-//                            highlightMoves(algorithm.getOpponentMove().getFromCell(), player.getOpposite());
-//                            invalidate();
-//                        }
-//                    });
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            statusText.setText("Status: Turn of " + player.getOpposite().getPlayerName() + " player...");
+                            highlightMoves(algorithm.getOpponentMove().getFromCell(), player.getOpposite());
+                            setNeedsDisplay();
+                        }
+                    }).start();
                     try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
@@ -397,29 +386,14 @@ public class ChessBoardView extends UIView {
                     if (!eatMove)
                         break;
                     if (gameBoard.hasWon(player.getOpposite())) {
-//                        this.post(new Runnable() {
-//                            public void run() {
-//                                invalidate();
-//                                statusTextView.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
-//                            }
-//                        });
+                        statusText.setText("Status: " + player.getOpposite().getPlayerName() + " player has won!");
                         return;
                     }
-//                    this.post(new Runnable() {
-//                        public void run() {
-//                            invalidate();
-//                        }
-//                    });
                     setNeedsDisplay();
                 } while (gameBoard.isExistsNextEatMove(algorithm.getOpponentMove().getToCell(), algorithm.getOpponentMove().getToCell(), null));
                 break;
             }
         }
-
-//        this.post(new Runnable() {
-//            public void run() {
-//                statusTextView.setText("Status: Turn of " + player.getPlayerName() + " player...");
-//            }
-//        });
+        statusText.setText("Status: Turn of " + player.getPlayerName() + " player...");
     }
 }
