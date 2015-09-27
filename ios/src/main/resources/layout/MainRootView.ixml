@@ -28,13 +28,6 @@
                 android:text="Settings"
                 android:layout_gravity="left"
                 style="@style/XOSButton"
-              android:id="@+id/com.android.sdklib.widgets.iOSButton" xrt:segue_type="show" xrt:segue_destination="SettingsView.ixml" xrt:segue_identifier="settings"/><com.android.sdklib.widgets.iOSButton
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:text="Exit"
-                android:layout_gravity="left"
-                style="@style/XOSButton"
-              android:id="@+id/com.android.sdklib.widgets.iOSButton"  xrt:ibaction="touchUpInside-BtnPressedCancel_exitButton:"/>
+              android:id="@+id/com.android.sdklib.widgets.iOSButton" xrt:segue_type="show" xrt:segue_destination="SettingsView.ixml" xrt:segue_identifier="settings"/>
 
 </com.android.sdklib.widgets.iOSViewController>

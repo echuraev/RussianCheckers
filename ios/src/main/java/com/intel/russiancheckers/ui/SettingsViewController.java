@@ -80,9 +80,6 @@ public class SettingsViewController extends UIViewController {
         NSUserDefaults userDefaults = NSUserDefaults.standardUserDefaults();
         userDefaults.setIntegerForKey(difficultyPicker.selectedRowInComponent(0), "Difficulty");
         userDefaults.synchronize();
-        // TODO: Close view or text
-//        UIAlertView toast = UIAlertView.alloc().initWithTitleMessageDelegateCancelButtonTitleOtherButtonTitles(null, "Settings saved!", null, null, null, null);
-//        toast.show();
-        // TODO: Toast.makeText(getApplicationContext(), "Settings saved!", Toast.LENGTH_LONG).show();
+        navigationController().popToRootViewControllerAnimated(true);
     }
 }

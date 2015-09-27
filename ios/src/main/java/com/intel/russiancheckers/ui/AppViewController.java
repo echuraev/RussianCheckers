@@ -43,12 +43,6 @@ public class AppViewController extends UIViewController {
     public void viewDidLoad() {
     }
 
-    @Selector("BtnPressedCancel_exitButton:")
-    public void BtnPressedCancel_exitButton(NSObject sender) {
-        System.out.println("Exit pressed!");
-        NSThread.mainThread().exit();
-    }
-
     @Override
     public void prepareForSegueSender(UIStoryboardSegue uiStoryboardSegue, Object o) {
         super.prepareForSegueSender(uiStoryboardSegue, o);
