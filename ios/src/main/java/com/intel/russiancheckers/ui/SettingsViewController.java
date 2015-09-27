@@ -14,7 +14,6 @@ import com.intel.inde.moe.natj.objc.ann.Selector;
 
 import ios.NSObject;
 import ios.foundation.NSUserDefaults;
-import ios.uikit.UIAlertView;
 import ios.uikit.UIPickerView;
 import ios.uikit.UIViewController;
 

@@ -15,6 +15,7 @@ import com.intel.inde.moe.natj.objc.ann.Selector;
 import ios.coregraphics.c.CoreGraphics;
 import ios.coregraphics.struct.CGRect;
 import ios.foundation.NSUserDefaults;
+import ios.uikit.UIApplication;
 import ios.uikit.UILabel;
 import ios.uikit.UIStoryboardSegue;
 import ios.uikit.UIViewController;
@@ -27,7 +28,6 @@ import ios.uikit.enums.UITextAlignment;
 public class ChessBoardViewController extends UIViewController {
 
     private ChessBoardView chessBoardView;
-    private final int navBarHeight = 64;
     private AlgorithmType algorithmType;
     private UILabel statusText;
 
@@ -56,8 +56,10 @@ public class ChessBoardViewController extends UIViewController {
     @Override
     @Selector("viewDidLoad")
     public void viewDidLoad() {
+        double navBarHeight = navigationController().navigationBar().frame().size().height() +
+                UIApplication.sharedApplication().statusBarFrame().size().height();;
         double size = this.view().bounds().size().width();
-        double labelX = 0;
+        double labelX = 5;
         double labelY = navBarHeight + size;
         double labelWidth = this.view().bounds().size().width();
         double labelHeight = 30;
@@ -85,8 +87,9 @@ public class ChessBoardViewController extends UIViewController {
         }
         statusText = UILabel.alloc().initWithFrame(CoreGraphics.CGRectMake(labelX, labelY,
                 labelWidth, labelHeight));
-        // TODO: statusText.setLineBreakMode(UILineBreakMode.WordWrap);
         statusText.setAdjustsFontSizeToFitWidth(true);
+        statusText.setNumberOfLines(0);
+        statusText.sizeToFit();
         chessBoardView = (ChessBoardView) ChessBoardView.alloc().initWithFrameAndParams(
                 CoreGraphics.CGRectMake(0, navBarHeight, size, size),
                 algorithmType, difficulty, statusText);
@@ -98,8 +101,10 @@ public class ChessBoardViewController extends UIViewController {
     @Override
     public void viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
+        double navBarHeight = navigationController().navigationBar().frame().size().height() +
+                UIApplication.sharedApplication().statusBarFrame().size().height();;
         double size = this.view().bounds().size().width();
-        double labelX = 0;
+        double labelX = 5;
         double labelY = navBarHeight + size;
         double labelWidth = this.view().bounds().size().width();
         double labelHeight = 30;
