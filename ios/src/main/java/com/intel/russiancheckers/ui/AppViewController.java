@@ -10,8 +10,6 @@ import com.intel.inde.moe.natj.objc.ObjCRuntime;
 import com.intel.inde.moe.natj.objc.ann.ObjCClassName;
 import com.intel.inde.moe.natj.objc.ann.Selector;
 
-import ios.NSObject;
-import ios.foundation.NSThread;
 import ios.uikit.UIStoryboardSegue;
 import ios.uikit.UIViewController;
 

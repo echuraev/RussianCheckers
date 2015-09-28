@@ -1,6 +1,5 @@
 package com.intel.russiancheckers.ui;
 
-
 import com.intel.core.algorithm.AlgorithmType;
 import com.intel.core.algorithm.AlphaBetaPruning;
 import com.intel.core.algorithm.HumanPlayer;
