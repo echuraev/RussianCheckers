@@ -7,21 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		581DEFA667E83B32AB6C9E1B /* MOE.framework */ = {isa = PBXBuildFile; fileRef = 31445EA6EAC46ACBD07C3895 /* MOE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		4B84B5EBC3C55C97D4CDF787 /* MOE.framework */ = {isa = PBXBuildFile; fileRef = 31445EA6EAC46ACBD07C3895 /* MOE.framework */; };
-		70E9EC33F3C6708033691A54 /* preregister.txt */ = {isa = PBXBuildFile; fileRef = 5728B3E3037F33B1485538EF /* preregister.txt */; };
-		61D8542354D203D405F7033D /* main.cpp */ = {isa = PBXBuildFile; fileRef = 7A79FA6D46D5D5082F0AC1E2 /* main.cpp */; };
-		7158D046FC7CA0D091496E27 /* MainUI.storyboard */ = {isa = PBXBuildFile; fileRef = B1A26CDF709680441872B4E8 /* MainUI.storyboard */; };
+		4B84B5EBC3C55C97D4CDF787 /* MOE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31445EA6EAC46ACBD07C3895 /* MOE.framework */; };
+		581DEFA667E83B32AB6C9E1B /* MOE.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31445EA6EAC46ACBD07C3895 /* MOE.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		61D8542354D203D405F7033D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7A79FA6D46D5D5082F0AC1E2 /* main.cpp */; };
+		70E9EC33F3C6708033691A54 /* preregister.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5728B3E3037F33B1485538EF /* preregister.txt */; };
+		7158D046FC7CA0D091496E27 /* MainUI.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1A26CDF709680441872B4E8 /* MainUI.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9C3C4D49C91138ED9135404A = {
+		9C3C4D49C91138ED9135404A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				581DEFA667E83B32AB6C9E1B,
+				581DEFA667E83B32AB6C9E1B /* MOE.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -29,28 +29,62 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		31445EA6EAC46ACBD07C3895 /* MOE.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOE.framework; sourceTree = XRT_FRAMEWORK_PATH; };
+		5728B3E3037F33B1485538EF /* preregister.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = preregister.txt; sourceTree = "<group>"; };
 		58D460B3A2CC02DA27C0965E /* Russian Checkers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; path = "Russian Checkers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = build.xcconfig; sourceTree = "<group>"; };
 		60F9E1AC6F8456BBFBF35F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A79FA6D46D5D5082F0AC1E2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		5728B3E3037F33B1485538EF /* preregister.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = preregister.txt; sourceTree = "<group>"; };
-		31445EA6EAC46ACBD07C3895 /* MOE.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOE.framework; sourceTree = XRT_FRAMEWORK_PATH; };
 		B1A26CDF709680441872B4E8 /* MainUI.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = MainUI.storyboard; path = ../src/main/resources/MainUI.storyboard; sourceTree = "<group>"; };
+		E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = build.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		4364DA187FBC39200EF49B61 = {
+		4364DA187FBC39200EF49B61 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B84B5EBC3C55C97D4CDF787,
+				4B84B5EBC3C55C97D4CDF787 /* MOE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		DF8A93B5F29D1761D4ABFAF7 = {
+		45BDD354E6F368B859026584 /* Russian Checkers */ = {
+			isa = PBXGroup;
+			children = (
+				DF8A93B5F29D1761D4ABFAF7 /* Supporting Files */,
+			);
+			path = "Russian Checkers";
+			sourceTree = "<group>";
+		};
+		67BD7FBA943A1854F013429D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31445EA6EAC46ACBD07C3895 /* MOE.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BBF3849129010BBA8F8CBB3 = {
+			isa = PBXGroup;
+			children = (
+				45BDD354E6F368B859026584 /* Russian Checkers */,
+				67BD7FBA943A1854F013429D /* Frameworks */,
+				DAB9A80C8FE9F16619FADD08 /* Resources */,
+			);
+			sourceTree = "<group>";
+		};
+		DAB9A80C8FE9F16619FADD08 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				58D460B3A2CC02DA27C0965E /* Russian Checkers.app */,
+				B1A26CDF709680441872B4E8 /* MainUI.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DF8A93B5F29D1761D4ABFAF7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */,
@@ -61,75 +95,35 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DAB9A80C8FE9F16619FADD08 = {
-			isa = PBXGroup;
-			children = (
-				58D460B3A2CC02DA27C0965E /* Russian Checkers.app */,
-				B1A26CDF709680441872B4E8 /* MainUI.storyboard */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
-		2870AB375E2D6263BC0681B7 = {
-			isa = PBXGroup;
-			children = (
-			);
-			sourceTree = "<group>";
-		};
-		67BD7FBA943A1854F013429D = {
-			isa = PBXGroup;
-			children = (
-				31445EA6EAC46ACBD07C3895 /* MOE.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		45BDD354E6F368B859026584 = {
-			isa = PBXGroup;
-			children = (
-				DF8A93B5F29D1761D4ABFAF7 /* "Supporting Files" */,
-			);
-			path = "Russian Checkers";
-			sourceTree = "<group>";
-		};
-		8BBF3849129010BBA8F8CBB3 = {
-			isa = PBXGroup;
-			children = (
-				45BDD354E6F368B859026584 /* "Russian Checkers" */,
-				67BD7FBA943A1854F013429D /* Frameworks */,
-				DAB9A80C8FE9F16619FADD08 /* Resources */,
-			);
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		496C2BBA78D56451513140A7 = {
+		496C2BBA78D56451513140A7 /* Russian Checkers */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 02CFA934C1D2BBE8B3AA82FC;
+			buildConfigurationList = 02CFA934C1D2BBE8B3AA82FC /* Build configuration list for PBXNativeTarget "Russian Checkers" */;
 			buildPhases = (
-				84DE782A397F3FE7046E28CA,
-				4364DA187FBC39200EF49B61,
-				17E596BF0DBE405058AC0EB9,
-				DDFA21AF7C5AE56B9B2E9B14,
-				9C3C4D49C91138ED9135404A,
+				84DE782A397F3FE7046E28CA /* Compile Java Sources */,
+				4364DA187FBC39200EF49B61 /* Frameworks */,
+				17E596BF0DBE405058AC0EB9 /* Resources */,
+				DDFA21AF7C5AE56B9B2E9B14 /* Sources */,
+				9C3C4D49C91138ED9135404A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			name = "Russian Checkers";
 			productName = "Russian Checkers";
-			productReference = 58D460B3A2CC02DA27C0965E;
+			productReference = 58D460B3A2CC02DA27C0965E /* Russian Checkers.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6B2266F41B62B3F3DE8EE184 = {
+		6B2266F41B62B3F3DE8EE184 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				ORGANIZATIONNAME = intel;
 			};
-			buildConfigurationList = C5124BD2FC05084BB72B50EA;
+			buildConfigurationList = C5124BD2FC05084BB72B50EA /* Build configuration list for PBXProject "Russian Checkers" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -138,31 +132,29 @@
 				Base,
 			);
 			mainGroup = 8BBF3849129010BBA8F8CBB3;
-			productRefGroup = DAB9A80C8FE9F16619FADD08;
+			productRefGroup = DAB9A80C8FE9F16619FADD08 /* Resources */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				496C2BBA78D56451513140A7,
+				496C2BBA78D56451513140A7 /* Russian Checkers */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		17E596BF0DBE405058AC0EB9 = {
+		17E596BF0DBE405058AC0EB9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70E9EC33F3C6708033691A54,
-				5AFFCA45E8CF5E2101BF6440,
-				AD30425A1A7DC77B40696DCD,
-				7158D046FC7CA0D091496E27,
+				70E9EC33F3C6708033691A54 /* preregister.txt in Resources */,
+				7158D046FC7CA0D091496E27 /* MainUI.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		84DE782A397F3FE7046E28CA = {
+		84DE782A397F3FE7046E28CA /* Compile Java Sources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -180,11 +172,11 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		DDFA21AF7C5AE56B9B2E9B14 = {
+		DDFA21AF7C5AE56B9B2E9B14 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61D8542354D203D405F7033D,
+				61D8542354D203D405F7033D /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,11 +185,12 @@
 /* Begin XCBuildConfiguration section */
 		279053CA38DDB325CA3F86FA /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = ("$(inherited)",);
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Russian Checkers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "${XRT_OTHER_LDFLAGS}";
@@ -209,11 +202,12 @@
 		};
 		58B7358C40E1611C78E12798 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEAD_CODE_STRIPPING = NO;
-				FRAMEWORK_SEARCH_PATHS = ("$(inherited)",);
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "Russian Checkers/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "${XRT_OTHER_LDFLAGS}";
@@ -225,7 +219,7 @@
 		};
 		E920B5472B5F1995426D9FAF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -241,14 +235,20 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk = iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = ("$(inherited)","${XRT_FRAMEWORK_PATH}",);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${XRT_FRAMEWORK_PATH}",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1","$(inherited)",);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -261,14 +261,14 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				SYMROOT = "../build/xcode";
+				SYMROOT = ../build/xcode;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		F7B2256E59F566E7AC380ADF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8;
+			baseConfigurationReference = E65F2BA51FDA0A7D8ADBB8D8 /* build.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -284,14 +284,20 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk = iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				FRAMEWORK_SEARCH_PATHS = ("$(inherited)","${XRT_FRAMEWORK_PATH}",);
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"${XRT_FRAMEWORK_PATH}",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = ("DEBUG=1","$(inherited)",);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -304,7 +310,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
-				SYMROOT = "../build/xcode";
+				SYMROOT = ../build/xcode;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -312,25 +318,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		02CFA934C1D2BBE8B3AA82FC = {
+		02CFA934C1D2BBE8B3AA82FC /* Build configuration list for PBXNativeTarget "Russian Checkers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				279053CA38DDB325CA3F86FA,
-				58B7358C40E1611C78E12798,
+				279053CA38DDB325CA3F86FA /* Debug */,
+				58B7358C40E1611C78E12798 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C5124BD2FC05084BB72B50EA = {
+		C5124BD2FC05084BB72B50EA /* Build configuration list for PBXProject "Russian Checkers" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E920B5472B5F1995426D9FAF,
-				F7B2256E59F566E7AC380ADF,
+				E920B5472B5F1995426D9FAF /* Debug */,
+				F7B2256E59F566E7AC380ADF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6B2266F41B62B3F3DE8EE184;
+	rootObject = 6B2266F41B62B3F3DE8EE184 /* Project object */;
 }

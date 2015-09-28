@@ -101,6 +101,8 @@ public class ChessBoardViewController extends UIViewController {
     @Override
     public void viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews();
+        if (navigationController() == null)
+            return;
         double navBarHeight = navigationController().navigationBar().frame().size().height() +
                 UIApplication.sharedApplication().statusBarFrame().size().height();;
         double size = this.view().bounds().size().width();
