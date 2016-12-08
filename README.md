@@ -33,3 +33,18 @@ Also, user can select in main menu, what type of opponent he wants to play: AI o
 How it works, you can see on screenshots below.
 
 ## Screenshots ##
+Main screen on Android:
+
+![AndroidMainScreen.png](screenshots/AndroidMainScreen.png)
+
+Game screen on Android:
+
+![AndroidGame.png](screenshots/AndroidGame.png)
+
+Main screen on iOS:
+
+![iOSMainScreen.png](screenshots/iOSMainScreen.png)
+
+Game screen on iOS:
+
+![iOSGame.png](screenshots/iOSGame.png)
