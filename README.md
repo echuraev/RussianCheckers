@@ -7,8 +7,6 @@ Russian Checkers is an Android/iOS checkers game that was written by Multi-OS En
 Schematically the project has the following structure:
 
 ```
-#!bash
-
 <RussianCheckers>
 |-- app
 |  |-- src/main/java/com/intel/samples/russiancheckers/
